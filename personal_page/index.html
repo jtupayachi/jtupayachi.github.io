@@ -2,9 +2,16 @@
 layout: default
 title: Home
 ---
-<h1>Welcome to My Site</h1>
-<p>This is the home page. Explore the links below to learn more.</p>
-<ul>
-  <li><a href="/about">About Us</a></li>
-  <li><a href="/contact">Contact</a></li>
-</ul>
+<!DOCTYPE html>
+<link rel="stylesheet" href="../assets/css/devicon.min.css">
+<html lang="en">
+  {% include head.html %}
+  <body>
+      {% include header.html %}
+      <section id="about">
+        {% include about.html %}
+      </section>
+        {{ content }}
+      {% include footer.html %}
+  </body>
+</html>
