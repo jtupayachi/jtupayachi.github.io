@@ -10,16 +10,28 @@
       <span class="site-description">{{ site.user_title }}</span>
     </h1>
 
-    <nav class="navigation">
-      <ul>
-        <li><a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">Home</a></li>
-        <li><a href="{{ '/about/' | relative_url }}" class="{% if page.url == '/about/' %}active{% endif %}">About</a></li>
-        <li><a href="{{ '/services/' | relative_url }}" class="{% if page.url == '/services/' %}active{% endif %}">Services</a></li>
-        <li><a href="{{ '/contact/' | relative_url }}" class="{% if page.url == '/contact/' %}active{% endif %}">Contact</a></li>
-      </ul>
-    </nav>
 
     <div class="header-icons">
+<!-- GitHub Icon -->
+<a aria-label="My Github" target="_blank" href="https://github.com/murraco">
+  <i class="icon fa fa-github-alt" aria-hidden="true"></i>
+</a>
+
+<!-- Twitter Icon -->
+<a aria-label="My Twitter" target="_blank" href="https://twitter.com/yourusername">
+  <i class="icon fa fa-twitter" aria-hidden="true"></i>
+</a>
+
+<!-- LinkedIn Icon -->
+<a aria-label="My LinkedIn" target="_blank" href="https://www.linkedin.com/in/yourusername">
+  <i class="icon fa fa-linkedin" aria-hidden="true"></i>
+</a>
+
+<!-- Facebook Icon -->
+<a aria-label="My Facebook" target="_blank" href="https://www.facebook.com/yourusername">
+  <i class="icon fa fa-facebook" aria-hidden="true"></i>
+</a>
+
       {% if site.email %}
         <a aria-label="Send email" href="mailto:{{ site.email }}"><i class="icon fa fa-envelope"></i></a>
       {% endif %}
