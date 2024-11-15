@@ -1,0 +1,33 @@
+/* Custom styling for the navbar */
+.navbar {
+    background-color: #007bff; /* Change navbar background color */
+  }
+  
+  .navbar-brand {
+    color: #fff !important; /* Change brand color */
+  }
+  
+  .navbar-nav .nav-link {
+    color: #fff !important; /* Change nav-link color */
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #ffd700 !important; /* Change hover color */
+    text-decoration: underline;
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #fff; /* Change the toggle icon color */
+  }
+  
+  /* Add padding to the navbar */
+  .navbar-nav {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  /* Styling the active page link */
+  .nav-link.active {
+    color: #ffd700 !important;
+  }
+  
