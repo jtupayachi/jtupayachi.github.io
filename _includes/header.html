@@ -1,31 +1,20 @@
- <!-- Bootstrap Navbar -->
- <nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Brand</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#about" data-scroll>About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-      </ul>
-    </div>
+
+<div class="container">
+  <div class="brand">
+    <a href="{{ '/' | relative_url }}">
+      <h1>{{ site.username }}</h1>
+    </a>
+    <p>{{ site.user_title }}</p>
   </div>
-</nav>
-
-
-
+  <nav class="navigation">
+    <ul>
+      <li><a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">Home</a></li>
+      <li><a href="{{ '/about/' | relative_url }}" class="{% if page.url == '/about/' %}active{% endif %}">About</a></li>
+      <li><a href="{{ '/services/' | relative_url }}" class="{% if page.url == '/services/' %}active{% endif %}">Services</a></li>
+      <li><a href="{{ '/contact/' | relative_url }}" class="{% if page.url == '/contact/' %}active{% endif %}">Contact</a></li>
+    </ul>
+  </nav>
+</div>
 
 <div id="particles-js">
   <div class="header">
