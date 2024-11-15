@@ -1,15 +1,20 @@
 title: cvless
 description: Jekyll theme for a beautiful online CV
-baseurl: ""
-url: https://jtupayachi.github.io/
+baseurl: "/my_site"  # Remove if site is directly at the GitHub URL root
+url: https://jtupayachi.github.io
+theme: jekyll-theme-primer
+future: true
+plugins:
+  - jekyll-github-metadata
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-relative-links
 
-theme: cvless
-
-# site settings
+# Site settings
 taglong: Jekyll theme for a beautiful online CV
 tagshort: Jekyll theme
 
-# author settings
+# Author settings
 author:
   name: Place Holder
   email: username@domain.com
@@ -17,16 +22,16 @@ photo: assets/files/photo.jpg
 address: Foobar Hall 1.23
 phone: +1 234 567 890
 
-# social media links
+# Social media links
 social:
   github: jtupayachi
   linkedin: jtupayachi
   stackoverflow: jtupayachi
-  
 
-# build settings
+# Build settings
 permalink: pretty
 exclude:
   - docker-compose.yml
   - LICENSE
   - README.md
+
