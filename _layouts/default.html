@@ -4,10 +4,22 @@
   {% include head.html %}
   <body>
       {% include header.html %}
+      
+      <!-- Navigation Bar -->
+      <nav class="navbar">
+          <ul class="navbar-links">
+              <li><a href="#about">About</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <!-- Add more links as needed -->
+          </ul>
+      </nav>
+
       <section id="about">
         {% include about.html %}
       </section>
-        {{ content }}
+
+      {{ content }}
       {% include footer.html %}
   </body>
 </html>
