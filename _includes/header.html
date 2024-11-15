@@ -2,10 +2,23 @@
 
 <div id="particles-js">
   <div class="header">
+
+
+    
     <h1>
       <span class="site-title">{{ site.username }}</span>
       <span class="site-description">{{ site.user_title }}</span>
     </h1>
+
+    <nav class="navigation">
+      <ul>
+        <li><a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">Home</a></li>
+        <li><a href="{{ '/about/' | relative_url }}" class="{% if page.url == '/about/' %}active{% endif %}">About</a></li>
+        <li><a href="{{ '/services/' | relative_url }}" class="{% if page.url == '/services/' %}active{% endif %}">Services</a></li>
+        <li><a href="{{ '/contact/' | relative_url }}" class="{% if page.url == '/contact/' %}active{% endif %}">Contact</a></li>
+      </ul>
+    </nav>
+
     <div class="header-icons">
       {% if site.email %}
         <a aria-label="Send email" href="mailto:{{ site.email }}"><i class="icon fa fa-envelope"></i></a>
