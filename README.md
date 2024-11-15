@@ -1,1 +1,0 @@
-# jtupayachi.github.io
