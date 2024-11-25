@@ -6,6 +6,7 @@
 
     
     <h1>
+      
       <span class="site-title">{{ site.username }}</span>
       <span class="site-description">{{ site.user_title }}</span>
     </h1>
@@ -14,35 +15,59 @@
     <div class="header-icons">
 
 
+
+      <!-- {% if site.google_scholar %}
+      <a aria-label="Google Scholar" href="https://scholar.google.com/citations?user={{ site.google_scholar }}" target="_blank">
+          <i class="icon fa fa-medium"></i> 
+      </a>
+  {% endif %}
+   -->
+
+
+{% if site.google_scholar %}
+Google Scholar
+  <a aria-label="Send email" href="https://scholar.google.com/citations?user={{ site.google_scholar }} " style="margin-right: 10px;">
+      <i class="icon fa fa-google icon-large"></i>
+ 
+  </a>
+  {% endif %}
+
+
+
       {% if site.email %}
-        <a aria-label="Send email" href="mailto:{{ site.email }}"><i class="icon fa fa-envelope"></i></a>
-      {% endif %}
-      {% if site.twitter_username %}
-        <a aria-label="My Twitter" target="_blank" href="https://twitter.com/{{ site.twitter_username }}"><i class="icon fa fa-twitter" aria-hidden="true"></i></a>
-      {% endif %}
-      {% if site.instagram_username %}
-        <a aria-label="My Instagram" target="_blank" href="https://www.instagram.com/{{ site.instagram_username }}"><i class="icon fa fa-instagram" aria-hidden="true"></i></a>
-      {% endif %}
-      {% if site.facebook_username %}
-        <a aria-label="My Facebook" target="_blank" href="https://www.facebook.com/{{ site.facebook_username }}"><i class="icon fa fa-facebook" aria-hidden="true"></i></a>
-      {% endif %}
-      {% if site.linkedin_username %}
-        <a aria-label="My LinkedIn" target="_blank" href="https://www.linkedin.com/in/{{ site.linkedin_username }}"><i class="icon fa fa-linkedin-square" aria-hidden="true"></i></a>
-      {% endif %}
-      {% if site.github_username %}
-        <a aria-label="My Github" target="_blank" href="https://github.com/{{ site.github_username }}"><i class="icon fa fa-github-alt" aria-hidden="true"></i></a>
-      {% endif %}
-      {% if site.medium_username %}
+    Email
+      <a aria-label="Send email" href="mailto:{{ site.email }}"style="margin-right: 10px;">
+          <i class="icon fa fa-envelope icon-large"></i>
+      </a>
+  {% endif %}
+  
+
+  {% if site.linkedin_username %}
+  Linkedin
+      <a aria-label="My LinkedIn" target="_blank" href="https://www.linkedin.com/in/{{ site.linkedin_username }}"style="margin-right: 10px;">
+          <i class="icon fa fa-linkedin-square icon-large" aria-hidden="true"></i>
+      </a>
+  {% endif %}
+  
+  {% if site.github_username %}
+  Github
+      <a aria-label="My Github" target="_blank" href="https://github.com/{{ site.github_username }}"style="margin-right: 10px;">
+          <i class="icon fa fa-github-alt icon-large" aria-hidden="true"></i>
+      </a>
+  {% endif %}
+
+  
+      <!-- {% if site.medium_username %}
         <a aria-label="My Medium" target="_blank" href="https://medium.com/{{ site.medium_username }}"><i class="icon fa fa-medium" aria-hidden="true"></i></a>
       {% elsif site.medium_url %}
         <a aria-label="My Medium" target="_blank" href="https://{{ site.medium_url }}"><i class="icon fa fa-medium" aria-hidden="true"></i></a>
-      {% endif %}
+      {% endif %} -->
     </div>
     <div class="header-links">
-      <a class="link" href="#about" data-scroll>About Me</a>
-      <a class="link" href="#projects" data-scroll>Projects</a>
-      <a class="link" href="#trajectory" data-scroll>Trajectory</a>
-      <a class="link" href="#resume" data-scroll>Resume</a>
+     <h2> <a class="link" href="#about"  data-scroll>About Me</a></h2>
+      <!-- <a class="link" href="#projects" data-scroll>Projects</a> -->
+      <!-- <a class="link" href="#trajectory" data-scroll>Trajectory</a> -->
+    <h2> <a class="link" href="#resume" data-scroll>Resume</a></h2>
       
     </div>
   </div>

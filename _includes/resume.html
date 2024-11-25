@@ -1,0 +1,87 @@
+<div class="user-details">
+  <h1>Resume</h1>
+  <p>{{ site.user_description }}</p>
+</div>
+
+
+
+  <!-- Download Button -->
+  <div style="text-align: center; margin-top: 20px;">
+    <a href="latex_resume/main.pdf" download="Resume.pdf">
+      <button style="
+        padding: 15px 30px; 
+        font-size: 18px; 
+        background-color: #007BFF; 
+        color: white; 
+        border: none; 
+        border-radius: 5px; 
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.2s ease;">
+        Download PDF
+      </button>
+    </a>
+  </div>
+</div>
+
+<div class="user">
+  <!-- Container for PDF pages -->
+  <div id="pdf-container" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
+    <!-- Page 2 -->
+    <div>
+      <!-- <h2>Page 1</h2> -->
+      <canvas id="pdf-canvas-page2" style="margin-bottom: 20px;"></canvas>
+    </div>
+
+    <!-- Page 1 -->
+    <div>
+      <!-- <h2>Page 2</h2> -->
+      <canvas id="pdf-canvas-page1" style="margin-bottom: 20px;"></canvas>
+    </div>
+  </div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+<script>
+  const pdfUrl = "latex_resume/main.pdf";
+
+  // Load the PDF document
+  const loadingTask = pdfjsLib.getDocument(pdfUrl);
+  loadingTask.promise.then(pdf => {
+    // Render Page 2 first
+    pdf.getPage(1).then(page => {
+      const scale = 1.5;
+      const viewport = page.getViewport({ scale });
+
+      const canvas = document.getElementById("pdf-canvas-page2");
+      const context = canvas.getContext("2d");
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+
+      const renderContext = {
+        canvasContext: context,
+        viewport: viewport
+      };
+      page.render(renderContext);
+    });
+
+    // Render Page 1 below Page 2
+    pdf.getPage(2).then(page => {
+      const scale = 1.5;
+      const viewport = page.getViewport({ scale });
+
+      const canvas = document.getElementById("pdf-canvas-page1");
+      const context = canvas.getContext("2d");
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+
+      const renderContext = {
+        canvasContext: context,
+        viewport: viewport
+      };
+      page.render(renderContext);
+    });
+  });
+</script>
+

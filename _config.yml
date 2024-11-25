@@ -1,9 +1,9 @@
 # Site settings
 title: Jose Tupayachi
 # description: Jekyll Theme Minimal Resume
-baseurl: "https://jtupayachi.github.io/"
+# baseurl: "https://jtupayachi.github.io/"
 # baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://jtupayachi.github.io" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
+# url: "https://jtupayachi.github.io" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
 
 # User settings
 username: Jose Tupayachi
@@ -12,7 +12,9 @@ user_title: Industrial Engineer
 email: jtupayachi@vols.utk.edu
 # twitter_username: lorem_ipsum
 linkedin_username: jose-tupayachi-582339147
+google_scholar: Kyn6Et8AAAAJ
 github_username:  jtupayachi
+
 # medium_username: lorem_ipsum
 # medium_url: lorem_ipsum.medium.com
 # gplus_username:  lorem_ipsum
