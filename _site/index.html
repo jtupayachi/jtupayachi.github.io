@@ -33,67 +33,83 @@
 
 
     
-    <h1>
+    <h3>
       
       <span class="site-title">Jose Tupayachi</span>
-      <span class="site-description">Industrial Engineer</span>
-    </h1>
+    </h3>
+      <!-- <span class="site-description">Industrial Engineer</span> -->
+   
+<!-- <br> -->
 
+<div class="header-links">
+  <h4><a class="link" href="#about" data-scroll>About Me</a></h4>
+  <!-- <a class="link" href="#projects" data-scroll>Projects</a> -->
+  <!-- <a class="link" href="#trajectory" data-scroll>Trajectory</a> -->
+  <h4><a class="link" href="#resume" data-scroll>Resume</a></h4>
+</div>
+
+<style>
+  .header-links {
+    display: flex;
+    gap: 20px; /* Adjust spacing between items */
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Center items horizontally */
+  }
+
+  .header-links h4 {
+    margin: 0; /* Remove extra margin if unnecessary */
+  }
+
+  .link {
+    text-decoration: none; /* Optional: Remove underline */
+    color: inherit; /* Optional: Use inherited color */
+  }
+</style>
 
     <div class="header-icons">
 
 
-
-      <!-- 
-      <a aria-label="Google Scholar" href="https://scholar.google.com/citations?user=Kyn6Et8AAAAJ" target="_blank">
-          <i class="icon fa fa-medium"></i> 
-      </a>
-  
-   -->
-
-
-
-Google Scholar
-  <a aria-label="Send email" href="https://scholar.google.com/citations?user=Kyn6Et8AAAAJ " style="margin-right: 10px;">
-      <i class="icon fa fa-google icon-large"></i>
- 
-  </a>
-  
-
-
-
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        
+        <div>
+          Google Scholar
+          <a aria-label="Google Scholar Profile" href="https://scholar.google.com/citations?user=Kyn6Et8AAAAJ" style="margin-right: 10px;">
+            <i class="icon fa fa-google icon-large"></i>
+          </a>
+        </div>
+        
       
-    Email
-      <a aria-label="Send email" href="mailto:jtupayachi@vols.utk.edu"style="margin-right: 10px;">
-          <i class="icon fa fa-envelope icon-large"></i>
-      </a>
-  
-  
-
-  
-  Linkedin
-      <a aria-label="My LinkedIn" target="_blank" href="https://www.linkedin.com/in/jose-tupayachi-582339147"style="margin-right: 10px;">
-          <i class="icon fa fa-linkedin-square icon-large" aria-hidden="true"></i>
-      </a>
-  
-  
-  
-  Github
-      <a aria-label="My Github" target="_blank" href="https://github.com/jtupayachi"style="margin-right: 10px;">
-          <i class="icon fa fa-github-alt icon-large" aria-hidden="true"></i>
-      </a>
-  
-
-  
-      <!--  -->
-    </div>
-    <div class="header-links">
-     <h2> <a class="link" href="#about"  data-scroll>About Me</a></h2>
-      <!-- <a class="link" href="#projects" data-scroll>Projects</a> -->
-      <!-- <a class="link" href="#trajectory" data-scroll>Trajectory</a> -->
-    <h2> <a class="link" href="#resume" data-scroll>Resume</a></h2>
+        
+        <div>
+          Email
+          <a aria-label="Send email" href="mailto:jtupayachi@vols.utk.edu" style="margin-right: 10px;">
+            <i class="icon fa fa-envelope icon-large"></i>
+          </a>
+        </div>
+        
       
+        
+        <div>
+          LinkedIn
+          <a aria-label="My LinkedIn" target="_blank" href="https://www.linkedin.com/in/jose-tupayachi-582339147" style="margin-right: 10px;">
+            <i class="icon fa fa-linkedin-square icon-large" aria-hidden="true"></i>
+          </a>
+        </div>
+        
+      
+        
+        <div>
+          GitHub
+          <a aria-label="My GitHub" target="_blank" href="https://github.com/jtupayachi" style="margin-right: 10px;">
+            <i class="icon fa fa-github-alt icon-large" aria-hidden="true"></i>
+          </a>
+        </div>
+        
+      </div>
+      
+  
     </div>
+
   </div>
   
  
@@ -292,7 +308,14 @@ Google Scholar
 
 <div class="user">
   <!-- Container for PDF pages -->
-  <div id="pdf-container" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
+  <div id="pdf-container" style="
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  margin-bottom: 20px; 
+  padding: 10px; 
+  max-width: 100%;
+  box-sizing: border-box;">
     <!-- Page 2 -->
     <div>
       <!-- <h2>Page 1</h2> -->
@@ -307,49 +330,86 @@ Google Scholar
   </div>
 
 
+  <style>
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+  
+    button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+  
+    @media (max-width: 768px) {
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+  
+      #pdf-container canvas {
+        width: 100% !important;
+        height: auto !important;
+      }
+    }
+  
+    @media (max-width: 480px) {
+      button {
+        padding: 8px 15px;
+        font-size: 14px;
+      }
+    }
+  </style>
+
+
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+
+
 <script>
   const pdfUrl = "latex_resume/main.pdf";
+
+  // Function to resize canvas dynamically
+  function resizeCanvas(canvas, page) {
+    const scale = window.innerWidth < 768 ? 0.75 : 1.5; // Adjust scale based on screen width
+    const viewport = page.getViewport({ scale });
+
+    canvas.height = viewport.height;
+    canvas.width = viewport.width;
+
+    return {
+      canvasContext: canvas.getContext("2d"),
+      viewport: viewport
+    };
+  }
 
   // Load the PDF document
   const loadingTask = pdfjsLib.getDocument(pdfUrl);
   loadingTask.promise.then(pdf => {
     // Render Page 2 first
     pdf.getPage(1).then(page => {
-      const scale = 1.5;
-      const viewport = page.getViewport({ scale });
-
       const canvas = document.getElementById("pdf-canvas-page2");
-      const context = canvas.getContext("2d");
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
-
-      const renderContext = {
-        canvasContext: context,
-        viewport: viewport
-      };
+      const renderContext = resizeCanvas(canvas, page);
       page.render(renderContext);
     });
 
     // Render Page 1 below Page 2
     pdf.getPage(2).then(page => {
-      const scale = 1.5;
-      const viewport = page.getViewport({ scale });
-
       const canvas = document.getElementById("pdf-canvas-page1");
-      const context = canvas.getContext("2d");
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
-
-      const renderContext = {
-        canvasContext: context,
-        viewport: viewport
-      };
+      const renderContext = resizeCanvas(canvas, page);
       page.render(renderContext);
     });
   });
 </script>
+
 
 
 
