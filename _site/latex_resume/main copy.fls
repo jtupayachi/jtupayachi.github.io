@@ -197,6 +197,7 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchr8t.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchb8t.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchb8t.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchr8t.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchb8t.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/rm-lmr9.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/rm-lmr6.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/lmmi9.tfm
@@ -213,6 +214,10 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchr8r.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/bitstrea/charter/bchb8t.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchb8r.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/bitstrea/charter/bchb8t.vf
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchb8r.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/bitstrea/charter/bchr8t.vf
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchr8r.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/bitstrea/charter/bchb8t.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchb8r.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/bitstrea/charter/bchri8t.vf
