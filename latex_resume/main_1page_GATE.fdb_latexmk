@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1733356067.23801 "/Users/ilabjtupayac/jtupayachi.github.io/latex_resume/main_1page_GATE.tex" "main_1page_GATE.pdf" "main_1page_GATE" 1733356068.07546 0
-  "/Users/ilabjtupayac/jtupayachi.github.io/latex_resume/main_1page_GATE.tex" 1733356066.27354 22333 29da9cfb99dd369d9566531db6f47665 ""
+["pdflatex"] 1734120038.34215 "/Users/ilabjtupayac/jtupayachi.github.io/latex_resume/main_1page_GATE.tex" "main_1page_GATE.pdf" "main_1page_GATE" 1734120039.12126 0
+  "/Users/ilabjtupayac/jtupayachi.github.io/latex_resume/main_1page_GATE.tex" 1734120038.14445 23198 0605b759a535e953e81e4646712f03d2 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc" 1202520719 2840 216e6e45ad352e2456e1149f28885bee ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -117,8 +117,8 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1725404129.14624 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1725404116 8221447 a13186a2be346e3f7a223a007778320f ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "main_1page_GATE.aux" 1733356067.9877 284 2f646cd876984f3e518959e774bed8ff "pdflatex"
-  "main_1page_GATE.tex" 1733356066.27354 22333 29da9cfb99dd369d9566531db6f47665 ""
+  "main_1page_GATE.aux" 1734120039.05715 284 2f646cd876984f3e518959e774bed8ff "pdflatex"
+  "main_1page_GATE.tex" 1734120038.14445 23198 0605b759a535e953e81e4646712f03d2 ""
   (generated)
   "main_1page_GATE.aux"
   "main_1page_GATE.log"
