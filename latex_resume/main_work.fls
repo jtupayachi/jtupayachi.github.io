@@ -217,7 +217,12 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/bitstrea/charter/bchb8t.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchb8r.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/bitstrea/charter/bchr8t.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchr8r.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/bitstrea/charter/bchb8t.vf
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchb8r.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchb8t.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchri8t.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/bitstrea/charter/bchb8t.vf
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchb8r.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/bitstrea/charter/bchri8t.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchri8r.tfm
 INPUT main_work.aux
