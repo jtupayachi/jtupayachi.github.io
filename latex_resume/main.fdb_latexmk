@@ -1,7 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1734472995.82893 "/Users/ilabjtupayac/jtupayachi.github.io/latex_resume/main.tex" "main.pdf" "main" 1734472996.6257 0
-  "/Users/ilabjtupayac/jtupayachi.github.io/latex_resume/main.tex" 1734472995.59689 17005 a91ea329d83e7625a4ed436571b79600 ""
+["pdflatex"] 1734475408.13111 "/Users/ilabjtupayac/jtupayachi.github.io/latex_resume/main.tex" "main.pdf" "main" 1734475408.97687 0
+  "/Users/ilabjtupayac/jtupayachi.github.io/latex_resume/main.tex" 1734475407.84786 17112 2a7c62aceaefd236bc24c65d9e8f8cf4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc" 1202520719 2840 216e6e45ad352e2456e1149f28885bee ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchb8r.tfm" 1136768653 5184 4fd08a9613e75c1da82714d79cf8b4f1 ""
@@ -11,6 +12,7 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchri8r.tfm" 1136768653 4976 cfc4dd38b8fb809ad0d6138823dff41a ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchri8t.tfm" 1136768653 7404 b40c8312b058695e3a8ab703baeec068 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1136768653 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/ec-lmtt10.tfm" 1254269338 1372 2ef2c2b492b3c4cd7879fe083abbb061 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/lmex10.tfm" 1148093231 992 ce925c9346c7613270a79afbee98c070 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/lmmi10.tfm" 1148093231 1528 6d36b2385e0ca062a654de6ac59cb34f ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/lmmi5.tfm" 1148093231 1508 198f5b7b99b5769126de3a533f6fc334 ""
@@ -32,6 +34,7 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb" 1136849748 35118 12369bddf1a14581d11fcdbf86619250 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy10.pfb" 1254269338 27863 09ce3735688ffde955e72da27c95b61a ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy9.pfb" 1254269338 27835 16c2fa83351d4ef8cf5aebfab8a44bc1 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt10.pfb" 1255129361 113227 1010e11451afc2822c95dae77c390042 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/vf/bitstrea/charter/bchb8t.vf" 1136768653 2348 8d5673a28b31b0de9aa581c30f65dd1e ""
   "/usr/local/texlive/2024/texmf-dist/fonts/vf/bitstrea/charter/bchr8t.vf" 1136768653 2348 67712062c9694a242fa13da6829cc4f1 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/vf/bitstrea/charter/bchri8t.vf" 1136768653 2312 5e1caa81ceda1b9597784aa61c5b5510 ""
@@ -100,6 +103,7 @@
   "/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omslmsy.fd" 1616454256 807 3de192f3efa968913bd2f096a7b430d8 ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omxlmex.fd" 1616454256 568 a5494d810f2680caf10205cd1226c76c ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ot1lmr.fd" 1616454256 1882 28c08db1407ebff35a658fd141753d16 ""
+  "/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd" 1616454256 2682 555da1faa2e266801e4b221d01a42cb5 ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/needspace/needspace.sty" 1364856750 852 0e34dbb72efc69fa07602405ad95585e ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/paracol/paracol.sty" 1546294283 105390 63f76d21815dc2a8cea8ec268adab9f4 ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/charter.sty" 1586716065 838 9832f7748dc52a9fad0fb6beea4da041 ""
@@ -117,8 +121,8 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1725404129.14624 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1725404116 8221447 a13186a2be346e3f7a223a007778320f ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "main.aux" 1734472996.56153 284 addea6d600a2207c32a555fb0ca65e93 "pdflatex"
-  "main.tex" 1734472995.59689 17005 a91ea329d83e7625a4ed436571b79600 ""
+  "main.aux" 1734475408.90532 284 addea6d600a2207c32a555fb0ca65e93 "pdflatex"
+  "main.tex" 1734475407.84786 17112 2a7c62aceaefd236bc24c65d9e8f8cf4 ""
   (generated)
   "main.aux"
   "main.log"

@@ -3,13 +3,15 @@
 % Packages:
 \usepackage[
     ignoreheadfoot, % set margins without considering header and footer
-    top=2 cm, % seperation between body and page edge from the top
-    bottom=2 cm, % seperation between body and page edge from the bottom
-    left=2 cm, % seperation between body and page edge from the left
-    right=2 cm, % seperation between body and page edge from the right
+    top=1 cm, % seperation between body and page edge from the top
+    bottom=1 cm, % seperation between body and page edge from the bottom
+    left=1 cm, % seperation between body and page edge from the left
+    right=1 cm, % seperation between body and page edge from the right
     footskip=1.0 cm, % seperation between body and footer
     % showframe % for debugging 
 ]{geometry} % for adjusting page geometry
+
+% \usepackage{hyperref}
 
 \usepackage{titlesec} % for customizing section titles
 \usepackage{tabularx} % for making tables with fixed width columns
@@ -185,7 +187,7 @@
 
     \vspace{5 pt }
 
-Experienced professional in business analytics with a proven ability to design and implement data-driven solutions that drive business impact. Skilled in developing advanced machine learning systems, integrating tools like Retrieval-Augmented Generation (RAG) and vector databases to enhance real-time applications. Proficient in Python programming and data engineering, with a strong focus on collaboration and delivering scalable solutions by working effectively with interdisciplinary teams.
+    Experienced professional in business analytics with a proven ability to design and implement data-driven solutions that drive business impact. Skilled in developing advanced machine learning systems and integrating tools like retrieval-augmented generation and vector databases to enhance chatbot applications. Proficient in Python programming, data engineering, and data vizualization with a strong focus on collaboration and delivering scalable solutions by working effectively with interdisciplinary teams.
 
 
 % Education:
@@ -222,7 +224,7 @@ Experienced professional in business analytics with a proven ability to design a
     
         \item \textbf{Automating Bibliometric Analysis with Sentence Transformers and Retrieval-Augmented Generation (RAG): A Pilot Study in Semantic and Contextual Search for Customized Literature} \\
         H Xu, X Li, J Tupayachi, JJ Lian, OA Omitaomu \\
-        \textit{Proceedings of the 2nd ACM SIGSPATIAL International Workshop on Advances in …} (2024) \\
+        \textit{Proceedings of the 2nd ACM SIGSPATIAL International Workshop on Advances in Urban-AI} (2024) \\
         % DOI: \url{https://doi.org/10.xxxx/xxxxx}
     
         \item \textbf{Better Efficiency on Non-performing Loans Debt Recovery and Portfolio Valuation Using Machine Learning Techniques} \\
@@ -260,7 +262,7 @@ Experienced professional in business analytics with a proven ability to design a
 
         \section*{Funded Projects Developer}
 
-        \begin{twocolentry}{Nov 2021 – Present} \textbf{RECOIL} \textbar Cognitive Freight Transportation Digital Twin for Resiliency and Emission Control Through Optimizing Intermodal Logistics \end{twocolentry} \begin{highlights} \item Developed and integrated digital twin models for large-scale freight transportation networks, leveraging data from diverse transport modes (road, rail, waterway) to enhance system performance, minimize emissions, and increase resilience. 
+        \begin{twocolentry}{Jul 2024 – Present} \textbf{RECOIL} \textbar Cognitive Freight Transportation Digital Twin for Resiliency and Emission Control Through Optimizing Intermodal Logistics \end{twocolentry} \begin{highlights} \item Developed and integrated digital twin models for large-scale freight transportation networks, leveraging data from diverse transport modes (road, rail, waterway) to enhance system performance, minimize emissions, and increase resilience. 
             \item Utilized advanced forecasting models to analyze transportation systems' responses to climate change and extreme weather events, enabling data-driven, real-time decision-making such those applicable to EV charging stations. 
             \item Applied Large Language models to improve transportation planning decision making, enabling more accurate tradeoff analysis among cost, time, and emissions. 
             \item Designed a dynamic real-time feedback loop for digital twins, utilizing sensor data and scrapping technology to continuously optimize system performance based on real-world conditions.
@@ -268,7 +270,7 @@ Experienced professional in business analytics with a proven ability to design a
             %  \item Led a multi-institutional research initiative funded by the U.S. Department of Energy's ARPA-E program, advancing efforts to decarbonize transportation and tackle critical issues in the freight industry. 
             \end{highlights} \vspace{0.3cm} \noindent \textbf{Funding Agency:} U.S. Department of Energy’s Advanced Research Projects Agency-Energy (ARPA-E)\\  \textbf{Project Number:} \#DE-AR0001780
 
-        \vspace{0.3cm} \begin{twocolentry}{December 2022 – Present} \textbf{SmartShots} \textbar Cross-Platform Application to Improve Childhood Vaccination Rates in Tennessee \end{twocolentry} \begin{highlights} \item Enhanced vaccination tracking with real-time data updates, notifications, and integrated alerts for users and healthcare providers. \item Developed a scalable backend system using Dart and Flutter, ensuring smooth functionality across platforms and enhancing the user experience. \item Integrated community health data to offer users real-time access to nearby vaccination providers and appointment availability. \item Collaborated with the Tennessee Department of Health and local health agencies to align the app with state public health objectives and needs. \item Led user testing and incorporated feedback to improve the app’s inclusivity, addressing issues such as misinformation and disparities in healthcare access. \end{highlights} \vspace{0.3cm} \noindent \textbf{Funding Agency:} Tennessee Department of Health
+        \vspace{0.3cm} \begin{twocolentry}{December 2023 – Present} \textbf{SmartShots} \textbar Cross-Platform Application to Improve Childhood Vaccination Rates in Tennessee \end{twocolentry} \begin{highlights} \item Enhanced vaccination tracking with real-time data updates, notifications, and integrated alerts for users and healthcare providers. \item Developed a scalable backend system using Dart and Flutter, ensuring smooth functionality across platforms and enhancing the user experience. \item Integrated community health data to offer users real-time access to nearby vaccination providers and appointment availability. \item Collaborated with the Tennessee Department of Health and local health agencies to align the app with state public health objectives and needs. \item Led user testing and incorporated feedback to improve the app’s inclusivity, addressing issues such as misinformation and disparities in healthcare access. \item \url{https://play.google.com/store/apps/details?id=com.ilab.smartshots} \url{https://apps.apple.com/us/app/smartshots-tn/id6526502640} \end{highlights} \vspace{0.3cm} \noindent \textbf{Funding Agency:} Tennessee Department of Health
         
         \vspace{0.3cm} \begin{twocolentry}{Jul 2024 - Present} \textbf{Active Caregiver’s Toolkit (ACTAPP)} \textbar Mobile Application to Promote Physical Activity Among Rural Appalachian Caregivers at Risk for Cardiovascular Disease (CVD) \end{twocolentry} \begin{highlights} \item Development of the ACTAPP as a digital solution for rural Appalachian caregivers, aiming to reduce cardiovascular disease risks through targeted physical activity interventions. 
             % \item Conducted usability testing and a pilot study to assess the app’s effectiveness in promoting healthier lifestyles and reducing CVD risk among caregivers in rural communities. 
@@ -359,13 +361,12 @@ Conversational Geographic Question Answering: LLMs \& Continuous Retrieval-Augme
 % Technologies:
 \section*{Technologies}
 \begin{multicols}{2}
-    \textbf{Languages:} Python, SQL, Bash, Dart, PHP \\
-    \textbf{Frameworks:} Django, Flask, TensorFlow, PyTorch, Flutter, Laravel, React \\
-    \textbf{ML/NLP Tools:} LlamaIndex, LangChain, HuggingFace Transformers, RAG \\
-    \textbf{Databases:} PostgreSQL, MongoDB, Elasticsearch, MySQL \\
-    \textbf{DevOps:} Docker, Kubernetes, Git, Jenkins \\
-    \textbf{Optimization:} Networkx, Gurobi, cplex, AnyLogic Simulation \\
-    \textbf{Tools:} Excel, Microsoft Office,  Linux
+    \textbf{Languages:} Python, SQL, Bash, Dart, PHP, Java \\
+    \textbf{Frameworks:} Django, Flask, TensorFlow, PyTorch, Flutter, Laravel \\
+    \textbf{Databases:} PostgreSQL, MongoDB, MySQL, SQL Server \\
+    \textbf{DevOps:} Docker, Git, Jenkins \\
+    \textbf{Optimization:} Networkx, Gurobi, cplex, AnyLogic Simulation, NetworkX \\
+    \textbf{Office Tools:} Excel, Microsoft Office, Linux
 \end{multicols}
 
     
