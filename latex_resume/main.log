@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.3)  7 FEB 2025 07:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.3)  7 FEB 2025 07:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -497,19 +497,19 @@ LaTeX Font Info:    ... okay on input line 158.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(2.84544pt, 608.60411pt, 2.84544pt)
-* v-part:(T,H,B)=(2.84544pt, 789.2791pt, 2.84544pt)
+* h-part:(L,W,R)=(14.22636pt, 585.84227pt, 14.22636pt)
+* v-part:(T,H,B)=(14.22636pt, 766.51726pt, 14.22636pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=608.60411pt
-* \textheight=789.2791pt
-* \oddsidemargin=-69.42455pt
-* \evensidemargin=-69.42455pt
-* \topmargin=-106.42455pt
+* \textwidth=585.84227pt
+* \textheight=766.51726pt
+* \oddsidemargin=-58.04362pt
+* \evensidemargin=-58.04362pt
+* \topmargin=-95.04362pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=0.0pt
-* \footskip=2.84544pt
+* \footskip=14.22636pt
 * \marginparwidth=65.0pt
 * \marginparsep=11.0pt
 * \columnsep=4.26773pt
@@ -567,7 +567,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 213.
  [1
 
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 278.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -575,8 +575,8 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.346 \end{highlights}
-                       [2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
+l.344     \item A
+                 dministered SQL and T-SQL databases alongside Salesforce, e... [2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -592,13 +592,13 @@ L3 programming layer <2024-02-20>
 Here is how much of TeX's memory you used:
  15527 strings out of 474116
  262653 string characters out of 5743683
- 1951187 words of memory out of 5000000
+ 1949187 words of memory out of 5000000
  37672 multiletter control sequences out of 15000+600000
  604346 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,7n,79p,719b,593s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,7n,79p,719b,589s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (3 pages, 116920 bytes).
+Output written on main.pdf (3 pages, 117024 bytes).
 PDF statistics:
  72 PDF objects out of 1000 (max. 8388607)
  50 compressed objects within 1 object stream
