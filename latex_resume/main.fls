@@ -219,13 +219,13 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/bitstrea/charter/bchb8t.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchb8r.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/bitstrea/charter/bchri8t.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchri8r.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/ec-lmtt9.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchb8t.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/bitstrea/charter/bchb8t.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/bitstrea/charter/bchb8r.tfm
