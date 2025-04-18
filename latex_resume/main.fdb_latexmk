@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1744999129.83815 "/Users/ilabjtupayac/jtupayachi.github.io/latex_resume/main.tex" "main.pdf" "main" 1744999130.40426 0
-  "/Users/ilabjtupayac/jtupayachi.github.io/latex_resume/main.tex" 1744999129.64282 23768 7766570fa5b40fa41ef3acc42f619a65 ""
+["pdflatex"] 1745002104.28589 "/Users/ilabjtupayac/jtupayachi.github.io/latex_resume/main.tex" "main.pdf" "main" 1745002104.80987 0
+  "/Users/ilabjtupayac/jtupayachi.github.io/latex_resume/main.tex" 1745002104.07485 23768 509274a2d8f8404b3420d4eb7daedc09 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -127,8 +127,8 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1725404129.14624 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1725404116 8221447 a13186a2be346e3f7a223a007778320f ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "main.aux" 1744999130.34698 284 da58276bf859024fcdc21d722329ed0a "pdflatex"
-  "main.tex" 1744999129.64282 23768 7766570fa5b40fa41ef3acc42f619a65 ""
+  "main.aux" 1745002104.75448 284 da58276bf859024fcdc21d722329ed0a "pdflatex"
+  "main.tex" 1745002104.07485 23768 509274a2d8f8404b3420d4eb7daedc09 ""
   (generated)
   "main.aux"
   "main.log"
