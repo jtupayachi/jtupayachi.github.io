@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1750196153 "c:/Users/joset/jtupayachi.github.io/latex_resume/main.tex" "main.pdf" "main" 1750196155
+["pdflatex"] 1750196462 "c:/Users/joset/jtupayachi.github.io/latex_resume/main.tex" "main.pdf" "main" 1750196465
   "C:/Users/joset/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1750193573 83807 b38554b55758e36eaf2c7d766bbbec95 ""
   "C:/Users/joset/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1663182617 10329961 eb8a6a3011c4b4233f731b202dd3c9fd ""
   "C:/Users/joset/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -125,9 +125,9 @@
   "C:/Users/joset/AppData/Local/Programs/MiKTeX/tex/latex/tools/tabularx.sty" 1636713860 7147 5ac8a9ef36411064b1a501137af0fa54 ""
   "C:/Users/joset/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388494052 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/joset/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1656236890 56148 51a9a8571c07b9921892ae11063ae853 ""
-  "c:/Users/joset/jtupayachi.github.io/latex_resume/main.tex" 1750196151 28875 e00641dd2719462b90aa59890090889b ""
-  "main.aux" 1750196155 1072 52b795b98463ae4e9c395bab3d5ff09a "pdflatex"
-  "main.tex" 1750196151 28875 e00641dd2719462b90aa59890090889b ""
+  "c:/Users/joset/jtupayachi.github.io/latex_resume/main.tex" 1750196461 28862 7bfcf08dc146bec7cb94cdf84c9706c1 ""
+  "main.aux" 1750196464 1072 52b795b98463ae4e9c395bab3d5ff09a "pdflatex"
+  "main.tex" 1750196461 28862 7bfcf08dc146bec7cb94cdf84c9706c1 ""
   (generated)
   "main.aux"
   "main.log"
