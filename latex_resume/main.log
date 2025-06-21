@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.14)  17 JUN 2025 17:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.9.14)  21 JUN 2025 01:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -564,33 +564,33 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 17
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 226.
+(Font)              <9> on input line 229.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 226.
+(Font)              <6> on input line 229.
  [1
 
 {C:/Users/joset/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.360         \item I
+l.363         \item I
                      nclussion of ChatBot for FAQ answering. [2]
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.470 \end{highlights}
+l.473 \end{highlights}
                        [3]
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.583 
+l.586 
        [4] 
 AED: lastpage setting LastPage
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.616 \end{document}
+l.619 \end{document}
                      [5] (main.aux) ) 
 Here is how much of TeX's memory you used:
  15390 strings out of 478338
@@ -599,9 +599,9 @@ Here is how much of TeX's memory you used:
  33603 multiletter control sequences out of 15000+600000
  509701 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,5n,77p,748b,584s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 72i,5n,77p,731b,584s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/joset/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/joset/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/joset/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/joset/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}{C:/Users/joset/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}<C:/Users/joset/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bchb8a.pfb><C:/Users/joset/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bchr8a.pfb><C:/Users/joset/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bchri8a.pfb><C:/Users/joset/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Users/joset/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/joset/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/joset/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Users/joset/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/joset/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb>
-Output written on main.pdf (5 pages, 157892 bytes).
+Output written on main.pdf (5 pages, 157865 bytes).
 PDF statistics:
  90 PDF objects out of 1000 (max. 8388607)
  3 named destinations out of 1000 (max. 500000)
