@@ -26,10 +26,16 @@
 <!-- Projects Quick Access Buttons -->
 <div style="margin: 40px 0;">
   <h2 style="margin-bottom: 25px; color: #2c3e50;">🚀 Funded Projects</h2>
+  
+  <!-- Notification message -->
+  <div id="notification" style="display: none; margin-bottom: 20px; padding: 12px 20px; background: #e3f2fd; border-left: 4px solid #2196F3; border-radius: 4px; color: #1565C0; font-weight: 500;">
+    <span id="notificationText"></span>
+  </div>
+  
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
     
     <!-- RECOIL Lab Dashboard -->
-    <a href="https://m1.recoil.ise.utk.edu" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #0074BD 0%, #306998 100%);">
+    <a href="https://m1.recoil.ise.utk.edu" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #0074BD 0%, #306998 100%);" onclick="showNotification('🚀 Opening RECOIL Project in a new window...'); return true;">
       <div style="font-size: 32px; margin-bottom: 8px;">🔬</div>
       <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">RECOIL Realtime Intermodal Optimization</div>
       <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">ARPA-e • Optimization and Simulation Engine</div>
@@ -43,7 +49,7 @@
     </a>
 
     <!-- SmartShots -->
-    <a href="https://play.google.com/store/apps/details?id=com.ilab.smartshots&hl=en_US" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+    <a href="https://play.google.com/store/apps/details?id=com.ilab.smartshots&hl=en_US" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);" onclick="showNotification('🚀 Opening SmartShots on Google Play in a new window...'); return true;">
       <div style="font-size: 32px; margin-bottom: 8px;">💉</div>
       <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">SmartShots</div>
       <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">TN Department of Health • Nursing Intervention App</div>
@@ -55,7 +61,7 @@
     </a>
 
     <!-- Active Caregiver's Toolkit -->
-    <a href="https://play.google.com/store/apps/details?id=com.ilabutk.fe_rich&hl=en_US" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);">
+    <a href="https://play.google.com/store/apps/details?id=com.ilabutk.fe_rich&hl=en_US" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);" onclick="showNotification('🚀 Opening Active Caregiver\'s Toolkit on Google Play in a new window...'); return true;">
       <div style="font-size: 32px; margin-bottom: 8px;">❤️</div>
       <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">Active Caregiver's Toolkit</div>
       <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">Hillman Foundation • Nursing Intervention App</div>
@@ -67,14 +73,14 @@
     </a>
 
     <!-- Clinic Sense -->
-    <a href="https://demo3.recoil.ise.utk.edu" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);">
+    <a href="https://demo3.recoil.ise.utk.edu" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);" onclick="showNotification('🚀 Opening Clinic Sense dashboard in a new window...'); return true;">
       <div style="font-size: 32px; margin-bottom: 8px;">🏥</div>
       <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">Clinic Sense</div>
       <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">Assesing Medical Performance • UT Knoxville</div>
       <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
         <span class="tech-badge">LLMs</span>
         <span class="tech-badge">Embeddings</span>
-        <span class="tech-badge">SFTP</span>
+        <span class="tech-badge">SFT Trainer</span>
         <span class="tech-badge">Python</span>
       </div>
     </a>
@@ -82,11 +88,11 @@
     <!-- NSRD-ORNL Geospatial -->
     <div class="project-btn" style="background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%); cursor: default;">
       <div style="font-size: 32px; margin-bottom: 8px;">🗺️</div>
-      <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">Automated Geospatial Dashboard</div>
-      <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">Oak Ridge National Lab • NSRD Office</div>
+      <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">Automating Geospatial (GIS) Dashboards</div>
+      <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">Oak Ridge National Lab • Nuclear Safety Research and Development (NSR&D)</div>
       <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
         <span class="tech-badge">LLMs</span>
-        <span class="tech-badge">SFTP</span>
+        <span class="tech-badge">SFT Trainer</span>
         <span class="tech-badge">Python</span>
         <span class="tech-badge">Neo4j</span>
       </div>
@@ -94,6 +100,24 @@
 
   </div>
 </div>
+
+<script>
+function showNotification(message) {
+  const notification = document.getElementById('notification');
+  const notificationText = document.getElementById('notificationText');
+  
+  notificationText.textContent = message;
+  notification.style.display = 'block';
+  
+  // Scroll to notification
+  notification.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  
+  // Hide notification after 3 seconds
+  setTimeout(() => {
+    notification.style.display = 'none';
+  }, 3000);
+}
+</script>
 
 <style>
 .project-btn {
