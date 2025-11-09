@@ -2,10 +2,104 @@
   <h1>About Me</h1>
   <!-- <p>{{ site.user_description }}</p> -->
 
-  <p>
-    Experienced professional in business analytics with a proven ability to design and implement data-driven solutions that drive business impact. Skilled in developing advanced machine learning systems and integrating tools like retrieval-augmented generation and vector databases to enhance chatbot applications. Proficient in Python programming, data engineering, and data vizualization with a strong focus on collaboration and delivering scalable solutions by working effectively with interdisciplinary teams.
+<p>
+  <strong>Jose Tupayachi (Jose Alberto Tupayachi Silva)</strong><br>
+  <!-- University of Tennessee, Knoxville<br> -->
+  <!-- <em>Verified email at ornl.gov</em> - <a href="https://yourhomepage.com" target="_blank">Homepage</a> -->
+</p>
 
-  </p>
+<p>
+  I am a researcher and developer focused on integrating <strong>AI agents</strong>, 
+  <strong>large language models (LLMs)</strong>, and <strong>edge computing</strong> 
+  to build intelligent, distributed systems. My work combines 
+  <strong>simulation-based experimentation</strong> and 
+  <strong>machine learning</strong> to enhance autonomy, scalability, and 
+  real-world applicability of modern AI systems.
+</p>
+
+<p>
+  <strong>Core Expertise:</strong><br>
+  AI Agents • Large Language Models (LLMs) • Edge & Federated Computing • 
+  Simulation & Modeling • Applied Machine Learning
+</p>
+
+<div style="margin: 30px 0;">
+  <button id="toggleRecoilBtn" class="btn-recoil" onclick="toggleRecoilIframe()">
+    🔬 View RECOIL Lab Dashboard
+  </button>
+</div>
+
+<!-- Hidden iframe container -->
+<div id="recoilIframeContainer" style="display: none; margin-top: 20px;">
+  <div style="border: 2px solid #0074BD; border-radius: 8px; overflow: hidden; background: #f5f5f5; padding: 10px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding: 5px 10px; background: #fff; border-radius: 4px;">
+      <span style="font-weight: bold; color: #333;">RECOIL Lab - M1 Server</span>
+      <button onclick="toggleRecoilIframe()" style="background: #ff4444; color: white; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer;">Close</button>
+    </div>
+    <iframe 
+      id="recoilIframe" 
+      src="" 
+      style="width: 100%; height: 600px; border: none; background: white;"
+      title="RECOIL Lab Dashboard">
+    </iframe>
+    <div style="margin-top: 10px; text-align: center;">
+      <a href="http://m1.recoil.ise.utk.edu" target="_blank" style="color: #0074BD; text-decoration: none;">
+        🔗 Open in New Tab
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleRecoilIframe() {
+  const container = document.getElementById('recoilIframeContainer');
+  const iframe = document.getElementById('recoilIframe');
+  const btn = document.getElementById('toggleRecoilBtn');
+  
+  if (container.style.display === 'none') {
+    // Show iframe and load content
+    container.style.display = 'block';
+    if (!iframe.src) {
+      iframe.src = 'http://m1.recoil.ise.utk.edu';
+    }
+    btn.textContent = '🔼 Hide RECOIL Lab Dashboard';
+    // Smooth scroll to iframe
+    setTimeout(() => {
+      container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+  } else {
+    // Hide iframe
+    container.style.display = 'none';
+    btn.textContent = '🔬 View RECOIL Lab Dashboard';
+  }
+}
+</script>
+
+<style>
+.btn-recoil {
+  background: linear-gradient(135deg, #0074BD 0%, #306998 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 116, 189, 0.3);
+}
+
+.btn-recoil:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 116, 189, 0.4);
+  background: linear-gradient(135deg, #005a94 0%, #255279 100%);
+}
+
+.btn-recoil:active {
+  transform: translateY(0);
+}
+</style>
+
 </div>
 <div class="user">
 
