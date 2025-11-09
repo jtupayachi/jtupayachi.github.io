@@ -41,39 +41,24 @@
     </div>
     
     <!-- Error message for blocked iframe -->
-    <div id="iframeError" style="display: none; background: #fff3cd; border: 1px solid #ffc107; padding: 15px; margin-bottom: 10px; border-radius: 4px;">
-      <p style="margin: 0 0 10px 0; color: #856404;">
-        ⚠️ <strong>Unable to display the dashboard in an embedded frame.</strong>
+    <div id="iframeError" style="display: none; background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px; margin-bottom: 10px;">
+      <p style="margin: 0; color: #856404; font-size: 14px;">
+        ⚠️ The dashboard cannot be displayed in an embedded frame due to server security settings.
+        <a href="https://m1.recoil.ise.utk.edu" target="_blank" style="color: #0074BD; font-weight: bold; text-decoration: underline;">Click here to open in a new tab.</a>
       </p>
-      <p style="margin: 0 0 10px 0; color: #856404; font-size: 14px;">
-        The server has security settings that prevent embedding. Please use one of these options:
-      </p>
-      <div style="display: flex; gap: 10px;">
-        <button onclick="openInNewWindow()" style="background: #0074BD; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px;">
-          🪟 Open in New Window
-        </button>
-        <a href="http://m1.recoil.ise.utk.edu" target="_blank" style="background: #28a745; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; font-size: 14px;">
-          🔗 Open in New Tab
-        </a>
-      </div>
     </div>
     
     <iframe 
       id="recoilIframe" 
       src="" 
-      style="width: 100%; height: 600px; border: none; background: white;"
-      title="RECOIL Lab Dashboard"
-      sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-      loading="lazy">
+      style="width: 100%; height: 70vh; min-height: 500px; border: none; background: white; display: block;"
+      title="RECOIL Project Dashboard"
+      allow="fullscreen">
     </iframe>
     <div style="margin-top: 10px; text-align: center;">
-      <a href="http://m1.recoil.ise.utk.edu" target="_blank" style="color: #0074BD; text-decoration: none; font-weight: bold;">
-        🔗 Open in New Tab
+      <a href="https://m1.recoil.ise.utk.edu" target="_blank" style="color: #0074BD; text-decoration: none; font-weight: bold;">
+        🔗 Open in Full Page
       </a>
-      <span style="color: #999; margin: 0 10px;">|</span>
-      <button onclick="openInNewWindow()" style="background: none; border: none; color: #0074BD; cursor: pointer; text-decoration: underline; font-weight: bold;">
-        🪟 Open in New Window
-      </button>
     </div>
   </div>
 </div>
@@ -87,39 +72,24 @@
     </div>
     
     <!-- Error message for blocked iframe -->
-    <div id="clinicIframeError" style="display: none; background: #fff3cd; border: 1px solid #ffc107; padding: 15px; margin-bottom: 10px; border-radius: 4px;">
-      <p style="margin: 0 0 10px 0; color: #856404;">
-        ⚠️ <strong>Unable to display the dashboard in an embedded frame.</strong>
+    <div id="clinicIframeError" style="display: none; background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px; margin-bottom: 10px;">
+      <p style="margin: 0; color: #856404; font-size: 14px;">
+        ⚠️ The dashboard cannot be displayed in an embedded frame due to server security settings.
+        <a href="https://demo3.recoil.ise.utk.edu" target="_blank" style="color: #28a745; font-weight: bold; text-decoration: underline;">Click here to open in a new tab.</a>
       </p>
-      <p style="margin: 0 0 10px 0; color: #856404; font-size: 14px;">
-        The server has security settings that prevent embedding. Please use one of these options:
-      </p>
-      <div style="display: flex; gap: 10px;">
-        <button onclick="openClinicInNewWindow()" style="background: #28a745; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px;">
-          🪟 Open in New Window
-        </button>
-        <a href="https://demo3.recoil.ise.utk.edu" target="_blank" style="background: #17a2b8; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; font-size: 14px;">
-          🔗 Open in New Tab
-        </a>
-      </div>
     </div>
     
     <iframe 
       id="clinicIframe" 
       src="" 
-      style="width: 100%; height: 600px; border: none; background: white;"
+      style="width: 100%; height: 70vh; min-height: 500px; border: none; background: white; display: block;"
       title="Clinic Sense Dashboard"
-      sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-      loading="lazy">
+      allow="fullscreen">
     </iframe>
     <div style="margin-top: 10px; text-align: center;">
       <a href="https://demo3.recoil.ise.utk.edu" target="_blank" style="color: #28a745; text-decoration: none; font-weight: bold;">
-        🔗 Open in New Tab
+        🔗 Open in Full Page
       </a>
-      <span style="color: #999; margin: 0 10px;">|</span>
-      <button onclick="openClinicInNewWindow()" style="background: none; border: none; color: #28a745; cursor: pointer; text-decoration: underline; font-weight: bold;">
-        🪟 Open in New Window
-      </button>
     </div>
   </div>
 </div>
@@ -135,22 +105,32 @@ function toggleRecoilIframe() {
     // Show iframe and load content
     container.style.display = 'block';
     if (!iframe.src) {
-      iframe.src = 'http://m1.recoil.ise.utk.edu';
+      // Add loading indicator
+      iframe.style.background = 'linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 50%, #f0f0f0 50%, #f0f0f0 75%, transparent 75%, transparent) 0 0 / 20px 20px';
+      iframe.src = 'https://m1.recoil.ise.utk.edu';
       
-      // Check if iframe loaded after 3 seconds
+      // Listen for load event
+      iframe.onload = function() {
+        iframe.style.background = 'white';
+      };
+      
+      // Check for errors after 5 seconds
+      iframe.onerror = function() {
+        showIframeError();
+      };
+      
       setTimeout(() => {
         try {
-          // Try to access iframe content to check if it loaded
-          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-          if (!iframeDoc || iframeDoc.body.innerHTML === '') {
-            showIframeError();
+          // Check if iframe is accessible
+          if (!iframe.contentWindow || !iframe.contentDocument) {
+            // Iframe might still be loading or blocked
+            console.log('Iframe may be blocked or still loading');
           }
         } catch (e) {
-          // Cross-origin error means the site is loading but blocking iframe access
-          // This is actually OK - the content might still display
-          console.log('Iframe loaded with cross-origin restrictions');
+          // Cross-origin - this is normal and OK
+          console.log('Iframe loaded with cross-origin restrictions (this is normal)');
         }
-      }, 3000);
+      }, 5000);
     }
     btn.textContent = '🔼 Hide RECOIL Project';
     // Smooth scroll to iframe
@@ -172,10 +152,6 @@ function showIframeError() {
   }
 }
 
-function openInNewWindow() {
-  window.open('http://m1.recoil.ise.utk.edu', '_blank', 'width=1200,height=800');
-}
-
 function toggleClinicIframe() {
   const container = document.getElementById('clinicIframeContainer');
   const iframe = document.getElementById('clinicIframe');
@@ -186,21 +162,31 @@ function toggleClinicIframe() {
     // Show iframe and load content
     container.style.display = 'block';
     if (!iframe.src) {
+      // Add loading indicator
+      iframe.style.background = 'linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 50%, #f0f0f0 50%, #f0f0f0 75%, transparent 75%, transparent) 0 0 / 20px 20px';
       iframe.src = 'https://demo3.recoil.ise.utk.edu';
       
-      // Check if iframe loaded after 3 seconds
+      // Listen for load event
+      iframe.onload = function() {
+        iframe.style.background = 'white';
+      };
+      
+      // Check for errors
+      iframe.onerror = function() {
+        showClinicIframeError();
+      };
+      
       setTimeout(() => {
         try {
-          // Try to access iframe content to check if it loaded
-          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-          if (!iframeDoc || iframeDoc.body.innerHTML === '') {
-            showClinicIframeError();
+          // Check if iframe is accessible
+          if (!iframe.contentWindow || !iframe.contentDocument) {
+            console.log('Clinic iframe may be blocked or still loading');
           }
         } catch (e) {
-          // Cross-origin error means the site is loading but blocking iframe access
-          console.log('Clinic iframe loaded with cross-origin restrictions');
+          // Cross-origin - this is normal and OK
+          console.log('Clinic iframe loaded with cross-origin restrictions (this is normal)');
         }
-      }, 3000);
+      }, 5000);
     }
     btn.textContent = '🔼 Hide Clinic Sense';
     // Smooth scroll to iframe
@@ -220,10 +206,6 @@ function showClinicIframeError() {
   if (errorMsg) {
     errorMsg.style.display = 'block';
   }
-}
-
-function openClinicInNewWindow() {
-  window.open('https://demo3.recoil.ise.utk.edu', '_blank', 'width=1200,height=800');
 }
 </script>
 
