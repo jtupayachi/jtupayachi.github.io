@@ -23,17 +23,20 @@
   Simulation & Modeling • Applied Machine Learning
 </p>
 
-<div style="margin: 30px 0;">
+<div style="margin: 30px 0; display: flex; gap: 15px; flex-wrap: wrap;">
   <button id="toggleRecoilBtn" class="btn-recoil" onclick="toggleRecoilIframe()">
-    🔬 View RECOIL Lab Dashboard
+    🔬 View RECOIL Project
+  </button>
+  <button id="toggleClinicBtn" class="btn-clinic" onclick="toggleClinicIframe()">
+    🏥 View Clinic Sense
   </button>
 </div>
 
-<!-- Hidden iframe container -->
+<!-- Hidden iframe container for RECOIL -->
 <div id="recoilIframeContainer" style="display: none; margin-top: 20px;">
   <div style="border: 2px solid #0074BD; border-radius: 8px; overflow: hidden; background: #f5f5f5; padding: 10px;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding: 5px 10px; background: #fff; border-radius: 4px;">
-      <span style="font-weight: bold; color: #333;">RECOIL Lab - M1 Server</span>
+      <span style="font-weight: bold; color: #333;">RECOIL Project - M1 Server</span>
       <button onclick="toggleRecoilIframe()" style="background: #ff4444; color: white; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer;">Close</button>
     </div>
     
@@ -75,6 +78,52 @@
   </div>
 </div>
 
+<!-- Hidden iframe container for Clinic Sense -->
+<div id="clinicIframeContainer" style="display: none; margin-top: 20px;">
+  <div style="border: 2px solid #28a745; border-radius: 8px; overflow: hidden; background: #f5f5f5; padding: 10px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding: 5px 10px; background: #fff; border-radius: 4px;">
+      <span style="font-weight: bold; color: #333;">Clinic Sense Dashboard</span>
+      <button onclick="toggleClinicIframe()" style="background: #ff4444; color: white; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer;">Close</button>
+    </div>
+    
+    <!-- Error message for blocked iframe -->
+    <div id="clinicIframeError" style="display: none; background: #fff3cd; border: 1px solid #ffc107; padding: 15px; margin-bottom: 10px; border-radius: 4px;">
+      <p style="margin: 0 0 10px 0; color: #856404;">
+        ⚠️ <strong>Unable to display the dashboard in an embedded frame.</strong>
+      </p>
+      <p style="margin: 0 0 10px 0; color: #856404; font-size: 14px;">
+        The server has security settings that prevent embedding. Please use one of these options:
+      </p>
+      <div style="display: flex; gap: 10px;">
+        <button onclick="openClinicInNewWindow()" style="background: #28a745; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px;">
+          🪟 Open in New Window
+        </button>
+        <a href="https://demo3.recoil.ise.utk.edu" target="_blank" style="background: #17a2b8; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; font-size: 14px;">
+          🔗 Open in New Tab
+        </a>
+      </div>
+    </div>
+    
+    <iframe 
+      id="clinicIframe" 
+      src="" 
+      style="width: 100%; height: 600px; border: none; background: white;"
+      title="Clinic Sense Dashboard"
+      sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+      loading="lazy">
+    </iframe>
+    <div style="margin-top: 10px; text-align: center;">
+      <a href="https://demo3.recoil.ise.utk.edu" target="_blank" style="color: #28a745; text-decoration: none; font-weight: bold;">
+        🔗 Open in New Tab
+      </a>
+      <span style="color: #999; margin: 0 10px;">|</span>
+      <button onclick="openClinicInNewWindow()" style="background: none; border: none; color: #28a745; cursor: pointer; text-decoration: underline; font-weight: bold;">
+        🪟 Open in New Window
+      </button>
+    </div>
+  </div>
+</div>
+
 <script>
 function toggleRecoilIframe() {
   const container = document.getElementById('recoilIframeContainer');
@@ -103,7 +152,7 @@ function toggleRecoilIframe() {
         }
       }, 3000);
     }
-    btn.textContent = '🔼 Hide RECOIL Lab Dashboard';
+    btn.textContent = '🔼 Hide RECOIL Project';
     // Smooth scroll to iframe
     setTimeout(() => {
       container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -111,7 +160,7 @@ function toggleRecoilIframe() {
   } else {
     // Hide iframe
     container.style.display = 'none';
-    btn.textContent = '🔬 View RECOIL Lab Dashboard';
+    btn.textContent = '🔬 View RECOIL Project';
     if (errorMsg) errorMsg.style.display = 'none';
   }
 }
@@ -125,6 +174,56 @@ function showIframeError() {
 
 function openInNewWindow() {
   window.open('http://m1.recoil.ise.utk.edu', '_blank', 'width=1200,height=800');
+}
+
+function toggleClinicIframe() {
+  const container = document.getElementById('clinicIframeContainer');
+  const iframe = document.getElementById('clinicIframe');
+  const btn = document.getElementById('toggleClinicBtn');
+  const errorMsg = document.getElementById('clinicIframeError');
+  
+  if (container.style.display === 'none') {
+    // Show iframe and load content
+    container.style.display = 'block';
+    if (!iframe.src) {
+      iframe.src = 'https://demo3.recoil.ise.utk.edu';
+      
+      // Check if iframe loaded after 3 seconds
+      setTimeout(() => {
+        try {
+          // Try to access iframe content to check if it loaded
+          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+          if (!iframeDoc || iframeDoc.body.innerHTML === '') {
+            showClinicIframeError();
+          }
+        } catch (e) {
+          // Cross-origin error means the site is loading but blocking iframe access
+          console.log('Clinic iframe loaded with cross-origin restrictions');
+        }
+      }, 3000);
+    }
+    btn.textContent = '🔼 Hide Clinic Sense';
+    // Smooth scroll to iframe
+    setTimeout(() => {
+      container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+  } else {
+    // Hide iframe
+    container.style.display = 'none';
+    btn.textContent = '🏥 View Clinic Sense';
+    if (errorMsg) errorMsg.style.display = 'none';
+  }
+}
+
+function showClinicIframeError() {
+  const errorMsg = document.getElementById('clinicIframeError');
+  if (errorMsg) {
+    errorMsg.style.display = 'block';
+  }
+}
+
+function openClinicInNewWindow() {
+  window.open('https://demo3.recoil.ise.utk.edu', '_blank', 'width=1200,height=800');
 }
 </script>
 
@@ -149,6 +248,29 @@ function openInNewWindow() {
 }
 
 .btn-recoil:active {
+  transform: translateY(0);
+}
+
+.btn-clinic {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(40, 167, 69, 0.3);
+}
+
+.btn-clinic:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(40, 167, 69, 0.4);
+  background: linear-gradient(135deg, #218838 0%, #1ba87d 100%);
+}
+
+.btn-clinic:active {
   transform: translateY(0);
 }
 </style>
