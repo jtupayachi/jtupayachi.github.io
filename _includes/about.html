@@ -25,42 +25,71 @@
 
 <!-- Projects Quick Access Buttons -->
 <div style="margin: 40px 0;">
-  <h2 style="margin-bottom: 25px; color: #2c3e50;">🚀 Featured Projects</h2>
+  <h2 style="margin-bottom: 25px; color: #2c3e50;">🚀 Funded Projects</h2>
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
     
     <!-- RECOIL Lab Dashboard -->
     <a href="https://m1.recoil.ise.utk.edu" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #0074BD 0%, #306998 100%);">
       <div style="font-size: 32px; margin-bottom: 8px;">🔬</div>
-      <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">RECOIL Lab Dashboard</div>
-      <div style="font-size: 13px; opacity: 0.9;">Real-time Systems</div>
+      <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">RECOIL Realtime Intermodal Optimization</div>
+      <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">ARPA-e • Optimization and Simulation Engine</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
+        <span class="tech-badge">Gurobi</span>
+        <span class="tech-badge">React</span>
+        <span class="tech-badge">Leaflet</span>
+        <span class="tech-badge">AnyLogic</span>
+        <span class="tech-badge">Python</span>
+      </div>
     </a>
 
     <!-- SmartShots -->
     <a href="https://play.google.com/store/apps/details?id=com.ilab.smartshots&hl=en_US" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
       <div style="font-size: 32px; margin-bottom: 8px;">💉</div>
       <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">SmartShots</div>
-      <div style="font-size: 13px; opacity: 0.9;">TN Department of Health • Mobile App</div>
+      <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">TN Department of Health • Health App</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
+        <span class="tech-badge">Flutter</span>
+        <span class="tech-badge">Dart</span>
+        <span class="tech-badge">Laravel</span>
+      </div>
     </a>
 
     <!-- Active Caregiver's Toolkit -->
     <a href="https://play.google.com/store/apps/details?id=com.ilabutk.fe_rich&hl=en_US" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);">
       <div style="font-size: 32px; margin-bottom: 8px;">❤️</div>
       <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">Active Caregiver's Toolkit</div>
-      <div style="font-size: 13px; opacity: 0.9;">Hillman Foundation • Health App</div>
+      <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">Hillman Foundation • Health App</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
+        <span class="tech-badge">Flutter</span>
+        <span class="tech-badge">Dart</span>
+        <span class="tech-badge">Laravel</span>
+      </div>
     </a>
 
     <!-- Clinic Sense -->
     <a href="https://demo3.recoil.ise.utk.edu" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);">
       <div style="font-size: 32px; margin-bottom: 8px;">🏥</div>
       <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">Clinic Sense</div>
-      <div style="font-size: 13px; opacity: 0.9;">Healthcare Dashboard • RECOIL Lab</div>
+      <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">Healthcare Dashboard • UT Knoxville</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
+        <span class="tech-badge">LLMs</span>
+        <span class="tech-badge">Embeddings</span>
+        <span class="tech-badge">SFTP</span>
+        <span class="tech-badge">Python</span>
+      </div>
     </a>
 
     <!-- NSRD-ORNL Geospatial -->
     <div class="project-btn" style="background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%); cursor: default;">
       <div style="font-size: 32px; margin-bottom: 8px;">🗺️</div>
       <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">NSRD-ORNL Geospatial</div>
-      <div style="font-size: 13px; opacity: 0.9;">Oak Ridge National Lab • Internal</div>
+      <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">Oak Ridge National Lab • Internal</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
+        <span class="tech-badge">LLMs</span>
+        <span class="tech-badge">SFTP</span>
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">Neo4j</span>
+      </div>
     </div>
 
   </div>
@@ -79,7 +108,7 @@
   text-align: center;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  min-height: 160px;
+  min-height: 200px;
 }
 
 .project-btn:hover {
@@ -89,6 +118,19 @@
 
 .project-btn:active {
   transform: translateY(-2px);
+}
+
+.tech-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 </style>
 
