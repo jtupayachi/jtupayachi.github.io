@@ -36,16 +36,41 @@
       <span style="font-weight: bold; color: #333;">RECOIL Lab - M1 Server</span>
       <button onclick="toggleRecoilIframe()" style="background: #ff4444; color: white; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer;">Close</button>
     </div>
+    
+    <!-- Error message for blocked iframe -->
+    <div id="iframeError" style="display: none; background: #fff3cd; border: 1px solid #ffc107; padding: 15px; margin-bottom: 10px; border-radius: 4px;">
+      <p style="margin: 0 0 10px 0; color: #856404;">
+        ⚠️ <strong>Unable to display the dashboard in an embedded frame.</strong>
+      </p>
+      <p style="margin: 0 0 10px 0; color: #856404; font-size: 14px;">
+        The server has security settings that prevent embedding. Please use one of these options:
+      </p>
+      <div style="display: flex; gap: 10px;">
+        <button onclick="openInNewWindow()" style="background: #0074BD; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px;">
+          🪟 Open in New Window
+        </button>
+        <a href="http://m1.recoil.ise.utk.edu" target="_blank" style="background: #28a745; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; font-size: 14px;">
+          🔗 Open in New Tab
+        </a>
+      </div>
+    </div>
+    
     <iframe 
       id="recoilIframe" 
       src="" 
       style="width: 100%; height: 600px; border: none; background: white;"
-      title="RECOIL Lab Dashboard">
+      title="RECOIL Lab Dashboard"
+      sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+      loading="lazy">
     </iframe>
     <div style="margin-top: 10px; text-align: center;">
-      <a href="http://m1.recoil.ise.utk.edu" target="_blank" style="color: #0074BD; text-decoration: none;">
+      <a href="http://m1.recoil.ise.utk.edu" target="_blank" style="color: #0074BD; text-decoration: none; font-weight: bold;">
         🔗 Open in New Tab
       </a>
+      <span style="color: #999; margin: 0 10px;">|</span>
+      <button onclick="openInNewWindow()" style="background: none; border: none; color: #0074BD; cursor: pointer; text-decoration: underline; font-weight: bold;">
+        🪟 Open in New Window
+      </button>
     </div>
   </div>
 </div>
@@ -55,12 +80,28 @@ function toggleRecoilIframe() {
   const container = document.getElementById('recoilIframeContainer');
   const iframe = document.getElementById('recoilIframe');
   const btn = document.getElementById('toggleRecoilBtn');
+  const errorMsg = document.getElementById('iframeError');
   
   if (container.style.display === 'none') {
     // Show iframe and load content
     container.style.display = 'block';
     if (!iframe.src) {
       iframe.src = 'http://m1.recoil.ise.utk.edu';
+      
+      // Check if iframe loaded after 3 seconds
+      setTimeout(() => {
+        try {
+          // Try to access iframe content to check if it loaded
+          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+          if (!iframeDoc || iframeDoc.body.innerHTML === '') {
+            showIframeError();
+          }
+        } catch (e) {
+          // Cross-origin error means the site is loading but blocking iframe access
+          // This is actually OK - the content might still display
+          console.log('Iframe loaded with cross-origin restrictions');
+        }
+      }, 3000);
     }
     btn.textContent = '🔼 Hide RECOIL Lab Dashboard';
     // Smooth scroll to iframe
@@ -71,7 +112,19 @@ function toggleRecoilIframe() {
     // Hide iframe
     container.style.display = 'none';
     btn.textContent = '🔬 View RECOIL Lab Dashboard';
+    if (errorMsg) errorMsg.style.display = 'none';
   }
+}
+
+function showIframeError() {
+  const errorMsg = document.getElementById('iframeError');
+  if (errorMsg) {
+    errorMsg.style.display = 'block';
+  }
+}
+
+function openInNewWindow() {
+  window.open('http://m1.recoil.ise.utk.edu', '_blank', 'width=1200,height=800');
 }
 </script>
 
