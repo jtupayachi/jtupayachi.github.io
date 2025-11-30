@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  11 NOV 2025 10:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  11 NOV 2025 13:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -566,9 +566,9 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 17
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 230.
+(Font)              <9> on input line 228.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 230.
+(Font)              <6> on input line 228.
 
 
 [1
@@ -579,35 +579,35 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.392         \item D
+l.390         \item D
                      evelopement of the unified UI using Flutter at \url{htt... [2{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.484 \section*{Industry Work Experience}
+l.482 \section*{Industry Work Experience}
                                           [3]
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.591 \section*{Journal \& Conference Reviewer}
+l.589 \section*{Journal \& Conference Reviewer}
                                                 [4]
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.697 \break
+l.695 \break
              [5]
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.738 \end{document}
+l.736 \end{document}
                      [6] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 
@@ -628,7 +628,7 @@ Here is how much of TeX's memory you used:
  38706 multiletter control sequences out of 15000+600000
  599279 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,5n,79p,728b,589s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,5n,79p,509b,589s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt9.pfb>
 Output written on main.pdf (6 pages, 150089 bytes).
 PDF statistics:
