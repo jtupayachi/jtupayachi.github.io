@@ -1,0 +1,29 @@
+WEBVTT
+
+NOTE
+This is a WebVTT caption file for the Clinic Sense demo video.
+Edit the timestamps and text below to match your video content.
+
+00:00:00.000 --> 00:00:05.000
+Welcome to Clinic Sense - Medical Performance Assessment System
+
+00:00:05.000 --> 00:00:10.000
+Powered by Large Language Models and AI Embeddings
+
+00:00:10.000 --> 00:00:15.000
+Developed at the University of Tennessee, Knoxville
+
+00:00:15.000 --> 00:00:20.000
+The system analyzes clinical conversations in real-time
+
+00:00:20.000 --> 00:00:25.000
+Providing feedback on medical communication quality
+
+00:00:25.000 --> 00:00:30.000
+Using SFT Trainer for fine-tuned model performance
+
+00:00:30.000 --> 00:00:35.000
+Helping improve healthcare provider interactions
+
+00:00:35.000 --> 00:00:40.000
+Thank you for watching the Clinic Sense demo

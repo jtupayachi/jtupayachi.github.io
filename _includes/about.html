@@ -35,69 +35,142 @@
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
     
     <!-- RECOIL Lab Dashboard -->
-    <a href="https://m1.recoil.ise.utk.edu" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #0074BD 0%, #306998 100%);" onclick="showNotification('🚀 Opening RECOIL Project in a new window...'); return true;">
+    <div class="project-card" style="background: linear-gradient(135deg, #0074BD 0%, #306998 100%);">
       <div style="font-size: 32px; margin-bottom: 8px;">🔬</div>
       <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">RECOIL Intermodal Optimization</div>
       <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">Optimization and Simulation Engine • ARPA-e </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 15px;">
         <span class="tech-badge">Gurobi</span>
         <span class="tech-badge">React</span>
         <span class="tech-badge">Leaflet</span>
         <span class="tech-badge">AnyLogic</span>
         <span class="tech-badge">Python</span>
       </div>
-    </a>
+      <div class="project-actions">
+        <button class="action-btn video-btn" onclick="openVideoModal('{{ site.baseurl }}/assets/demos/RECOIL.mp4', 'RECOIL Intermodal Optimization Demo')">
+          <span>🎬</span> Watch Demo
+        </button>
+        <a href="https://m1.recoil.ise.utk.edu" target="_blank" class="action-btn prototype-btn" onclick="showNotification('🚀 Opening RECOIL Project in a new window...')">
+          <span>🔗</span> Try Prototype
+        </a>
+      </div>
+    </div>
 
     <!-- SmartShots -->
-    <a href="https://play.google.com/store/apps/details?id=com.ilab.smartshots&hl=en_US" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);" onclick="showNotification('🚀 Opening SmartShots on Google Play in a new window...'); return true;">
+    <div class="project-card" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
       <div style="font-size: 32px; margin-bottom: 8px;">💉</div>
       <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">SmartShots</div>
       <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">Nursing Intervention App • TN Department of Health</div>
-      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 15px;">
         <span class="tech-badge">Flutter</span>
         <span class="tech-badge">Dart</span>
         <span class="tech-badge">Laravel</span>
       </div>
-    </a>
+      <div class="project-actions">
+        <a href="https://play.google.com/store/apps/details?id=com.ilab.smartshots&hl=en_US" target="_blank" class="action-btn prototype-btn" onclick="showNotification('🚀 Opening SmartShots on Google Play in a new window...')">
+          <span>📱</span> Get on Play Store
+        </a>
+      </div>
+    </div>
 
     <!-- Active Caregiver's Toolkit -->
-    <a href="https://play.google.com/store/apps/details?id=com.ilabutk.fe_rich&hl=en_US" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);" onclick="showNotification('🚀 Opening Active Caregiver\'s Toolkit on Google Play in a new window...'); return true;">
+    <div class="project-card" style="background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);">
       <div style="font-size: 32px; margin-bottom: 8px;">❤️</div>
       <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">Active Caregiver's Toolkit</div>
       <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">Nursing Intervention App • Hillman Foundation</div>
-      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 15px;">
         <span class="tech-badge">Flutter</span>
         <span class="tech-badge">Dart</span>
         <span class="tech-badge">Laravel</span>
       </div>
-    </a>
+      <div class="project-actions">
+        <a href="https://play.google.com/store/apps/details?id=com.ilabutk.fe_rich&hl=en_US" target="_blank" class="action-btn prototype-btn" onclick="showNotification('🚀 Opening Active Caregiver\'s Toolkit on Google Play in a new window...')">
+          <span>📱</span> Get on Play Store
+        </a>
+      </div>
+    </div>
 
     <!-- Clinic Sense -->
-    <a href="https://1be2ec4fedbf.ngrok-free.app" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);" onclick="showNotification('🚀 Opening Clinic Sense dashboard in a new window...'); return true;">
+    <div class="project-card" style="background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);">
       <div style="font-size: 32px; margin-bottom: 8px;">🏥</div>
       <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">Clinic Sense</div>
       <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">Assesing Medical Performance • UT Knoxville</div>
-      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 15px;">
         <span class="tech-badge">LLMs</span>
         <span class="tech-badge">Embeddings</span>
         <span class="tech-badge">SFT Trainer</span>
         <span class="tech-badge">Python</span>
       </div>
-    </a>
+      <div class="project-actions">
+        <button class="action-btn video-btn" onclick="openVideoModal('{{ site.baseurl }}/assets/demos/ClinicSense.mp4', 'Clinic Sense Demo')">
+          <span>🎬</span> Watch Demo
+        </button>
+        <a href="https://1be2ec4fedbf.ngrok-free.app" target="_blank" class="action-btn prototype-btn" onclick="showNotification('🚀 Opening Clinic Sense dashboard in a new window...')">
+          <span>🔗</span> Try Prototype
+        </a>
+      </div>
+    </div>
 
     <!-- NSRD-ORNL Geospatial -->
-    <a href="https://demo2.recoil.ise.utk.edu" target="_blank" class="project-btn" style="background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);" onclick="showNotification('🚀 Opening CyberGIS Dashboard in a new window...'); return true;">
+    <div class="project-card" style="background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);">
       <div style="font-size: 32px; margin-bottom: 8px;">🗺️</div>
       <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">CyberGIS Dashboards (Under Development)</div>
       <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">Automating GIS Dashboards for Risk Assessment • Oak Ridge National Lab - Nuclear Safety Research and Development (NSR&D)</div>
-      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 15px;">
         <span class="tech-badge">LLMs</span>
         <span class="tech-badge">SFT Trainer</span>
         <span class="tech-badge">Python</span>
         <span class="tech-badge">Neo4j</span>
       </div>
-    </a>
+      <div class="project-actions">
+        <a href="https://demo2.recoil.ise.utk.edu" target="_blank" class="action-btn prototype-btn" onclick="showNotification('🚀 Opening CyberGIS Dashboard in a new window...')">
+          <span>🔗</span> Try Prototype
+        </a>
+      </div>
+    </div>
 
+    <!-- Agent-Based Simulation with MCP -->
+    <div class="project-card" style="background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);">
+      <div style="font-size: 32px; margin-bottom: 8px;">🤖</div>
+      <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">Agent-Based Simulation with MCP</div>
+      <div style="font-size: 13px; opacity: 0.9; margin-bottom: 12px;">Model Context Protocol for Intelligent Agents • Research Project</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 15px;">
+        <span class="tech-badge">MCP</span>
+        <span class="tech-badge">LLM Agents</span>
+        <span class="tech-badge">AnyLogic</span>
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">TypeScript</span>
+      </div>
+      <div class="project-actions">
+        <a href="https://github.com/jtupayachi" target="_blank" class="action-btn prototype-btn" onclick="showNotification('🚀 Opening GitHub repository in a new window...')">
+          <span>📂</span> View on GitHub
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Video Modal -->
+<div id="videoModal" class="video-modal" onclick="closeVideoModal(event)">
+  <div class="video-modal-content" onclick="event.stopPropagation()">
+    <div class="video-modal-header">
+      <h3 id="videoModalTitle">Demo Video</h3>
+      <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
+    </div>
+    <div class="video-container">
+      <video id="demoVideo" controls>
+        <source id="videoSource" src="" type="video/mp4">
+        <track id="videoCaption" kind="captions" srclang="en" label="English" default>
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="video-controls-custom">
+      <label class="caption-toggle">
+        <input type="checkbox" id="captionToggle" onchange="toggleCaptions()">
+        <span>🔤 Enable Captions</span>
+      </label>
+    </div>
   </div>
 </div>
 
@@ -117,31 +190,130 @@ function showNotification(message) {
     notification.style.display = 'none';
   }, 3000);
 }
+
+function openVideoModal(videoSrc, title) {
+  const modal = document.getElementById('videoModal');
+  const video = document.getElementById('demoVideo');
+  const videoSource = document.getElementById('videoSource');
+  const modalTitle = document.getElementById('videoModalTitle');
+  const captionToggle = document.getElementById('captionToggle');
+  
+  modalTitle.textContent = title;
+  videoSource.src = videoSrc;
+  video.load();
+  
+  // Reset caption toggle
+  captionToggle.checked = false;
+  
+  // Set caption track based on video
+  const captionTrack = document.getElementById('videoCaption');
+  const videoName = videoSrc.split('/').pop().replace('.mp4', '');
+  captionTrack.src = '{{ site.baseurl }}/assets/demos/' + videoName + '.vtt';
+  
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  
+  // Ensure captions are off by default
+  setTimeout(() => {
+    if (video.textTracks && video.textTracks[0]) {
+      video.textTracks[0].mode = 'hidden';
+    }
+  }, 100);
+}
+
+function closeVideoModal(event) {
+  if (event && event.target !== document.getElementById('videoModal')) return;
+  
+  const modal = document.getElementById('videoModal');
+  const video = document.getElementById('demoVideo');
+  
+  video.pause();
+  video.currentTime = 0;
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+function toggleCaptions() {
+  const video = document.getElementById('demoVideo');
+  const captionToggle = document.getElementById('captionToggle');
+  
+  if (video.textTracks && video.textTracks[0]) {
+    video.textTracks[0].mode = captionToggle.checked ? 'showing' : 'hidden';
+  }
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeVideoModal();
+  }
+});
 </script>
 
 <style>
-.project-btn {
+.project-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 30px 20px;
+  justify-content: flex-start;
+  padding: 30px 20px 20px;
   border-radius: 12px;
   color: white;
-  text-decoration: none;
   text-align: center;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  min-height: 200px;
+  min-height: 280px;
 }
 
-.project-btn:hover {
+.project-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-.project-btn:active {
-  transform: translateY(-2px);
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.video-btn {
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+}
+
+.video-btn:hover {
+  background: white;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.prototype-btn {
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.prototype-btn:hover {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: white;
+  transform: scale(1.05);
 }
 
 .tech-badge {
@@ -155,6 +327,141 @@ function showNotification(message) {
   border: 1px solid rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+/* Video Modal Styles */
+.video-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.video-modal-content {
+  background: #1a1a2e;
+  border-radius: 16px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.video-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.video-modal-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.video-modal-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 28px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.video-modal-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+.video-container {
+  position: relative;
+  background: #000;
+}
+
+.video-container video {
+  width: 100%;
+  max-height: 60vh;
+  display: block;
+}
+
+.video-controls-custom {
+  padding: 15px 25px;
+  background: #16213e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.caption-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #a0aec0;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.caption-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.caption-toggle input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #667eea;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .video-modal-content {
+    margin: 10px;
+    max-height: 85vh;
+  }
+  
+  .video-modal-header {
+    padding: 15px;
+  }
+  
+  .video-modal-header h3 {
+    font-size: 16px;
+  }
+  
+  .video-container video {
+    max-height: 50vh;
+  }
+  
+  .project-actions {
+    flex-direction: column;
+  }
+  
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 </style>
 
