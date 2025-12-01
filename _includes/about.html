@@ -153,23 +153,14 @@
 
 <!-- Video Modal -->
 <div id="videoModal" class="video-modal" onclick="closeVideoModal(event)">
+  <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
   <div class="video-modal-content" onclick="event.stopPropagation()">
-    <div class="video-modal-header">
-      <h3 id="videoModalTitle">Demo Video</h3>
-      <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
-    </div>
     <div class="video-container">
       <video id="demoVideo" controls>
         <source id="videoSource" src="" type="video/mp4">
         <track id="videoCaption" kind="captions" srclang="en" label="English" default>
         Your browser does not support the video tag.
       </video>
-    </div>
-    <div class="video-controls-custom">
-      <label class="caption-toggle">
-        <input type="checkbox" id="captionToggle" onchange="toggleCaptions()">
-        <span>🔤 Enable Captions</span>
-      </label>
     </div>
   </div>
 </div>
@@ -195,15 +186,9 @@ function openVideoModal(videoSrc, title) {
   const modal = document.getElementById('videoModal');
   const video = document.getElementById('demoVideo');
   const videoSource = document.getElementById('videoSource');
-  const modalTitle = document.getElementById('videoModalTitle');
-  const captionToggle = document.getElementById('captionToggle');
   
-  modalTitle.textContent = title;
   videoSource.src = videoSrc;
   video.load();
-  
-  // Reset caption toggle
-  captionToggle.checked = false;
   
   // Set caption track based on video
   const captionTrack = document.getElementById('videoCaption');
@@ -212,13 +197,6 @@ function openVideoModal(videoSrc, title) {
   
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
-  
-  // Ensure captions are off by default
-  setTimeout(() => {
-    if (video.textTracks && video.textTracks[0]) {
-      video.textTracks[0].mode = 'hidden';
-    }
-  }, 100);
 }
 
 function closeVideoModal(event) {
@@ -231,15 +209,6 @@ function closeVideoModal(event) {
   video.currentTime = 0;
   modal.style.display = 'none';
   document.body.style.overflow = 'auto';
-}
-
-function toggleCaptions() {
-  const video = document.getElementById('demoVideo');
-  const captionToggle = document.getElementById('captionToggle');
-  
-  if (video.textTracks && video.textTracks[0]) {
-    video.textTracks[0].mode = captionToggle.checked ? 'showing' : 'hidden';
-  }
 }
 
 // Close modal with Escape key
@@ -345,8 +314,8 @@ document.addEventListener('keydown', function(e) {
 }
 
 .video-modal-content {
-  background: #1a1a2e;
-  border-radius: 16px;
+  background: #000;
+  border-radius: 12px;
   max-width: 900px;
   width: 100%;
   max-height: 90vh;
@@ -354,28 +323,16 @@ document.addEventListener('keydown', function(e) {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
-.video-modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 25px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-}
-
-.video-modal-header h3 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 600;
-}
-
 .video-modal-close {
-  background: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
   border: none;
-  color: white;
-  font-size: 28px;
-  width: 40px;
-  height: 40px;
+  color: #333;
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -383,11 +340,14 @@ document.addEventListener('keydown', function(e) {
   justify-content: center;
   transition: all 0.2s ease;
   line-height: 1;
+  z-index: 10001;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .video-modal-close:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: rotate(90deg);
+  background: white;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
 .video-container {
@@ -397,35 +357,8 @@ document.addEventListener('keydown', function(e) {
 
 .video-container video {
   width: 100%;
-  max-height: 60vh;
+  max-height: 80vh;
   display: block;
-}
-
-.video-controls-custom {
-  padding: 15px 25px;
-  background: #16213e;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
-.caption-toggle {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #a0aec0;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  transition: all 0.2s ease;
-}
-
-.caption-toggle:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: white;
 }
 
 .caption-toggle input[type="checkbox"] {
@@ -518,7 +451,7 @@ document.addEventListener('keydown', function(e) {
             Prestigious program recognizing doctoral candidates with exceptional potential for academic careers in industrial engineering.
           </p>
           <p style="margin: 0 0 8px 0; color: #666; font-size: 14px;">
-            📍 2023
+            📍 2025 - 2026
           </p>
           <a href="https://mailman.clemson.edu/pipermail/iefac.list/2023-August/006113.html" target="_blank" style="color: #0074BD; text-decoration: none; font-weight: 600; font-size: 14px;">
             View Announcement →
