@@ -59,6 +59,9 @@
   </div>
   
   <div class="weather-badge" id="weather-badge">
+    <i class="fa fa-map-marker" style="opacity: 0.7; font-size: 0.9rem;"></i>
+    <span style="opacity: 0.8; font-size: 0.7rem;">Knoxville</span>
+    <span style="opacity: 0.5;">|</span>
     <i class="fa fa-sun-o" id="weather-icon"></i>
     <span id="weather-text">Loading...</span>
   </div>
@@ -886,20 +889,59 @@
 </style>
 
 <script>
-// Dynamic Weather Landscape Scene
+// Real Weather from Knoxville, TN using Open-Meteo API (free, no API key required)
 (function() {
   const particlesEl = document.getElementById('particles-js');
   const weatherBadge = document.getElementById('weather-badge');
   const weatherIcon = document.getElementById('weather-icon');
   const weatherText = document.getElementById('weather-text');
   
-  const weatherTypes = [
-    { name: 'clear', icon: 'fa-sun-o', label: 'Clear' },
-    { name: 'cloudy', icon: 'fa-cloud', label: 'Cloudy' },
-    { name: 'rainy', icon: 'fa-tint', label: 'Rainy' },
-    { name: 'snowy', icon: 'fa-snowflake-o', label: 'Snowy' },
-    { name: 'stormy', icon: 'fa-bolt', label: 'Stormy' }
-  ];
+  // Knoxville, TN coordinates
+  const KNOXVILLE_LAT = 35.9606;
+  const KNOXVILLE_LON = -83.9207;
+  
+  // WMO Weather Codes mapping to our weather types
+  // https://open-meteo.com/en/docs
+  function mapWeatherCode(code) {
+    // Clear
+    if (code === 0 || code === 1) {
+      return { name: 'clear', icon: 'fa-sun-o', label: 'Clear' };
+    }
+    // Partly cloudy
+    if (code === 2) {
+      return { name: 'clear', icon: 'fa-sun-o', label: 'Partly Cloudy' };
+    }
+    // Cloudy/Overcast
+    if (code === 3 || code === 45 || code === 48) {
+      return { name: 'cloudy', icon: 'fa-cloud', label: 'Cloudy' };
+    }
+    // Drizzle
+    if (code >= 51 && code <= 57) {
+      return { name: 'rainy', icon: 'fa-tint', label: 'Drizzle' };
+    }
+    // Rain
+    if (code >= 61 && code <= 67) {
+      return { name: 'rainy', icon: 'fa-tint', label: 'Rainy' };
+    }
+    // Snow
+    if (code >= 71 && code <= 77) {
+      return { name: 'snowy', icon: 'fa-snowflake-o', label: 'Snowy' };
+    }
+    // Rain showers
+    if (code >= 80 && code <= 82) {
+      return { name: 'rainy', icon: 'fa-tint', label: 'Showers' };
+    }
+    // Snow showers
+    if (code >= 85 && code <= 86) {
+      return { name: 'snowy', icon: 'fa-snowflake-o', label: 'Snow Showers' };
+    }
+    // Thunderstorm
+    if (code >= 95 && code <= 99) {
+      return { name: 'stormy', icon: 'fa-bolt', label: 'Thunderstorm' };
+    }
+    // Default to clear
+    return { name: 'clear', icon: 'fa-sun-o', label: 'Clear' };
+  }
   
   function getTimePeriod() {
     const hour = new Date().getHours();
@@ -909,33 +951,14 @@
     return 'night';
   }
   
-  function getRandomWeather() {
-    const weights = [35, 30, 15, 10, 10];
-    const totalWeight = weights.reduce((a, b) => a + b, 0);
-    let random = Math.random() * totalWeight;
-    for (let i = 0; i < weights.length; i++) {
-      random -= weights[i];
-      if (random <= 0) return weatherTypes[i];
-    }
-    return weatherTypes[0];
-  }
-  
-  function init() {
+  function applyWeather(weather, temperature) {
     const timePeriod = getTimePeriod();
-    let weather;
     
-    const storedWeather = sessionStorage.getItem('siteWeather');
-    const timestamp = sessionStorage.getItem('weatherTimestamp');
-    const thirtyMinutes = 30 * 60 * 1000;
+    // Remove existing classes
+    particlesEl.classList.remove('morning', 'afternoon', 'evening', 'night');
+    particlesEl.classList.remove('weather-clear', 'weather-cloudy', 'weather-rainy', 'weather-snowy', 'weather-stormy');
     
-    if (storedWeather && timestamp && (Date.now() - timestamp < thirtyMinutes)) {
-      weather = JSON.parse(storedWeather);
-    } else {
-      weather = getRandomWeather();
-      sessionStorage.setItem('siteWeather', JSON.stringify(weather));
-      sessionStorage.setItem('weatherTimestamp', Date.now());
-    }
-    
+    // Add new classes
     particlesEl.classList.add(timePeriod);
     particlesEl.classList.add('weather-' + weather.name);
     
@@ -948,25 +971,99 @@
     }
     
     weatherIcon.className = 'fa ' + icon;
-    weatherText.textContent = timeLabel + ' • ' + weather.label;
+    
+    // Display with temperature if available
+    if (temperature !== null) {
+      weatherText.textContent = `${Math.round(temperature)}°F • ${weather.label}`;
+    } else {
+      weatherText.textContent = `${timeLabel} • ${weather.label}`;
+    }
   }
   
+  async function fetchWeather() {
+    try {
+      // Open-Meteo API - free, no API key required
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${KNOXVILLE_LAT}&longitude=${KNOXVILLE_LON}&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America%2FNew_York`;
+      
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Weather fetch failed');
+      
+      const data = await response.json();
+      const weatherCode = data.current.weather_code;
+      const temperature = data.current.temperature_2m;
+      const weather = mapWeatherCode(weatherCode);
+      
+      // Cache the weather data
+      sessionStorage.setItem('knoxvilleWeather', JSON.stringify({
+        weather: weather,
+        temperature: temperature,
+        timestamp: Date.now()
+      }));
+      
+      return { weather, temperature };
+    } catch (error) {
+      console.log('Weather API error, using cached or default:', error);
+      return null;
+    }
+  }
+  
+  async function init() {
+    const timePeriod = getTimePeriod();
+    
+    // Show loading state
+    particlesEl.classList.add(timePeriod);
+    weatherText.textContent = 'Knoxville, TN...';
+    
+    // Check cache first (refresh every 15 minutes)
+    const cached = sessionStorage.getItem('knoxvilleWeather');
+    const fifteenMinutes = 15 * 60 * 1000;
+    
+    if (cached) {
+      const cachedData = JSON.parse(cached);
+      if (Date.now() - cachedData.timestamp < fifteenMinutes) {
+        applyWeather(cachedData.weather, cachedData.temperature);
+        return;
+      }
+    }
+    
+    // Fetch fresh weather data
+    const result = await fetchWeather();
+    
+    if (result) {
+      applyWeather(result.weather, result.temperature);
+    } else if (cached) {
+      // Use stale cache if fetch failed
+      const cachedData = JSON.parse(cached);
+      applyWeather(cachedData.weather, cachedData.temperature);
+    } else {
+      // Fallback to clear weather
+      applyWeather({ name: 'clear', icon: 'fa-sun-o', label: 'Clear' }, null);
+    }
+  }
+  
+  // Initialize
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
   
+  // Update time period every minute and refresh weather every 15 minutes
   setInterval(function() {
     const currentTime = getTimePeriod();
     if (!particlesEl.classList.contains(currentTime)) {
       particlesEl.classList.remove('morning', 'afternoon', 'evening', 'night');
       particlesEl.classList.add(currentTime);
-      const weather = JSON.parse(sessionStorage.getItem('siteWeather') || '{"name":"clear","label":"Clear"}');
-      const timeLabel = currentTime.charAt(0).toUpperCase() + currentTime.slice(1);
-      weatherText.textContent = timeLabel + ' • ' + weather.label;
     }
   }, 60000);
+  
+  // Refresh weather data every 15 minutes
+  setInterval(async function() {
+    const result = await fetchWeather();
+    if (result) {
+      applyWeather(result.weather, result.temperature);
+    }
+  }, 15 * 60 * 1000);
 })();
 </script>
 </div>
