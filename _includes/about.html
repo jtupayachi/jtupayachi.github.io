@@ -24,7 +24,7 @@
 </p>
 
 <!-- Projects Quick Access Buttons -->
-<div style="margin: 40px auto; max-width: 1200px;">
+<div style="margin: 40px auto; max-width: 1200px; padding: 0 15px; box-sizing: border-box;">
   <h2 style="margin-bottom: 25px; color: #2c3e50; text-align: center;">🚀 Funded Projects</h2>
   
   <!-- Notification message -->
@@ -32,7 +32,7 @@
     <span id="notificationText"></span>
   </div>
   
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; justify-content: center;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 20px;">
     
     <!-- RECOIL Lab Dashboard -->
     <div class="project-card" style="background: linear-gradient(135deg, #0074BD 0%, #306998 100%);">
@@ -225,15 +225,15 @@ document.addEventListener('keydown', function(e) {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 30px 20px 20px;
+  padding: 20px 15px 15px;
   border-radius: 12px;
   color: white;
   text-align: center;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  min-height: 280px;
+  min-height: 240px;
   width: 100%;
-  max-width: 380px;
+  box-sizing: border-box;
 }
 
 .project-card:hover {
@@ -400,24 +400,34 @@ document.addEventListener('keydown', function(e) {
   
   .project-card {
     max-width: 100%;
+    min-height: auto;
+    padding: 20px 15px 15px;
+  }
+  
+  .tech-badge {
+    padding: 3px 8px;
+    font-size: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .project-card {
-    min-height: auto;
-    padding: 20px 15px 15px;
+    padding: 15px 12px 12px;
+  }
+  
+  .project-card div[style*="font-size: 18px"] {
+    font-size: 16px !important;
   }
 }
 </style>
 
 <!-- Awards Section -->
-<div style="margin: 40px auto; padding: 25px; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); border-radius: 12px; border-left: 5px solid #FFD700; max-width: 1200px;">
-  <h2 style="margin-top: 0; color: #2c3e50; display: flex; align-items: center; justify-content: center; gap: 10px; text-align: center;">
+<div style="margin: 40px auto; padding: 25px 15px; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); border-radius: 12px; border-left: 5px solid #FFD700; max-width: 1200px; box-sizing: border-box;">
+  <h2 style="margin-top: 0; color: #2c3e50; display: flex; align-items: center; justify-content: center; gap: 10px; text-align: center; flex-wrap: wrap;">
     🏆 Awards & Recognition
   </h2>
   
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; margin-top: 20px; justify-content: center;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 20px; margin-top: 20px;">
     
     <!-- Best Paper Award -->
     <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
