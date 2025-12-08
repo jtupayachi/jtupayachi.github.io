@@ -1,5 +1,9 @@
 
 <div id="particles-js">
+  <div class="weather-badge" id="weather-badge">
+    <i class="fa fa-sun-o" id="weather-icon"></i>
+    <span id="weather-text">Loading...</span>
+  </div>
   <div class="header">
     <div class="header-content">
       <h1 class="site-title">
@@ -55,13 +59,115 @@
 </div>
 
 <style>
-/* Modern Header Styles */
+/* Modern Header Styles with Dynamic Background */
 #particles-js {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0c1929 0%, #1a2a4a 50%, #0d1f3c 100%);
   overflow: hidden;
+  transition: background 1.5s ease-in-out;
+}
+
+/* Time-based backgrounds (set via JavaScript) */
+#particles-js.morning {
+  background: linear-gradient(135deg, #ff9a56 0%, #ffcd6b 30%, #87ceeb 70%, #4a90c2 100%);
+}
+
+#particles-js.afternoon {
+  background: linear-gradient(135deg, #56ccf2 0%, #2f80ed 50%, #1a5fb4 100%);
+}
+
+#particles-js.evening {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ffa07a 25%, #9d4edd 60%, #240046 100%);
+}
+
+#particles-js.night {
+  background: linear-gradient(135deg, #0c1929 0%, #1a2a4a 50%, #0d1f3c 100%);
+}
+
+/* Weather overlays */
+#particles-js.weather-clear::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 20% 20%, rgba(255,255,200,0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+#particles-js.weather-cloudy::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(100,100,120,0.3) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+#particles-js.weather-rainy::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(50,60,80,0.4) 0%, rgba(30,40,60,0.2) 100%);
+  pointer-events: none;
+}
+
+#particles-js.weather-snowy::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(200,220,255,0.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+#particles-js.weather-stormy::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(30,30,50,0.5) 0%, rgba(50,40,70,0.3) 100%);
+  pointer-events: none;
+  animation: lightning 8s infinite;
+}
+
+@keyframes lightning {
+  0%, 89%, 91%, 93%, 100% { opacity: 1; }
+  90%, 92% { opacity: 0.5; background: rgba(255,255,255,0.1); }
+}
+
+/* Time/Weather indicator badge */
+.weather-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 8px 15px;
+  border-radius: 20px;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.75rem;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.weather-badge i {
+  font-size: 1rem;
 }
 
 #particles-js::before {
@@ -71,8 +177,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 100%);
   pointer-events: none;
+  z-index: 1;
 }
 
 .header {
@@ -302,6 +409,122 @@
   }
 }
 </style>
+
+<script>
+// Dynamic Background based on Time and Weather
+(function() {
+  const particlesEl = document.getElementById('particles-js');
+  const weatherBadge = document.getElementById('weather-badge');
+  const weatherIcon = document.getElementById('weather-icon');
+  const weatherText = document.getElementById('weather-text');
+  
+  // Weather types with icons
+  const weatherTypes = [
+    { name: 'clear', icon: 'fa-sun-o', label: 'Clear' },
+    { name: 'cloudy', icon: 'fa-cloud', label: 'Cloudy' },
+    { name: 'rainy', icon: 'fa-tint', label: 'Rainy' },
+    { name: 'snowy', icon: 'fa-snowflake-o', label: 'Snowy' },
+    { name: 'stormy', icon: 'fa-bolt', label: 'Stormy' }
+  ];
+  
+  // Time period icons
+  const timeIcons = {
+    morning: 'fa-sun-o',
+    afternoon: 'fa-sun-o',
+    evening: 'fa-moon-o',
+    night: 'fa-moon-o'
+  };
+  
+  function getTimePeriod() {
+    const hour = new Date().getHours();
+    if (hour >= 5 && hour < 12) return 'morning';
+    if (hour >= 12 && hour < 17) return 'afternoon';
+    if (hour >= 17 && hour < 21) return 'evening';
+    return 'night';
+  }
+  
+  function getRandomWeather() {
+    // Weighted random - clear and cloudy more common
+    const weights = [35, 30, 15, 10, 10]; // clear, cloudy, rainy, snowy, stormy
+    const totalWeight = weights.reduce((a, b) => a + b, 0);
+    let random = Math.random() * totalWeight;
+    
+    for (let i = 0; i < weights.length; i++) {
+      random -= weights[i];
+      if (random <= 0) return weatherTypes[i];
+    }
+    return weatherTypes[0];
+  }
+  
+  function updateBackground() {
+    const timePeriod = getTimePeriod();
+    const weather = getRandomWeather();
+    
+    // Remove existing classes
+    particlesEl.classList.remove('morning', 'afternoon', 'evening', 'night');
+    particlesEl.classList.remove('weather-clear', 'weather-cloudy', 'weather-rainy', 'weather-snowy', 'weather-stormy');
+    
+    // Add new classes
+    particlesEl.classList.add(timePeriod);
+    particlesEl.classList.add('weather-' + weather.name);
+    
+    // Update badge
+    const timeLabel = timePeriod.charAt(0).toUpperCase() + timePeriod.slice(1);
+    weatherIcon.className = 'fa ' + weather.icon;
+    weatherText.textContent = timeLabel + ' • ' + weather.label;
+    
+    // Store weather in session so it doesn't change on every page load
+    sessionStorage.setItem('siteWeather', JSON.stringify(weather));
+    sessionStorage.setItem('weatherTimestamp', Date.now());
+  }
+  
+  function init() {
+    const timePeriod = getTimePeriod();
+    let weather;
+    
+    // Check if we have stored weather (changes every 30 minutes)
+    const storedWeather = sessionStorage.getItem('siteWeather');
+    const timestamp = sessionStorage.getItem('weatherTimestamp');
+    const thirtyMinutes = 30 * 60 * 1000;
+    
+    if (storedWeather && timestamp && (Date.now() - timestamp < thirtyMinutes)) {
+      weather = JSON.parse(storedWeather);
+    } else {
+      weather = getRandomWeather();
+      sessionStorage.setItem('siteWeather', JSON.stringify(weather));
+      sessionStorage.setItem('weatherTimestamp', Date.now());
+    }
+    
+    // Apply classes
+    particlesEl.classList.add(timePeriod);
+    particlesEl.classList.add('weather-' + weather.name);
+    
+    // Update badge
+    const timeLabel = timePeriod.charAt(0).toUpperCase() + timePeriod.slice(1);
+    weatherIcon.className = 'fa ' + weather.icon;
+    weatherText.textContent = timeLabel + ' • ' + weather.label;
+  }
+  
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  
+  // Update time period every minute (in case user stays on page)
+  setInterval(function() {
+    const currentTime = getTimePeriod();
+    if (!particlesEl.classList.contains(currentTime)) {
+      particlesEl.classList.remove('morning', 'afternoon', 'evening', 'night');
+      particlesEl.classList.add(currentTime);
+      const weather = JSON.parse(sessionStorage.getItem('siteWeather') || '{"name":"clear","label":"Clear"}');
+      const timeLabel = currentTime.charAt(0).toUpperCase() + currentTime.slice(1);
+      weatherText.textContent = timeLabel + ' • ' + weather.label;
+    }
+  }, 60000);
+})();
+</script>
 </div>
 
   
