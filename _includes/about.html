@@ -243,16 +243,20 @@ document.addEventListener('keydown', function(e) {
 
 .project-actions {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+  align-items: center;
   margin-top: auto;
   padding-top: 10px;
+  width: 100%;
 }
 
 .action-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   padding: 10px 16px;
   border-radius: 8px;
@@ -262,6 +266,8 @@ document.addEventListener('keydown', function(e) {
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .video-btn {
@@ -391,11 +397,15 @@ document.addEventListener('keydown', function(e) {
   
   .project-actions {
     flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
   
   .action-btn {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     justify-content: center;
+    text-align: center;
   }
   
   .project-card {
@@ -430,92 +440,72 @@ document.addEventListener('keydown', function(e) {
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 20px; margin-top: 20px;">
     
     <!-- Best Paper Award -->
-    <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-      <div style="display: flex; align-items: flex-start; gap: 15px;">
-        <span style="font-size: 32px; flex-shrink: 0; line-height: 1;">🥇</span>
-        <div style="flex: 1;">
-          <h3 style="margin: 0 0 8px 0; color: #2c3e50; font-size: 18px;">Best Paper Award - CIE51</h3>
-          <p style="margin: 0 0 8px 0; line-height: 1.6;">
-            <strong>"Emerging AI and Cognitive Digital Twin Technologies Towards Low-Carbon Multimodal Freight Transport Systems"</strong>
-          </p>
-          <p style="margin: 0; color: #666; font-size: 14px;">
-            📍 51st Conference on Computers and Industrial Engineering • Sydney, Australia • December 2024
-          </p>
-        </div>
-      </div>
+    <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;">
+      <div style="font-size: 48px; margin-bottom: 12px;">🥇</div>
+      <h3 style="margin: 0 0 8px 0; color: #2c3e50; font-size: 18px;">Best Paper Award - CIE51</h3>
+      <p style="margin: 0 0 8px 0; line-height: 1.6;">
+        <strong>"Emerging AI and Cognitive Digital Twin Technologies Towards Low-Carbon Multimodal Freight Transport Systems"</strong>
+      </p>
+      <p style="margin: 0; color: #666; font-size: 14px;">
+        📍 51st Conference on Computers and Industrial Engineering • Sydney, Australia • December 2024
+      </p>
     </div>
 
     <!-- IISE Competition -->
-    <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-      <div style="display: flex; align-items: flex-start; gap: 15px;">
-        <span style="font-size: 32px; flex-shrink: 0; line-height: 1;">📱</span>
-        <div style="flex: 1;">
-          <h3 style="margin: 0 0 8px 0; color: #2c3e50; font-size: 18px;">IISE Student Mobile App Competition - Winner</h3>
-          <p style="margin: 0 0 8px 0; line-height: 1.6;">
-            <strong>SmartShots Project</strong> - Data Analytics & Information Systems Division
-          </p>
-          <p style="margin: 0 0 8px 0; color: #666; font-size: 14px;">
-            📍 Montreal, Canada • 2024
-          </p>
-          <a href="https://www.iise.org/Details.aspx?id=33697" target="_blank" style="color: #0074BD; text-decoration: none; font-weight: 600; font-size: 14px;">
-            View Recognition →
-          </a>
-        </div>
-      </div>
+    <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;">
+      <div style="font-size: 48px; margin-bottom: 12px;">📱</div>
+      <h3 style="margin: 0 0 8px 0; color: #2c3e50; font-size: 18px;">IISE Student Mobile App Competition - Winner</h3>
+      <p style="margin: 0 0 8px 0; line-height: 1.6;">
+        <strong>SmartShots Project</strong> - Data Analytics & Information Systems Division
+      </p>
+      <p style="margin: 0 0 8px 0; color: #666; font-size: 14px;">
+        📍 Montreal, Canada • 2024
+      </p>
+      <a href="https://www.iise.org/Details.aspx?id=33697" target="_blank" style="color: #0074BD; text-decoration: none; font-weight: 600; font-size: 14px;">
+        View Recognition →
+      </a>
     </div>
 
     <!-- IISE Future Faculty Fellows -->
-    <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-      <div style="display: flex; align-items: flex-start; gap: 15px;">
-        <span style="font-size: 32px; flex-shrink: 0; line-height: 1;">🎓</span>
-        <div style="flex: 1;">
-          <h3 style="margin: 0 0 8px 0; color: #2c3e50; font-size: 18px;">IISE Future Faculty Fellows (3F)</h3>
-          <p style="margin: 0 0 8px 0; line-height: 1.6;">
-            Prestigious program recognizing doctoral candidates with exceptional potential for academic careers in industrial engineering.
-          </p>
-          <p style="margin: 0 0 8px 0; color: #666; font-size: 14px;">
-            📍 2025 - 2026
-          </p>
-          <a href="https://mailman.clemson.edu/pipermail/iefac.list/2023-August/006113.html" target="_blank" style="color: #0074BD; text-decoration: none; font-weight: 600; font-size: 14px;">
-            View Announcement →
-          </a>
-        </div>
-      </div>
+    <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;">
+      <div style="font-size: 48px; margin-bottom: 12px;">🎓</div>
+      <h3 style="margin: 0 0 8px 0; color: #2c3e50; font-size: 18px;">IISE Future Faculty Fellows (3F)</h3>
+      <p style="margin: 0 0 8px 0; line-height: 1.6;">
+        Prestigious program recognizing doctoral candidates with exceptional potential for academic careers in industrial engineering.
+      </p>
+      <p style="margin: 0 0 8px 0; color: #666; font-size: 14px;">
+        📍 2025 - 2026
+      </p>
+      <a href="https://mailman.clemson.edu/pipermail/iefac.list/2023-August/006113.html" target="_blank" style="color: #0074BD; text-decoration: none; font-weight: 600; font-size: 14px;">
+        View Announcement →
+      </a>
     </div>
 
     <!-- HIDA Fellowship -->
-    <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-      <div style="display: flex; align-items: flex-start; gap: 15px;">
-        <span style="font-size: 32px; flex-shrink: 0; line-height: 1;">🔬</span>
-        <div style="flex: 1;">
-          <h3 style="margin: 0 0 8px 0; color: #2c3e50; font-size: 18px;">HIDA Helmholtz Visiting Researcher</h3>
-          <p style="margin: 0 0 8px 0; line-height: 1.6;">
-            Research fellowship at Karlsruhe Institute of Technology (KIT).
-          </p>
-          <p style="margin: 0 0 8px 0; color: #666; font-size: 14px;">
-            📍 Karlsruhe, Germany • 2024
-          </p>
-          <a href="https://www.khys.kit.edu/english/this_is_khys.php" target="_blank" style="color: #0074BD; text-decoration: none; font-weight: 600; font-size: 14px;">
-            View Program →
-          </a>
-        </div>
-      </div>
+    <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;">
+      <div style="font-size: 48px; margin-bottom: 12px;">🔬</div>
+      <h3 style="margin: 0 0 8px 0; color: #2c3e50; font-size: 18px;">HIDA Helmholtz Visiting Researcher</h3>
+      <p style="margin: 0 0 8px 0; line-height: 1.6;">
+        Research fellowship at Karlsruhe Institute of Technology (KIT).
+      </p>
+      <p style="margin: 0 0 8px 0; color: #666; font-size: 14px;">
+        📍 Karlsruhe, Germany • 2024
+      </p>
+      <a href="https://www.khys.kit.edu/english/this_is_khys.php" target="_blank" style="color: #0074BD; text-decoration: none; font-weight: 600; font-size: 14px;">
+        View Program →
+      </a>
     </div>
 
     <!-- Holiday Fellowships -->
-    <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-      <div style="display: flex; align-items: flex-start; gap: 15px;">
-        <span style="font-size: 32px; flex-shrink: 0; line-height: 1;">🎖️</span>
-        <div style="flex: 1;">
-          <h3 style="margin: 0 0 8px 0; color: #2c3e50; font-size: 18px;">Holiday Fellowship</h3>
-          <p style="margin: 0 0 8px 0; line-height: 1.6;">
-            Competitive graduate fellowship awarded for academic excellence and research contributions.
-          </p>
-          <p style="margin: 0; color: #666; font-size: 14px;">
-            📅 2022, 2023, 2024, 2025
-          </p>
-        </div>
-      </div>
+    <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;">
+      <div style="font-size: 48px; margin-bottom: 12px;">🎖️</div>
+      <h3 style="margin: 0 0 8px 0; color: #2c3e50; font-size: 18px;">Holiday Fellowship</h3>
+      <p style="margin: 0 0 8px 0; line-height: 1.6;">
+        Competitive graduate fellowship awarded for academic excellence and research contributions.
+      </p>
+      <p style="margin: 0; color: #666; font-size: 14px;">
+        📅 2022, 2023, 2024, 2025
+      </p>
     </div>
 
   </div>
