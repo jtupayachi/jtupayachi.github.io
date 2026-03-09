@@ -1,0 +1,744 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=0.5 in, % seperation between body and page edge from the top
+    bottom=0.5 in, % seperation between body and page edge from the bottom
+    left=0.5 in, % seperation between body and page edge from the left
+    right=0.5 in, % seperation between body and page edge from the right
+    footskip=0.5 in, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+
+% \usepackage{hyperref}
+
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage{multicol}
+\usepackage[
+    pdftitle={John Doe's CV},
+    pdfauthor={John Doe},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in September 2024}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$|$}
+
+    \begin{header}
+        \fontsize{25 pt}{25 pt}\selectfont Jose Tupayachi (Jose Alberto Tupayachi Silva)
+
+        \vspace{5 pt}
+
+        \normalsize
+        \mbox{Knoxville, TN}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{mailto:jtupayac@vols.utk.edu}{\url{jtupayac@vols.utk.edu}}}%
+        \kern 5.0 pt%
+        |
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{mailto:tupayachisja@ornl.gov}{\url{tupayachisja@ornl.gov}}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{tel:+1 661 365 5289}{661 365 5289}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://jtupayachi.github.io/}{jtupayachi.github.io}}%
+
+    \end{header}
+
+    \vspace{5 pt }
+\small
+  
+I am a researcher at Oak Ridge National Laboratory and the University of Tennessee, Knoxville, focused on integrating AI agents, large language models (LLMs), and edge computing to build intelligent, distributed systems. My work combines simulation-based experimentation and machine learning with practical applications in health-support platforms, IoT-based monitoring, and decision support systems for transportation and logistics. 
+Skilled in developing scalable solutions using retrieval-augmented generation, vector databases, and optimization techniques. My research enhances autonomy, scalability, and real-world applicability of modern AI systems, leveraging sensor data, real-time analytics, and advanced modeling to support high-impact decision-making and operational performance across diverse domains.
+
+% Education:
+\section*{Education}
+\begin{twocolentry}{May 2024 - Present}
+    \small \textbf{University of Tennessee, Knoxville USA} \textbar PhD Candidate in Industrial Engineering\\
+    Advisor: Dr. Xueping Li
+\end{twocolentry}
+
+\begin{twocolentry}{Aug 2022 - May 2024}
+    \small \textbf{University of Tennessee, Knoxville USA} \textbar MS in Industrial Engineering\\
+    GPA: 3.9
+\end{twocolentry}
+
+\begin{twocolentry}{March 2014 - May 2020} %in the diploma says may
+    \small \textbf{Pontifical Catholic University of Peru, Lima Peru} \textbar BS in Industrial Engineering\\
+\end{twocolentry}
+
+% \begin{twocolentry}{June 2020 - July 2020} %in the diploma says may
+%     \small {Time off from school - Searching for Interships} \\
+% \end{twocolentry}
+
+
+% \begin{twocolentry}{Mar 2014 – Jan 2020}
+%     \small \textbf{Pontifical Catholic University of Peru} \textbar BS in Industrial Engineering
+% \end{twocolentry}
+
+
+
+
+    \section*{Publications}
+\small
+    \begin{itemize}[left=0pt] % Align items to the left
+
+        \item \textbf{Design and usability testing of SmartSHOTS: A mobile app to reduce vaccine barriers for children 0–24 months} \\
+        TH Wyatt, S Lowe, J Tupayachi, X Li, CA McNeely, X Wang, PD Taylor, ... \\
+        \textit{Health Informatics Journal 32 (1), 14604582261419334} (2026) \\
+
+        \item \textbf{Scalable decentralized prognostics for industrial systems under data heterogeneity} \\
+        J Tupayachi, AN Khan, X Li \\
+        \textit{Computers and Electrical Engineering 133, 111023} (2025) \\
+
+        % \item \textbf{Design and Usability Testing of SmartSHOTS: A Mobile App to Reduce Vaccine Barriers for Children 0-24 Months} \ Wyatt Tami, Taylor Penny, Li Xueping, Lowe Sarah, Sharmin Aliza, Tupayachi Silva Jose, Wang Xudong, Mcneely Clea, Niederhauser Victoria \ \textit{Proceedings of the 58th Hawaii International Conference on System Sciences} (2025) \
+
+
+        \item \textbf{A Simulation-Based Real-Time Deep Reinforcement Learning Approach for Fighting Wildfires} \\
+        J Tupayachi, MM Ferguson, X Li \\
+        \textit{2024 Annual Modeling and Simulation Conference (ANNSIM), 1-12} (2024) \\
+        % DOI: \url{https://doi.org/10.23919/ANNSIM61499.2024.10732085}
+
+        \item \textbf{Drone-aided delivery methods, challenges, and the future: A methodological review} \\
+        X Li, J Tupayachi, A Sharmin, M Martinez Ferguson \\
+        \textit{Drones 7 (3), 191} (2023) \\
+        % DOI: \url{https://doi.org/10.xxxx/xxxxx}
+    
+        \item \textbf{Towards next-generation urban decision support systems through AI-powered construction of scientific ontology using large language models—A case in optimizing intermodal freight} \\
+        J Tupayachi, H Xu, OA Omitaomu, MC Camur, A Sharmin, X Li \\
+        \textit{Smart Cities 7 (5), 2392-2421} (2024) \\
+        % DOI: \url{https://doi.org/10.xxxx/xxxxx}
+    
+        \item \textbf{Automating Bibliometric Analysis with Sentence Transformers and Retrieval-Augmented Generation (RAG): A Pilot Study in Semantic and Contextual Search for Customized Literature} \\
+        H Xu, X Li, J Tupayachi, JJ Lian, OA Omitaomu \\
+        \textit{Proceedings of the 2nd ACM SIGSPATIAL International Workshop on Advances in Urban-AI} (2024) \\
+        % DOI: \url{https://doi.org/10.xxxx/xxxxx}
+    
+        \item \textbf{Better Efficiency on Non-performing Loans Debt Recovery and Portfolio Valuation Using Machine Learning Techniques} \\
+        J Tupayachi, L Silva \\
+        \textit{Production and Operations Management: POMS Lima, Peru, December 2-4, 2021} (2022) \\
+        % DOI: \url{https://doi.org/10.xxxx/xxxxx}
+    
+    
+
+
+    \end{itemize}
+    
+
+    \section*{Pre-Prints:}
+
+    \begin{itemize}[left=0pt] 
+
+        \item \textbf{Empowering Cognitive Digital Twins with Generative Foundation Models: Developing a Low-Carbon Integrated Freight Transportation System} \\
+        X Li, H Xu, J Tupayachi, O Omitaomu, X Wang \\
+        \textit{arXiv preprint arXiv:2410.18089} (2024) \\
+        % DOI: \url{https://doi.org/10.xxxx/xxxxx}
+
+
+
+        % \item \textbf{Towards Next-Generation Urban Decision Support Systems through AI-Powered Generation of Scientific Ontology using Large Language Models: A Case in Optimizing Intermodal Freight Transportation} \\
+        % J Tupayachi, H Xu, O A Omitaomu, M C Camur, A Sharmin, X Li \\
+        % \textit{arXiv preprint arXiv:2405.19255} (2024)
+
+        %         \item \textbf{Scalable Decentralized Prognostics for Industrial Systems under Data Heterogeneity} \\
+        % J Tupayachi, AN Khan, X Li\\
+        % \textit{https://papers.ssrn.com/sol3/Delivery.cfm?abstractid=5433957} (2025)
+
+
+
+            
+    \item \textbf{Predicting Electric Vehicle Charging Station Demand: Using Spatial-Temporal Graph Neural Networks with Integrated Weather and Traffic Data}\\
+    JoseTupayachi, Mustafa C.Camur, Kevin Heaslip, Xueping Li\\
+    \textit{https://arxiv.org/abs/2510.09048}
+
+
+    
+        
+
+
+    \end{itemize}
+
+
+    \section*{Submitted Papers:}
+
+\begin{itemize}[left=0pt] 
+
+    \item \textbf{Towards Autonomous Urban Logistics Optimization via Generative AI and Agentic Digital Twins} \\
+    H Xu, Y Sun, J Tupayachi, O Omitaomu, S Zlatanova, X Li \\
+    Submitted to \textit{Computers \& Industrial Engineering} \\
+    Submission ID: CAIE-D-25-05889 \\
+    % Article Type: Research Article \\
+    % Keywords: Generative AI, Digital Twin, Model Context Protocol, Knowledge Engineering, Optimization
+
+    % \item \textbf{Scalable Decentralized Prognosis for Industrial Systems under Data Heterogeneity} \\
+    % J Tupayachi, A Kham, X Li \\
+    % Submitted to \textit{Computers and Electrical Engineering} \\
+    % Submission ID: COMPELECENG-D-25-05978 - Third review round\\
+
+
+    % \item \textbf{Design and Usability Testing of SmartSHOTS: A Mobile App to Reduce Vaccine Barriers for Children Aged 0-24 Months} \\
+    % Tami Wyatt, Penny Taylor, Xueping Li, Sarah Lowe, Aliza Sharmin, Jose Tupayachi Silva, Xudong Wang, Clea Mcneely, Victoria Niederhauser \\
+    % Submitted to \textit{Health Informatics Journal} \\
+    % Submission ID: HIJ-25-0257 - Acepted\\
+
+    \item \textbf{CliniSense AI for Automated Clinical Skills Assessment with Real Time Feedback}  \\
+    Submitted to \textit{npj digital medicine} \\
+
+
+
+
+            \item \textbf{Context-Aware Visual Prompting: Automating Geospatial Web Dashboards with Large Language Models and AI Agents for Decision Support}\\
+            Haowen Xu, Jose Tupayachi, Xiao-Ying Yu\\
+            Submitted to \textit{International Journal of Applied Earth Observation and Geoinformation} \\
+            Submission ID: JAG-D-25-04850 \\
+
+
+    \item \textbf{Spatio-Temporal Graph Convolutional Networks for EV Charging Demand Forecasting Using Real-World Multi-Modal Data Integration}\\
+    Jose Tupayachi, Mustafa C. Camur, Kevin Heaslip, Xueping Li\\
+    Submitted to \textit{Applied Energy} \\
+    Submission ID: 30181
+
+
+
+
+
+\end{itemize}
+
+    
+\section*{Graduate Researcher – Oak Ridge National Lab / Oak Ridge Institute for Science and Education}
+\small
+
+\vspace{0.3cm} \begin{twocolentry}{May 2025 – Present} \textbf{AI-Augmented Literature Retrieval and Exploration for Materials Research} \textbar
+    % LLM-Powered Query Pipeline with BERT Tagging
+ \end{twocolentry}
+
+\begin{highlights}
+    \item Developed an AI agent-driven literature survey pipeline for new materials discovery, automating search, retrieval, and synthesis of domain-specific publications to accelerate identification of candidate materials for nuclear and energy applications.
+    \item Designed and implemented an explainable multi-tower gradient boosting model for extreme weather event analysis at the Oak Ridge Reservation, enabling interpretable predictions of high-impact meteorological conditions using heterogeneous sensor and atmospheric data.
+    \item Built a vision transformer-based quality assurance engine for automated classification of wind speed and direction from observational data, improving reliability and throughput of atmospheric monitoring workflows.
+    \item Engineered an automated end-to-end geospatial analysis interface driven by large language models, enabling non-expert users to query, process, and visualize spatial datasets through natural language interactions with minimal manual intervention.
+\end{highlights}
+
+\vspace{0.3cm}
+
+
+
+
+    \section*{Hosted Researcher - Oak Ridge National Lab}
+    \small
+
+    \vspace{0.3cm} \begin{twocolentry}{March 2025 – May 2025} \textbf{ML-Assisted Atmospheric Hazard Modeling for Effective Geospatial Risk Analysis} \textbar Frontend generation based on React and Tailwind CSS using LLMs \end{twocolentry}
+    
+    \begin{highlights}  
+        \item Fine tuning Large Language Models to generate automated, interactive dashboards for data visualization.  
+        \item Implementing an automated continuous deployment and integration system using web-based frameworks, with React for the front end and Python for backend processing and analytics.  
+    \end{highlights}  
+    
+        \vspace{0.3cm} 
+
+
+
+
+    \section*{Graduate Research Assistant - Funded Projects Developer}
+    \small
+    \begin{twocolentry}{Jul 2024 – Present} \textbf{RECOIL} \textbar Cognitive Freight Transportation Digital Twin for Resiliency and Emission Control Through Optimizing Intermodal Logistics \end{twocolentry} \begin{highlights} 
+        \item Designed ontology-guided optimization models for large-scale freight transportation networks, integrating data from diverse GIS-based transport modes, including road, rail, and waterways, to minimize costs and emissions while enhancing operational efficiency. 
+        \item Leveraged Convolutional Neural Networks and Graph Neural Networks to analyze the impacts of weather, traffic, and demand on EV charging behavior, enabling data-driven, real-time optimization of EV charging station operations. 
+        \item Applied large language models to power a chatbot that provides domain-specific responses for non-technical users, enabling accurate trade-off analysis between cost, time, and $CO_2$ emissions.
+        \item Designed a real-time feedback loop for digital twins, utilizing ``Simulated" sensor data and scrapping techniques to continuously optimize intermodal system performance based on real-world conditions.
+        \item Investigating the use of BERT and setence tranformers to further refine provide a domain literature for QA providing accurate and reproducible reponses supported by LLM and similarity based search.
+        \item Collaborated with Oak Ridge National Laboratory researchers to create industry-ready solution that reduce emissions and enhance the resilience of intermodal freight and supply chain operations.
+        \item Developement of the unified UI using Flutter at \url{https://m1.recoil.ise.utk.edu}.
+        
+        \end{highlights} \vspace{0.3cm} \noindent \textbf{Funding Agency:} U.S. Department of Energy’s Advanced Research Projects Agency-Energy (ARPA-E)\\  \textbf{Project Number:} \#DE-AR0001780
+
+        \vspace{0.3cm} \begin{twocolentry}{Dec 2023 – Dec 2024} \textbf{SmartShots} \textbar Cross-Platform Application to Improve Childhood Vaccination Rates in Tennessee \end{twocolentry} \begin{highlights} 
+            \item Enhanced vaccination tracking with real-time data updates, guardian and dependent updates, notifications, and integrated alerts for users. 
+            \item Developed a scalable backend system using Laravel. Used Dart and Flutter based on flutter to ensure smooth functionality across platforms. 
+            \item Integrated community health information to offer users real-time access to nearby vaccination providers.
+             \item Collaborated with the Tennessee Department of Health and local health agencies to align the app with state public health objectives and needs. 
+            %  \item Performed user testing and incorporated feedback to improve the app’s usability. 
+             \item \url{https://play.google.com/store/apps/details?id=com.ilab.smartshots}
+             \item  \url{https://apps.apple.com/us/app/smartshots-tn/id6526502640} \end{highlights} \vspace{0.3cm} \noindent \textbf{Funding Agency:} Tennessee Department of Health
+    
+    \vspace{0.3cm} \begin{twocolentry}{Jul 2024 - Present} \textbf{Active Caregiver’s Toolkit (ACTAPP)} \textbar Mobile Application to Promote Physical Activity Among Rural Appalachian Caregivers at Risk for Cardiovascular Disease (CVD) \end{twocolentry} \begin{highlights} 
+        \item Development of the ACT APP as a digital solution for rural Appalachian caregivers, aiming to reduce cardiovascular disease risks through targeted physical activity interventions. 
+        \item Implemented latest mobile development standars based on Dart 3.0 and material design incluiding custom components and state manangement using GetX.
+        \item Inclussion of ChatBot for FAQ answering.
+        \item Tracking metric for data analysis based on page and interactions metrics.
+        \item \url{https://testflight.apple.com/join/PehxA8aW} 
+        \item \url{https://play.google.com/store/apps/details?id=com.ilabutk.fe_rich}
+    \end{highlights} \vspace{0.3cm} \noindent \textbf{Funding Agency:} Hillman Emergent Innovation (HEI)
+
+    \vspace{0.3cm} 
+    \begin{twocolentry}{Jan 2025 - Present} 
+        \textbf{Pathology Cancer Staging - UT Medical Center} 
+    \end{twocolentry} 
+    \begin{highlights} 
+        % \item Implementation of big data platform based on Sparse for big data storage. 
+        \item Development of Flutter UI and web map services for interactive demographic cancer visualization. 
+    \end{highlights} 
+    \vspace{0.3cm} 
+    \noindent
+    
+
+
+
+
+
+
+
+\section*{Graduate Teaching Assistant}
+
+\textbf{IE406/408: Simulation} – Teaching Assistant, Spring 2022  
+\begin{itemize}
+    \item Assisted students with their final project and Anylogic simulation use and preparation.
+    \item Graded homework assignments and addressed questions during class sessions.
+\end{itemize}
+
+\textbf{IE483: Introduction to Reliability Engineering} – Teaching Assistant, Fall 2022  
+\begin{itemize}
+    \item Provided in-class support by answering student questions.
+    \item Proposed new homework problems, evaluated and graded homework assignments.
+\end{itemize}
+
+
+    \section*{Awards \& Scholarships}
+    \small
+
+
+
+    \noindent \textbf{IISE Future Faculty Fellows} \\
+    \textit{Year}: 2025-2026, USA | Selected.
+
+
+  \vspace{0.5em}
+
+    \noindent \textbf{51\textsuperscript{st} Conference on Computers and Industrial Engineering (CIE51)} \ \textit{Best Paper Award: "Emerging AI and Cognitive Digital Twin Technologies Towards Low-Carbon Multimodal Freight Transport Systems – Sustainable Transport Systems"} \\ Sydney, Australia \  December 9–11, 2024 \
+    \vspace{0.5em}
+
+
+     
+    \noindent \textbf{IISE Data Analytics \& Information Systems (DAIS) Student Mobile App Competition} \\
+    \textit{2024 Winners - SmartShots Project, Montreal} | \url{https://www.iise.org/Details.aspx?id=33697}\\
+    
+    
+ 
+    \vspace{0.5em} % Adds space between sections
+    
+    \noindent \textbf{Graduate Fellowships and Awards} \\
+    \textit{Holiday Fellowship}: 2022, 2023, 2024 \\
+    
+    \vspace{0.5em} % Adds space between sections
+
+
+    
+    \noindent \textbf{HIDA Helmholtz Visiting Researcher - Karlsruhe Institute of Technology (KIT)} \\
+    \textit{Year}: 2024, Germany | Awarded.
+
+
+
+
+        
+\section*{Industry Work Experience}
+\small
+
+\begin{twocolentry}{March 2022 – Aug 2022}
+    \textbf{Data Engineer}  \textbar INDRA SISTEMAS S.A. – Full-time
+\end{twocolentry}
+\begin{highlights}
+    \item Developed and maintained data pipelines using Python and Shell scripting to streamline big data workflows.
+    \item Worked with Apache Spark, Hadoop, and HQL for distributed data processing, querying, and large-scale data migration, including data migration from Oracle and SaaS to PySpark.
+    \item Implemented Jenkins-based deployment strategies for automating ETL pipeline updates.
+    \item Ensured data quality and performance through data governance practices and code optimization techniques.
+    \item Managed memory allocation for distributed data processing tasks in High-performance computing.
+\end{highlights}
+\vspace{0.3cm}
+
+
+\begin{twocolentry}{Jan 2022 – March 2022}
+    \textbf{Business Intelligence Analyst}  \textbar 
+    GLOBOKAS PERU S.A. – Full-time
+\end{twocolentry}
+\begin{highlights}
+\item Developed and optimized Extract, Transform, and Load (ETL) pipelines using Transact-SQL to streamline data processing and improve efficiency.  
+\item Designed and implemented a live platform for real-time revenue and administrative KPI monitoring, enabling data-driven decision-making.  
+\item Leveraged Google BigQuery and custom macros to automate daily data parsing and dashboard updates, ensuring up-to-date insights.  
+\item Enhanced data quality and integrity by applying statistical metrics to detect and mitigate inconsistencies.  
+\end{highlights}
+
+
+
+\vspace{0.3cm}
+
+
+
+
+\begin{twocolentry}{Nov 2020 – Dec 2021}
+    \textbf{Data Analyst Trainee} \textbar ENEL DISTRIBUCION PERU S.A.A. – Full-time
+\end{twocolentry}
+\begin{highlights}
+    \item Optimized payment collection processes and client segmentation by employing advanced unsupervised clustering techniques, improving efficiency and effectiveness.
+    \item Designed and implemented dashboards using Power BI and Tableau, providing strategic insights and actionable intelligence.
+    \item Administered SQL and T-SQL databases alongside Salesforce, ensuring data integrity and delivering accurate, reliable reporting for Enel's Business Partners.
+    \item Developed a robust desktop application using PyQt to streamline invoice collection verification and automate digital invoice processing, enhancing operational efficiency.
+\end{highlights}
+
+\vspace{0.3cm}
+
+
+
+
+
+
+
+
+
+
+\begin{twocolentry}{Aug 2020 – Nov 2020}
+    \textbf{Developer – Portfolio Valuation Project} \textbar GPS MANAGEMENT DEL PERU S.A.C. – Machine Learning Consulting
+\end{twocolentry}
+\begin{highlights}
+    \item Developed a predictive model for valuing non-secure and secured portfolios of non-performing loans using Machine Learning.
+    \item Conducted data compilation, feature engineering, modeling, and validation.
+    \item Deployed the model on a web platform using Flask.
+\end{highlights}
+\vspace{0.3cm}
+\begin{twocolentry}{Sep 2020 – Oct 2020}
+    \textbf{Professional IT Intern} \textbar SUPERINTENDENCIA DE BANCA, SEGUROS Y ADMINISTRADORAS PRIVADAS DE FONDOS DE PENSIONES
+\end{twocolentry}
+\begin{highlights}
+    \item Automated PDF reports using Jinja-Python for user service indicators.
+    \item Managed Help Desk tasks and Active Directory access control, complying with ITIL standards.
+\end{highlights}
+\vspace{0.3cm}
+\begin{twocolentry}{Dec 2019 – Mar 2020}
+    \textbf{Plant Intern} \textbar MATMACK S.A. – Bottling Company (Brands Bells and Cencosud)
+\end{twocolentry}
+\begin{highlights}
+    \item Improved inventory control, supplier coordination, and established reorder points.
+    \item Developed demand forecasting models for products per client.
+    \item Conducted cost analysis of raw materials and determined the Economic Order Quantity.
+    \item Built a planning application based on a Master Production Schedule.
+\end{highlights}
+\vspace{0.3cm}
+\begin{twocolentry}{Feb 2019 – Aug 2019}
+    \textbf{Information Technology Intern} \textbar ADMINISTRADORA CLINICA RICARDO PALMA S.A. – Medical and Hospital Services
+\end{twocolentry}
+\begin{highlights}
+    \item Structured databases for the “Health and Insurance Plan” and implemented ETL workflows.
+    \item Supported and monitored project development, scheduling, and cost evaluation.
+    \item Developed Power BI dashboards for financial reporting and KPIs.
+    \item Designed and structured the medical staff privilege database.
+\end{highlights}
+
+
+
+
+
+
+\section*{Community Service}
+
+\textbf{University of Tennessee Graduate Student Senate} - Senator, Industrial and Systems Engineering, 2025\\  
+
+\small
+Represented students, advocated for academic and professional development opportunities, and fostered graduate student engagement.
+
+
+
+
+\section*{Journal \& Conference Reviewer}
+\small
+\begin{itemize}
+
+\item \textbf{PLOS ONE}
+\begin{itemize}
+    \item \textit{Methods to derive composite indicators used for quality and safety measurement and monitoring in healthcare: a scoping review} (PONE-D-26-00569)
+\end{itemize}
+
+    \item \textbf{Information Systems Frontiers}(Springer)
+\begin{itemize}
+    \item \textit{Comparing Human-Like and eXplainable AI-based Trust Repair Strategies Implemented by Conversational AI}
+\end{itemize}
+
+
+
+    
+
+
+    
+\item \textbf{International Conference on Intelligent User Interfaces (IUI) 2026 } (IEEE/ACM)
+\begin{itemize}
+    \item \textit{MimiCo: Learning Human-Robot Collaboration from Human-Human Collaboration}
+    \item \textit{Are We There Yet? Exploring the Role of Robotic Informational Assistant in Autonomous Vehicles during Successful and Unsuccessful Manoeuvres}
+    \item \textit{Modeling Intimate Action in HRI: Theoretical Formulation and Predictive Feature Analysis for User Rejection}
+\end{itemize}
+
+\item \textbf{Journal of Asian Architecture and Building Engineering }(Elsevier)
+\begin{itemize}
+    \item \textit{Advancing Urban Street Perception Research through Large Language Models and Street View Imagery}
+\end{itemize}
+
+\item \textbf{IEEE Internet of Things Magazine } (IEEE)
+\begin{itemize}
+    \item \textit{Dynamic Mentee FedKD: A Communication-Efficient Federated Knowledge Distillation Framework for Heterogeneous IoT Clients}
+\end{itemize}
+
+
+
+
+ \item \textbf{Software: Practice and Experience} (Wiley)
+ 
+\begin{itemize}
+    \item \textit{MAD-KG: A Hybrid Knowledge Graph Construction Framework for Mobile App Development Domain}
+\end{itemize}
+
+
+
+ \item \textbf{IISE Transactions} (Taylor \& Francis Online)
+ 
+\begin{itemize}
+    \item \textit{Physician Scheduling in Hospitals with Online and Offline Services: Optimization with Machine Learning-Based Evaluation}
+\end{itemize}
+
+
+ \item \textbf{Optimization Letters} (Springer Nature)
+ 
+\begin{itemize}
+    \item \textit{Optimal Mass Transport for Dynamical Warehouse Reconfiguration: A Continuum Mechanics Approach}
+\end{itemize}
+
+
+
+    \item \textbf{Journal of Robotics} (Wiley)
+ \begin{itemize}
+    \item \textit{Autonomous Planetary Rover navigation and crater-based map augmentation for path planning and Rock localization using space ROS}
+    \end{itemize}
+    \item \textbf{Journal of Sensors} (Wiley)
+    \begin{itemize}
+        \item \textit{Manufacturing and testing of novel low-cost and flexible geopolymer-based tactile sensors}
+        \item \textit{Optimization of excitation coil parameters for PECT of defects in laser welding of power battery pack based on Kriging surrogate model}
+    \end{itemize}
+
+    \item \textbf{Winter Simulation Conference 2025 – Reliability Modeling and Simulation}
+    \begin{itemize}
+        \item \textit{Simulating the dynamic interaction between fleet performance and maintenance processes based on Remaining Useful Life}
+    \end{itemize}
+
+    \item \textbf{Winter Simulation Conference 2025 – Invited Paper Track}
+    \begin{itemize}
+        \item \textit{Reliability Assessment of Convolutional Autoencoder-Based Wind Modeling for Autonomous Drone Training}
+    \end{itemize}
+
+    \item \textbf{IISE Annual Conference 2025 – Logistics and Supply Chain (LSC)}
+    \begin{itemize}
+        \item \textit{Analyzing the Impact of Hurricane Florence on Freight Transportation in North Carolina using Telematics Data}
+        \item \textit{Distributed Programmatic Demand Forecasting in Modular Construction Through Machine Learning and Simulation}
+    \end{itemize}
+
+    \item \textbf{IEOM 2025 – University of Central Florida}
+    \begin{itemize}
+        \item \textit{Principal Component Analysis Machine Learning Technique on the Underground Big Diameter Steel Pipelines Condition Assessment and Related Data: South African Bulk Water Distribution Utilities}
+        \item \textit{Investigation of the Mechanism Failures of High Temperature Components Occurring Inside Boiler Tubes}
+        \item \textit{Service Model Based on Lean Six Sigma and Queuing Theory to Increase NPS in a Healthcare Company}
+        \item \textit{Blockchain-enabled Information as a Service (IaaS) for Configuration Tracking and Control of Smart Manufacturing Systems}
+        \item \textit{Production Model Based on 5S to Increase Productivity in a SME in the Garment Sector}
+    \end{itemize}
+\end{itemize}
+
+
+% \vspace{0.5cm}
+\section{Conference Presenter:}
+Federated Learning Fault Detection: Towards a Decentralized Machine Learning Framework - IISE 2023\\
+\vspace{0.3cm}
+Rule-based Automated Cancer Staging from Scanned Pathology Reports - IISE 2024\\
+\vspace{0.3cm}
+Empowering Simulation Modeling: An Automated Ontology Framework Enhanced by Large Language Models - INFORMS 2024\\
+\vspace{0.3cm}
+Conversational Geographic Question Answering: LLMs \& Continuous Retrieval-Augmented Generation - SIGSPATIAL 2024\\
+\vspace{0.3cm}
+\break
+% Technologies:
+\section*{Technologies}
+\small
+\begin{multicols}{2}
+    \textbf{Languages:} Python, SQL, Bash, Dart, PHP, Java, C++, CUDA \\
+    \textbf{Frameworks:} Django, Flask, TensorFlow, PyTorch, Flutter, Laravel, Wordpress \\
+    \textbf{IoT:} Arduino, ESP32 \\
+    \textbf{Databases:} PostgreSQL, MongoDB, MySQL, SQL Server \\
+    \textbf{DevOps:} Docker, Git, Jenkins, AWS, Virtualization KVM, Slurm \\
+    \textbf{Optimization:} Networkx, Gurobi, cplex, AnyLogic Simulation, NetworkX \\
+    \textbf{Office Tools:} Excel, Microsoft Office, Linux \\
+    \textbf{GIS:} WMS, GeoSever, OverPass API \\
+\end{multicols}
+
+
+
+\section*{Upcoming Publications}
+\small
+\begin{itemize}[left=0pt]
+    % \item \textbf{Toward Conversational AI for Assessing Clinical Competence}
+
+    \item{Automated Control: The Tragedy of the Commons in End-to-End AI-Driven Systems}
+
+     
+    \item{Literature Survey for New Materials Discovery Powered by AI Agents}
+    \item{Explainable Multi-Tower Gradient Boosting for Extreme Weather Event Analysis at the Oak Ridge Reservation}
+\item{Vision Transformer-Based Quality Assurance Engine for Wind Speed and Direction Classification}
+\item{Automated End-to-End Geospatial Analysis: An AI-Driven Interface}
+
+\end{itemize}
+
+
+
+
+ 
+
+
+    
+
+\end{document}
