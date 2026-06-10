@@ -4,6 +4,13 @@ html, body {
   max-width: 100vw;
 }
 
+/* Always reserve the vertical scrollbar gutter so it doesn't pop in on the
+   first scroll (the splash screen temporarily locks scrolling, which caused a
+   sudden scrollbar/layout shift on the right). */
+html {
+  scrollbar-gutter: stable;
+}
+
 * {
   box-sizing: border-box;
 }

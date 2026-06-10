@@ -1,6 +1,28 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // Initialize SweetScroll for smooth scrolling
-  new SweetScroll({});
+  // Robust smooth-scroll for [data-scroll] / in-page anchor links.
+  // Replaces the SweetScroll dependency, which could intercept the click
+  // (preventDefault) without actually scrolling, leaving the buttons dead.
+  (function initSmoothScroll() {
+    function scrollToTarget(hash) {
+      if (!hash || hash === '#') return false;
+      var target = document.getElementById(hash.slice(1));
+      if (!target) return false;
+      var top = target.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+      return true;
+    }
+
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[data-scroll], a[href^="#"]');
+      if (!link) return;
+      var hash = link.getAttribute('href');
+      if (!hash || hash.charAt(0) !== '#') return;
+      if (scrollToTarget(hash)) {
+        e.preventDefault();
+        if (history.replaceState) history.replaceState(null, '', hash);
+      }
+    });
+  })();
   
   // Get weather-based particle configuration
   function getParticleConfig() {

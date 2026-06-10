@@ -150,3 +150,124 @@
   </div>
 </div>
 
+<!-- ============================================
+     TECH STACK (devicon) — derived from CV / main.tex
+     ============================================ -->
+<div class="skills">
+  <h2 class="skills-title">Tech Stack</h2>
+
+  <div class="skill-group">
+    <h3>Languages</h3>
+    <div class="skill-icons">
+      <span class="skill"><i class="devicon-python-plain colored"></i><b>Python</b></span>
+      <span class="skill"><i class="devicon-cplusplus-plain colored"></i><b>C++</b></span>
+      <span class="skill"><i class="devicon-c-plain colored"></i><b>C</b></span>
+      <span class="skill"><i class="devicon-java-plain colored"></i><b>Java</b></span>
+      <span class="skill"><i class="devicon-php-plain colored"></i><b>PHP</b></span>
+      <span class="skill"><i class="devicon-dart-plain colored"></i><b>Dart</b></span>
+      <span class="skill"><i class="devicon-r-original colored"></i><b>R</b></span>
+      <span class="skill"><i class="devicon-bash-plain colored"></i><b>Bash</b></span>
+    </div>
+  </div>
+
+  <div class="skill-group">
+    <h3>AI / ML &amp; Frameworks</h3>
+    <div class="skill-icons">
+      <span class="skill"><i class="devicon-tensorflow-original colored"></i><b>TensorFlow</b></span>
+      <span class="skill"><i class="devicon-numpy-original colored"></i><b>NumPy</b></span>
+      <span class="skill"><i class="devicon-pandas-original colored"></i><b>Pandas</b></span>
+      <span class="skill"><i class="devicon-jupyter-plain colored"></i><b>Jupyter</b></span>
+      <span class="skill"><i class="devicon-matlab-plain colored"></i><b>MATLAB</b></span>
+      <span class="skill"><i class="devicon-django-plain colored"></i><b>Django</b></span>
+      <span class="skill"><i class="devicon-flask-original colored"></i><b>Flask</b></span>
+      <span class="skill"><i class="devicon-laravel-plain colored"></i><b>Laravel</b></span>
+      <span class="skill"><i class="devicon-flutter-plain colored"></i><b>Flutter</b></span>
+    </div>
+  </div>
+
+  <div class="skill-group">
+    <h3>Databases</h3>
+    <div class="skill-icons">
+      <span class="skill"><i class="devicon-postgresql-plain colored"></i><b>PostgreSQL</b></span>
+      <span class="skill"><i class="devicon-mongodb-plain colored"></i><b>MongoDB</b></span>
+      <span class="skill"><i class="devicon-mysql-plain colored"></i><b>MySQL</b></span>
+      <span class="skill"><i class="devicon-microsoftsqlserver-plain colored"></i><b>SQL Server</b></span>
+    </div>
+  </div>
+
+  <div class="skill-group">
+    <h3>Tools &amp; DevOps</h3>
+    <div class="skill-icons">
+      <span class="skill"><i class="devicon-docker-plain colored"></i><b>Docker</b></span>
+      <span class="skill"><i class="devicon-git-plain colored"></i><b>Git</b></span>
+      <span class="skill"><i class="devicon-jenkins-plain colored"></i><b>Jenkins</b></span>
+      <span class="skill"><i class="devicon-amazonwebservices-plain colored"></i><b>AWS</b></span>
+      <span class="skill"><i class="devicon-googlecloud-plain colored"></i><b>GCP</b></span>
+      <span class="skill"><i class="devicon-kubernetes-plain colored"></i><b>Kubernetes</b></span>
+      <span class="skill"><i class="devicon-linux-plain colored"></i><b>Linux</b></span>
+      <span class="skill"><i class="devicon-arduino-plain colored"></i><b>Arduino</b></span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .skills {
+    max-width: 1100px;
+    margin: 50px auto 10px;
+    padding: 0 10px;
+    text-align: center;
+  }
+  .skills-title {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    margin-bottom: 30px;
+  }
+  .skill-group { margin-bottom: 34px; }
+  .skill-group h3 {
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #6b7280;
+    margin-bottom: 18px;
+  }
+  .skill-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+  .skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 104px;
+    padding: 16px 8px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.25s ease;
+  }
+  .skill:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+  }
+  .skill i {
+    font-size: 42px;
+    line-height: 1;
+  }
+  .skill b {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #374151;
+  }
+  @media (max-width: 480px) {
+    .skill { width: 84px; padding: 12px 6px; }
+    .skill i { font-size: 34px; }
+  }
+</style>
+
