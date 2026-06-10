@@ -1,42 +1,10 @@
 
 <div id="particles-js">
-  <!-- Animated Weather Scene Background -->
-  <div class="weather-scene" id="weather-scene">
-    <!-- Sky Layer -->
-    <div class="sky-layer"></div>
-    
-    <!-- Celestial Bodies -->
-    <div class="sun" id="sun"></div>
-    <div class="moon" id="moon"></div>
-    
-    <!-- Stars (for night) -->
-    <div class="stars" id="stars">
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-      <div class="star"></div>
-    </div>
-    
-    <!-- Clouds Layer -->
-    <div class="clouds-layer" id="clouds-layer">
-      <div class="cloud cloud-1"></div>
-      <div class="cloud cloud-2"></div>
-      <div class="cloud cloud-3"></div>
-      <div class="cloud cloud-4"></div>
-      <div class="cloud cloud-5"></div>
-    </div>
-    
-    <!-- Weather Effects Layer -->
-    <div class="weather-effects" id="weather-effects"></div>
-    
+  <!-- Vanta.js animated sky background -->
+  <div class="vanta-bg" id="vanta-bg"></div>
+
+  <!-- Foreground cartoon scene layered over the clouds -->
+  <div class="scene-fg">
     <!-- Drifting Birds (day only) -->
     <div class="birds" id="birds">
       <div class="bird bird-1"><span></span><span></span></div>
@@ -72,8 +40,11 @@
         <div class="tree tree-6"></div>
       </div>
     </div>
+
+    <!-- Weather Effects Layer (rain / storm) -->
+    <div class="weather-effects" id="weather-effects"></div>
   </div>
-  
+
   <div class="weather-badge" id="weather-badge">
     <i class="fa fa-map-marker" style="opacity: 0.7; font-size: 0.9rem;"></i>
     <span style="opacity: 0.8; font-size: 0.7rem;">Knoxville</span>
@@ -87,7 +58,7 @@
         <span class="greeting">Hello, I'm</span>
         <span class="name">{{ site.username }}</span>
       </h1>
-      
+
       <nav class="header-links">
         <a class="nav-link" href="#about" data-scroll>
           <span class="nav-text">About Me</span>
@@ -106,21 +77,21 @@
           <span class="social-tooltip">Google Scholar</span>
         </a>
         {% endif %}
-        
+
         {% if site.email %}
         <a class="social-link" aria-label="Send email" href="mailto:{{ site.email }}">
           <i class="fa fa-envelope"></i>
           <span class="social-tooltip">Email</span>
         </a>
         {% endif %}
-        
+
         {% if site.linkedin_username %}
         <a class="social-link" aria-label="My LinkedIn" target="_blank" href="https://www.linkedin.com/in/{{ site.linkedin_username }}">
           <i class="fa fa-linkedin"></i>
           <span class="social-tooltip">LinkedIn</span>
         </a>
         {% endif %}
-        
+
         {% if site.github_username %}
         <a class="social-link" aria-label="My GitHub" target="_blank" href="https://github.com/{{ site.github_username }}">
           <i class="fa fa-github"></i>
@@ -130,14 +101,14 @@
       </div>
     </div>
   </div>
+
+  <a class="down" href="#about" data-scroll><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>
 </div>
 
 <style>
 /* ============================================
-   ANIMATED WEATHER LANDSCAPE BACKGROUND
-   iOS/Samsung Weather App Style
+   VANTA.JS SKY BACKGROUND
    ============================================ */
-
 #particles-js {
   position: relative;
   width: 100%;
@@ -149,7 +120,7 @@
   box-sizing: border-box;
 }
 
-.weather-scene {
+.vanta-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -157,361 +128,25 @@
   height: 100%;
   min-height: 100vh;
   min-height: 100dvh;
-  overflow: hidden;
+  z-index: 0;
 }
 
-/* Sky Gradients for Different Times */
-.sky-layer {
+.vanta-bg canvas { display: block; }
+
+/* ============================================
+   FOREGROUND CARTOON SCENE (over the clouds)
+   ============================================ */
+.scene-fg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
-  transition: background 2s ease-in-out;
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* Morning Sky */
-.morning .sky-layer {
-  background: linear-gradient(180deg, 
-    #1e3c72 0%, 
-    #2a5298 15%,
-    #74b9ff 40%, 
-    #fdcb6e 70%,
-    #e17055 90%,
-    #d63031 100%);
-  animation: morningPulse 8s ease-in-out infinite;
-}
-
-@keyframes morningPulse {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(1.05); }
-}
-
-/* Afternoon Sky */
-.afternoon .sky-layer {
-  background: linear-gradient(180deg, 
-    #0984e3 0%, 
-    #74b9ff 30%,
-    #81ecec 60%, 
-    #dfe6e9 100%);
-}
-
-/* Evening Sky */
-.evening .sky-layer {
-  background: linear-gradient(180deg, 
-    #2d3436 0%,
-    #6c5ce7 20%, 
-    #a29bfe 35%,
-    #fd79a8 55%,
-    #fdcb6e 75%,
-    #e17055 100%);
-  animation: eveningGlow 10s ease-in-out infinite;
-}
-
-@keyframes eveningGlow {
-  0%, 100% { filter: saturate(1); }
-  50% { filter: saturate(1.2); }
-}
-
-/* Night Sky */
-.night .sky-layer {
-  background: linear-gradient(180deg, 
-    #0c0c1e 0%, 
-    #1a1a3e 30%,
-    #2d2d5a 60%, 
-    #3d3d6b 100%);
-}
-
-/* ============================================
-   SUN
-   ============================================ */
-.sun {
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #fff9c4 0%, #ffd54f 50%, #ff9800 100%);
-  box-shadow: 
-    0 0 60px 30px rgba(255, 213, 79, 0.4),
-    0 0 100px 60px rgba(255, 152, 0, 0.2),
-    0 0 140px 90px rgba(255, 152, 0, 0.1);
-  opacity: 0;
-  transition: opacity 2s ease-in-out, top 2s ease-in-out, right 2s ease-in-out, background 2s ease-in-out;
-}
-
-/* Cartoon sun rays */
-.sun::before {
-  content: '';
-  position: absolute;
-  inset: -40px;
-  border-radius: 50%;
-  background:
-    repeating-conic-gradient(
-      from 0deg,
-      rgba(255, 221, 110, 0.55) 0deg 6deg,
-      rgba(255, 221, 110, 0) 6deg 18deg
-    );
-  -webkit-mask: radial-gradient(circle, transparent 56px, #000 58px);
-          mask: radial-gradient(circle, transparent 56px, #000 58px);
-  animation: sunSpin 40s linear infinite;
-  opacity: 0;
-  transition: opacity 2s ease;
-}
-
-.morning .sun::before,
-.afternoon .sun::before { opacity: 1; }
-.evening .sun::before { opacity: 0.6; }
-
-@keyframes sunSpin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-.morning .sun {
-  opacity: 1;
-  top: 60%;
-  right: 15%;
-  transform: scale(0.9);
-  animation: sunRise 20s ease-in-out infinite;
-}
-
-.afternoon .sun {
-  opacity: 1;
-  top: 15%;
-  right: 20%;
-  transform: scale(1);
-  animation: sunPulse 4s ease-in-out infinite;
-}
-
-.evening .sun {
-  opacity: 1;
-  top: 55%;
-  right: 10%;
-  transform: scale(1.2);
-  background: radial-gradient(circle, #fff 0%, #ff8a65 40%, #d84315 100%);
-  box-shadow: 
-    0 0 80px 40px rgba(255, 138, 101, 0.5),
-    0 0 120px 80px rgba(216, 67, 21, 0.3);
-}
-
-@keyframes sunRise {
-  0%, 100% { transform: scale(0.9) translateY(0); }
-  50% { transform: scale(0.95) translateY(-20px); }
-}
-
-@keyframes sunPulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 60px 30px rgba(255, 213, 79, 0.4), 0 0 100px 60px rgba(255, 152, 0, 0.2); }
-  50% { transform: scale(1.02); box-shadow: 0 0 80px 40px rgba(255, 213, 79, 0.5), 0 0 120px 80px rgba(255, 152, 0, 0.3); }
-}
-
-/* ============================================
-   MOON
-   ============================================ */
-.moon {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #fafafa 0%, #e0e0e0 50%, #bdbdbd 100%);
-  box-shadow: 
-    0 0 40px 20px rgba(255, 255, 255, 0.2),
-    0 0 80px 40px rgba(255, 255, 255, 0.1),
-    inset -15px -10px 20px rgba(0,0,0,0.1);
-  opacity: 0;
-  top: 15%;
-  right: 20%;
-  transition: opacity 2s ease-in-out;
-}
-
-.night .moon {
-  opacity: 1;
-  animation: moonGlow 6s ease-in-out infinite;
-}
-
-@keyframes moonGlow {
-  0%, 100% { box-shadow: 0 0 40px 20px rgba(255, 255, 255, 0.2), 0 0 80px 40px rgba(255, 255, 255, 0.1), inset -15px -10px 20px rgba(0,0,0,0.1); }
-  50% { box-shadow: 0 0 50px 25px rgba(255, 255, 255, 0.3), 0 0 100px 50px rgba(255, 255, 255, 0.15), inset -15px -10px 20px rgba(0,0,0,0.1); }
-}
-
-/* Moon craters */
-.moon::before,
-.moon::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(150, 150, 150, 0.3);
-}
-
-.moon::before {
-  width: 20px;
-  height: 20px;
-  top: 25%;
-  left: 20%;
-}
-
-.moon::after {
-  width: 15px;
-  height: 15px;
-  top: 55%;
-  left: 50%;
-}
-
-/* ============================================
-   STARS
-   ============================================ */
-.stars {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60%;
-  opacity: 0;
-  transition: opacity 2s ease-in-out;
-}
-
-.night .stars {
-  opacity: 1;
-}
-
-.star {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: #fff;
-  border-radius: 50%;
-  animation: twinkle 2s ease-in-out infinite;
-}
-
-.star:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
-.star:nth-child(2) { top: 15%; left: 50%; animation-delay: 0.5s; width: 2px; height: 2px; }
-.star:nth-child(3) { top: 8%; left: 75%; animation-delay: 1s; }
-.star:nth-child(4) { top: 25%; left: 35%; animation-delay: 0.3s; width: 2px; height: 2px; }
-.star:nth-child(5) { top: 20%; left: 85%; animation-delay: 0.8s; }
-.star:nth-child(6) { top: 5%; left: 60%; animation-delay: 1.2s; width: 4px; height: 4px; }
-.star:nth-child(7) { top: 30%; left: 15%; animation-delay: 0.2s; }
-.star:nth-child(8) { top: 12%; left: 40%; animation-delay: 0.7s; width: 2px; height: 2px; }
-.star:nth-child(9) { top: 35%; left: 70%; animation-delay: 1.5s; }
-.star:nth-child(10) { top: 18%; left: 10%; animation-delay: 0.4s; }
-.star:nth-child(11) { top: 28%; left: 55%; animation-delay: 1.1s; width: 2px; height: 2px; }
-.star:nth-child(12) { top: 22%; left: 92%; animation-delay: 0.6s; }
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-
-/* ============================================
-   CLOUDS
-   ============================================ */
-.clouds-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60%;
-  overflow: hidden;
-}
-
-.cloud {
-  position: absolute;
-  background: #fff;
-  border-radius: 100px;
-  opacity: 0.9;
-  filter: blur(2px);
-}
-
-.cloud::before,
-.cloud::after {
-  content: '';
-  position: absolute;
-  background: inherit;
-  border-radius: 50%;
-}
-
-.cloud-1 {
-  width: 200px;
-  height: 60px;
-  top: 15%;
-  left: -200px;
-  animation: cloudMove 60s linear infinite;
-}
-.cloud-1::before { width: 100px; height: 80px; top: -40px; left: 20px; }
-.cloud-1::after { width: 120px; height: 100px; top: -50px; left: 80px; }
-
-.cloud-2 {
-  width: 150px;
-  height: 50px;
-  top: 25%;
-  left: -150px;
-  animation: cloudMove 80s linear infinite;
-  animation-delay: -20s;
-  opacity: 0.7;
-}
-.cloud-2::before { width: 80px; height: 60px; top: -30px; left: 15px; }
-.cloud-2::after { width: 90px; height: 70px; top: -35px; left: 60px; }
-
-.cloud-3 {
-  width: 180px;
-  height: 55px;
-  top: 10%;
-  left: -180px;
-  animation: cloudMove 70s linear infinite;
-  animation-delay: -40s;
-}
-.cloud-3::before { width: 90px; height: 70px; top: -35px; left: 25px; }
-.cloud-3::after { width: 100px; height: 80px; top: -40px; left: 70px; }
-
-.cloud-4 {
-  width: 160px;
-  height: 45px;
-  top: 35%;
-  left: -160px;
-  animation: cloudMove 90s linear infinite;
-  animation-delay: -60s;
-  opacity: 0.6;
-}
-.cloud-4::before { width: 70px; height: 55px; top: -28px; left: 20px; }
-.cloud-4::after { width: 85px; height: 65px; top: -32px; left: 55px; }
-
-.cloud-5 {
-  width: 140px;
-  height: 40px;
-  top: 20%;
-  left: -140px;
-  animation: cloudMove 75s linear infinite;
-  animation-delay: -35s;
-  opacity: 0.8;
-}
-.cloud-5::before { width: 65px; height: 50px; top: -25px; left: 15px; }
-.cloud-5::after { width: 75px; height: 60px; top: -30px; left: 50px; }
-
-@keyframes cloudMove {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(100vw + 300px)); }
-}
-
-/* Cloud appearance by weather */
-.weather-clear .clouds-layer { opacity: 0.3; }
-.weather-cloudy .clouds-layer { opacity: 1; }
-.weather-cloudy .cloud { background: #b0bec5; filter: blur(3px); }
-.weather-rainy .clouds-layer { opacity: 1; }
-.weather-rainy .cloud { background: #607d8b; filter: blur(4px); }
-.weather-stormy .clouds-layer { opacity: 1; }
-.weather-stormy .cloud { background: #37474f; filter: blur(5px); animation-duration: 30s !important; }
-.weather-snowy .clouds-layer { opacity: 0.9; }
-.weather-snowy .cloud { background: #cfd8dc; }
-
-/* Night clouds */
-.night .cloud { 
-  background: rgba(100, 120, 140, 0.4); 
-  opacity: 0.5;
-}
-
-/* ============================================
-   CARTOON LANDSCAPE (layered SVG)
-   ============================================ */
+/* ---- Landscape (mountains, hills) ---- */
 .landscape {
   position: absolute;
   bottom: 0;
@@ -532,15 +167,10 @@
 
 .landscape .layer path { transition: fill 2s ease-in-out; }
 
-/* Vertical placement of each band */
 .layer-mountains  { height: 100%; }
 .layer-caps       { height: 100%; }
-.layer-hill-back  { height: 72%; }
-.layer-hill-front { height: 50%; }
-
-/* Soft floating motion for depth */
-.layer-hill-back  { animation: hillSwayA 16s ease-in-out infinite; }
-.layer-hill-front { animation: hillSwayB 12s ease-in-out infinite; }
+.layer-hill-back  { height: 72%; animation: hillSwayA 16s ease-in-out infinite; }
+.layer-hill-front { height: 50%; animation: hillSwayB 12s ease-in-out infinite; }
 
 @keyframes hillSwayA {
   0%, 100% { transform: translateX(0); }
@@ -556,7 +186,7 @@
 .weather-snowy .layer-caps path,
 .night .layer-caps path { opacity: 0.85; }
 
-/* ---- Time-of-day palettes ---- */
+/* Time-of-day palettes */
 .morning .layer-mountains path  { fill: #5b6b8c; }
 .morning .layer-hill-back path  { fill: #6a8caf; }
 .morning .layer-hill-front path { fill: #3f5d78; }
@@ -578,9 +208,7 @@
 .layer-hill-back path  { fill: #3a4a63; }
 .layer-hill-front path { fill: #243049; }
 
-/* ============================================
-   PINE TREES (cartoon)
-   ============================================ */
+/* ---- Pine trees ---- */
 .trees {
   position: absolute;
   bottom: 0;
@@ -599,7 +227,6 @@
   animation: treeSway 5s ease-in-out infinite;
 }
 
-/* Trunk */
 .tree::after {
   content: '';
   position: absolute;
@@ -612,7 +239,6 @@
   border-radius: 2px;
 }
 
-/* Foliage (stacked triangles via gradients) */
 .tree::before {
   content: '';
   position: absolute;
@@ -639,14 +265,11 @@
   50%      { transform: rotate(1.5deg); }
 }
 
-/* Darken trees toward evening/night */
 .evening .tree::before { filter: drop-shadow(0 -10px 0 #1c5e38) drop-shadow(0 -20px 0 #226f43); border-bottom-color: #154d2a; }
 .night .tree::before   { filter: drop-shadow(0 -10px 0 #0c2e1c) drop-shadow(0 -20px 0 #103c25); border-bottom-color: #0a2417; }
 .night .tree::after, .evening .tree::after { background: #20160d; }
 
-/* ============================================
-   BIRDS (day only)
-   ============================================ */
+/* ---- Birds (day only) ---- */
 .birds {
   position: absolute;
   top: 18%;
@@ -698,9 +321,7 @@
   100% { transform: translate(105vw, 10px) scale(1); }
 }
 
-/* ============================================
-   WEATHER EFFECTS
-   ============================================ */
+/* ---- Weather effects (rain / storm) ---- */
 .weather-effects {
   position: absolute;
   top: 0;
@@ -711,7 +332,6 @@
   overflow: hidden;
 }
 
-/* Rain Effect */
 .weather-rainy .weather-effects::before {
   content: '';
   position: absolute;
@@ -719,8 +339,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
-    linear-gradient(transparent 0%, rgba(120, 160, 200, 0.3) 50%, transparent 100%);
+  background-image: linear-gradient(transparent 0%, rgba(120, 160, 200, 0.3) 50%, transparent 100%);
   background-size: 2px 20px;
   animation: rain 0.3s linear infinite;
 }
@@ -730,7 +349,6 @@
   100% { background-position: 20px 40px; }
 }
 
-/* Storm Effect with Lightning */
 .weather-stormy .weather-effects::before {
   content: '';
   position: absolute;
@@ -738,8 +356,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
-    linear-gradient(transparent 0%, rgba(80, 100, 130, 0.4) 50%, transparent 100%);
+  background-image: linear-gradient(transparent 0%, rgba(80, 100, 130, 0.4) 50%, transparent 100%);
   background-size: 3px 30px;
   animation: stormRain 0.2s linear infinite;
 }
@@ -766,8 +383,6 @@
   92% { background: rgba(255, 255, 255, 0.1); }
   94% { background: rgba(255, 255, 255, 0.4); }
 }
-
-/* Snow already handled by particles.js */
 
 /* ============================================
    WEATHER BADGE
@@ -814,6 +429,13 @@
 
 .header-content {
   animation: fadeInUp 1s ease-out;
+  display: inline-block;
+  padding: 30px 45px;
+  border-radius: 28px;
+  background: rgba(20, 28, 45, 0.32);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes fadeInUp {
@@ -860,11 +482,11 @@
   text-decoration: none;
   color: #fff;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 1px;
   padding: 10px 0;
   transition: color 0.3s ease;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.5);
 }
 
 .nav-link:hover { color: #fff; }
@@ -898,21 +520,23 @@
   justify-content: center;
   width: 50px;
   height: 50px;
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.85);
   border-radius: 50%;
   color: #fff;
   font-size: 1.2rem;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(5px);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(20, 28, 45, 0.45);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
 .social-link:hover {
   border-color: #fff;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(20, 28, 45, 0.7);
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .social-link i { transition: transform 0.3s ease; }
@@ -976,193 +600,195 @@
 @media (max-width: 480px) {
   .site-title .greeting { font-size: 1rem; }
   .header-links { flex-direction: column; gap: 15px; }
-  .cloud { transform: scale(0.6); }
-  .tree { transform: scale(0.7); }
-  .sun { width: 90px; height: 90px; }
 }
 </style>
 
+<!-- Vanta.js animated clouds background (https://github.com/tengbao/vanta) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.clouds.min.js"></script>
+
 <script>
-// Real Weather from Knoxville, TN using Open-Meteo API (free, no API key required)
-(function() {
-  const particlesEl = document.getElementById('particles-js');
-  const weatherBadge = document.getElementById('weather-badge');
-  const weatherIcon = document.getElementById('weather-icon');
-  const weatherText = document.getElementById('weather-text');
-  
+// Vanta.js CLOUDS background with time-of-day palette + live Knoxville weather badge
+(function () {
+  var vantaEl = document.getElementById('vanta-bg');
+  var particlesEl = document.getElementById('particles-js');
+  var weatherIcon = document.getElementById('weather-icon');
+  var weatherText = document.getElementById('weather-text');
+
   // Knoxville, TN coordinates
-  const KNOXVILLE_LAT = 35.9606;
-  const KNOXVILLE_LON = -83.9207;
-  
-  // WMO Weather Codes mapping to our weather types
-  // https://open-meteo.com/en/docs
-  function mapWeatherCode(code) {
-    // Clear
-    if (code === 0 || code === 1) {
-      return { name: 'clear', icon: 'fa-sun-o', label: 'Clear' };
-    }
-    // Partly cloudy
-    if (code === 2) {
-      return { name: 'clear', icon: 'fa-sun-o', label: 'Partly Cloudy' };
-    }
-    // Cloudy/Overcast
-    if (code === 3 || code === 45 || code === 48) {
-      return { name: 'cloudy', icon: 'fa-cloud', label: 'Cloudy' };
-    }
-    // Drizzle
-    if (code >= 51 && code <= 57) {
-      return { name: 'rainy', icon: 'fa-tint', label: 'Drizzle' };
-    }
-    // Rain
-    if (code >= 61 && code <= 67) {
-      return { name: 'rainy', icon: 'fa-tint', label: 'Rainy' };
-    }
-    // Snow
-    if (code >= 71 && code <= 77) {
-      return { name: 'snowy', icon: 'fa-snowflake-o', label: 'Snowy' };
-    }
-    // Rain showers
-    if (code >= 80 && code <= 82) {
-      return { name: 'rainy', icon: 'fa-tint', label: 'Showers' };
-    }
-    // Snow showers
-    if (code >= 85 && code <= 86) {
-      return { name: 'snowy', icon: 'fa-snowflake-o', label: 'Snow Showers' };
-    }
-    // Thunderstorm
-    if (code >= 95 && code <= 99) {
-      return { name: 'stormy', icon: 'fa-bolt', label: 'Thunderstorm' };
-    }
-    // Default to clear
-    return { name: 'clear', icon: 'fa-sun-o', label: 'Clear' };
-  }
-  
+  var LAT = 35.9606;
+  var LON = -83.9207;
+
+  var vantaEffect = null;
+  var currentWeather = { name: 'clear', icon: 'fa-sun-o', label: 'Clear' };
+
   function getTimePeriod() {
-    const hour = new Date().getHours();
+    var hour = new Date().getHours();
     if (hour >= 5 && hour < 12) return 'morning';
     if (hour >= 12 && hour < 17) return 'afternoon';
     if (hour >= 17 && hour < 21) return 'evening';
     return 'night';
   }
-  
-  function applyWeather(weather, temperature) {
-    const timePeriod = getTimePeriod();
-    
-    // Remove existing classes
+
+  // Base sky/cloud/sun colors for each part of the day
+  var PALETTES = {
+    morning:   { skyColor: 0x4a78c2, cloudColor: 0xcdd9ec, cloudShadowColor: 0x4a5a78, sunColor: 0xffb36b, sunGlareColor: 0xff8b54, sunlightColor: 0xffc183, speed: 0.9 },
+    afternoon: { skyColor: 0x4aa6e0, cloudColor: 0xffffff, cloudShadowColor: 0x97a9c4, sunColor: 0xffd27d, sunGlareColor: 0xfff0c2, sunlightColor: 0xffe9b0, speed: 1.0 },
+    evening:   { skyColor: 0x6c5ce7, cloudColor: 0xf3a6c4, cloudShadowColor: 0x4a3f63, sunColor: 0xff7e5f, sunGlareColor: 0xffb07a, sunlightColor: 0xff9e7a, speed: 0.7 },
+    night:     { skyColor: 0x10122a, cloudColor: 0x3a3a5e, cloudShadowColor: 0x080814, sunColor: 0x2a2a55, sunGlareColor: 0x1a1a33, sunlightColor: 0x4a4a7a, speed: 0.5 }
+  };
+
+  function paletteFor(period, weatherName) {
+    var base = PALETTES[period] || PALETTES.afternoon;
+    var p = {};
+    for (var k in base) { p[k] = base[k]; }
+
+    if (weatherName === 'cloudy' || weatherName === 'rainy' || weatherName === 'snowy') {
+      p.cloudColor = period === 'night' ? 0x2a2a44 : 0xb9c2cf;
+      p.skyColor = period === 'night' ? 0x0c0c1e : 0x6f8aa6;
+    }
+    if (weatherName === 'stormy') {
+      p.cloudColor = 0x4a4f5a;
+      p.cloudShadowColor = 0x16181f;
+      p.skyColor = period === 'night' ? 0x0a0a14 : 0x556070;
+      p.speed = 1.6;
+    }
+    return p;
+  }
+
+  function applyPalette(period, weatherName) {
+    if (vantaEffect && typeof vantaEffect.setOptions === 'function') {
+      vantaEffect.setOptions(paletteFor(period, weatherName));
+    }
+    applyClasses(period, weatherName);
+  }
+
+  // Drive the foreground scene (landscape, birds, weather effects) via classes
+  function applyClasses(period, weatherName) {
+    if (!particlesEl) { return; }
     particlesEl.classList.remove('morning', 'afternoon', 'evening', 'night');
     particlesEl.classList.remove('weather-clear', 'weather-cloudy', 'weather-rainy', 'weather-snowy', 'weather-stormy');
-    
-    // Add new classes
-    particlesEl.classList.add(timePeriod);
-    particlesEl.classList.add('weather-' + weather.name);
-    
-    const timeLabel = timePeriod.charAt(0).toUpperCase() + timePeriod.slice(1);
-    
-    // Update icon based on time and weather
-    let icon = weather.icon;
-    if (timePeriod === 'night' && weather.name === 'clear') {
-      icon = 'fa-moon-o';
-    }
-    
-    weatherIcon.className = 'fa ' + icon;
-    
-    // Display with temperature if available
-    if (temperature !== null) {
-      weatherText.textContent = `${Math.round(temperature)}°F • ${weather.label}`;
-    } else {
-      weatherText.textContent = `${timeLabel} • ${weather.label}`;
+    particlesEl.classList.add(period);
+    particlesEl.classList.add('weather-' + weatherName);
+  }
+
+  function initVanta(period, weatherName) {
+    if (!window.VANTA || !window.VANTA.CLOUDS || !vantaEl) { return; }
+    vantaEffect = window.VANTA.CLOUDS(Object.assign({
+      el: vantaEl,
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.0,
+      minWidth: 200.0
+    }, paletteFor(period, weatherName)));
+  }
+
+  // WMO Weather Codes -> simple weather type (https://open-meteo.com/en/docs)
+  function mapWeatherCode(code) {
+    if (code === 0 || code === 1) { return { name: 'clear', icon: 'fa-sun-o', label: 'Clear' }; }
+    if (code === 2) { return { name: 'cloudy', icon: 'fa-cloud', label: 'Partly Cloudy' }; }
+    if (code === 3 || code === 45 || code === 48) { return { name: 'cloudy', icon: 'fa-cloud', label: 'Cloudy' }; }
+    if (code >= 51 && code <= 57) { return { name: 'rainy', icon: 'fa-tint', label: 'Drizzle' }; }
+    if (code >= 61 && code <= 67) { return { name: 'rainy', icon: 'fa-tint', label: 'Rainy' }; }
+    if (code >= 71 && code <= 77) { return { name: 'snowy', icon: 'fa-snowflake-o', label: 'Snowy' }; }
+    if (code >= 80 && code <= 82) { return { name: 'rainy', icon: 'fa-tint', label: 'Showers' }; }
+    if (code >= 85 && code <= 86) { return { name: 'snowy', icon: 'fa-snowflake-o', label: 'Snow Showers' }; }
+    if (code >= 95 && code <= 99) { return { name: 'stormy', icon: 'fa-bolt', label: 'Thunderstorm' }; }
+    return { name: 'clear', icon: 'fa-sun-o', label: 'Clear' };
+  }
+
+  function updateBadge(weather, temperature, period) {
+    var icon = weather.icon;
+    if (period === 'night' && weather.name === 'clear') { icon = 'fa-moon-o'; }
+    if (weatherIcon) { weatherIcon.className = 'fa ' + icon; }
+    if (weatherText) {
+      if (temperature !== null && temperature !== undefined) {
+        weatherText.textContent = Math.round(temperature) + '\u00B0F \u2022 ' + weather.label;
+      } else {
+        var label = period.charAt(0).toUpperCase() + period.slice(1);
+        weatherText.textContent = label + ' \u2022 ' + weather.label;
+      }
     }
   }
-  
+
   async function fetchWeather() {
     try {
-      // Open-Meteo API - free, no API key required
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${KNOXVILLE_LAT}&longitude=${KNOXVILLE_LON}&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America%2FNew_York`;
-      
-      const response = await fetch(url);
-      if (!response.ok) throw new Error('Weather fetch failed');
-      
-      const data = await response.json();
-      const weatherCode = data.current.weather_code;
-      const temperature = data.current.temperature_2m;
-      const weather = mapWeatherCode(weatherCode);
-      
-      // Cache the weather data
+      var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + LAT +
+        '&longitude=' + LON +
+        '&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America%2FNew_York';
+      var response = await fetch(url);
+      if (!response.ok) { throw new Error('Weather fetch failed'); }
+      var data = await response.json();
+      var weather = mapWeatherCode(data.current.weather_code);
+      var temperature = data.current.temperature_2m;
       sessionStorage.setItem('knoxvilleWeather', JSON.stringify({
         weather: weather,
         temperature: temperature,
         timestamp: Date.now()
       }));
-      
-      return { weather, temperature };
+      return { weather: weather, temperature: temperature };
     } catch (error) {
       console.log('Weather API error, using cached or default:', error);
       return null;
     }
   }
-  
+
   async function init() {
-    const timePeriod = getTimePeriod();
-    
-    // Show loading state
-    particlesEl.classList.add(timePeriod);
-    weatherText.textContent = 'Knoxville, TN...';
-    
-    // Check cache first (refresh every 15 minutes)
-    const cached = sessionStorage.getItem('knoxvilleWeather');
-    const fifteenMinutes = 15 * 60 * 1000;
-    
+    var period = getTimePeriod();
+    initVanta(period, currentWeather.name);
+    applyClasses(period, currentWeather.name);
+    if (weatherText) { weatherText.textContent = 'Knoxville, TN...'; }
+
+    var cached = sessionStorage.getItem('knoxvilleWeather');
+    var fifteenMinutes = 15 * 60 * 1000;
+
     if (cached) {
-      const cachedData = JSON.parse(cached);
-      if (Date.now() - cachedData.timestamp < fifteenMinutes) {
-        applyWeather(cachedData.weather, cachedData.temperature);
+      var c = JSON.parse(cached);
+      if (Date.now() - c.timestamp < fifteenMinutes) {
+        currentWeather = c.weather;
+        updateBadge(c.weather, c.temperature, period);
+        applyPalette(period, c.weather.name);
         return;
       }
     }
-    
-    // Fetch fresh weather data
-    const result = await fetchWeather();
-    
+
+    var result = await fetchWeather();
     if (result) {
-      applyWeather(result.weather, result.temperature);
+      currentWeather = result.weather;
+      updateBadge(result.weather, result.temperature, period);
+      applyPalette(period, result.weather.name);
     } else if (cached) {
-      // Use stale cache if fetch failed
-      const cachedData = JSON.parse(cached);
-      applyWeather(cachedData.weather, cachedData.temperature);
+      var cd = JSON.parse(cached);
+      currentWeather = cd.weather;
+      updateBadge(cd.weather, cd.temperature, period);
+      applyPalette(period, cd.weather.name);
     } else {
-      // Fallback to clear weather
-      applyWeather({ name: 'clear', icon: 'fa-sun-o', label: 'Clear' }, null);
+      updateBadge(currentWeather, null, period);
     }
   }
-  
-  // Initialize
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
-  
-  // Update time period every minute and refresh weather every 15 minutes
-  setInterval(function() {
-    const currentTime = getTimePeriod();
-    if (!particlesEl.classList.contains(currentTime)) {
-      particlesEl.classList.remove('morning', 'afternoon', 'evening', 'night');
-      particlesEl.classList.add(currentTime);
-    }
+
+  // Keep the sky in sync with the time of day
+  setInterval(function () {
+    applyPalette(getTimePeriod(), currentWeather.name);
   }, 60000);
-  
-  // Refresh weather data every 15 minutes
-  setInterval(async function() {
-    const result = await fetchWeather();
+
+  // Refresh weather every 15 minutes
+  setInterval(async function () {
+    var period = getTimePeriod();
+    var result = await fetchWeather();
     if (result) {
-      applyWeather(result.weather, result.temperature);
+      currentWeather = result.weather;
+      updateBadge(result.weather, result.temperature, period);
+      applyPalette(period, result.weather.name);
     }
   }, 15 * 60 * 1000);
 })();
 </script>
-</div>
-
-<a class="down" href="#about" data-scroll><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>
-
-</div>
 
