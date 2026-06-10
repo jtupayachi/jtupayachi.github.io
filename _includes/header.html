@@ -118,7 +118,15 @@
   min-height: 100dvh;
   overflow: hidden;
   box-sizing: border-box;
+  /* Time-of-day gradient sky fallback (shown if WebGL/Vanta/CDN is unavailable) */
+  background: linear-gradient(180deg, #4aa6e0 0%, #74b9ff 45%, #add6f5 100%);
+  transition: background 2s ease-in-out;
 }
+
+#particles-js.morning   { background: linear-gradient(180deg, #2a5298 0%, #74b9ff 45%, #fdcb6e 100%); }
+#particles-js.afternoon { background: linear-gradient(180deg, #4aa6e0 0%, #74b9ff 45%, #add6f5 100%); }
+#particles-js.evening   { background: linear-gradient(180deg, #2d3436 0%, #6c5ce7 35%, #fd79a8 70%, #fdcb6e 100%); }
+#particles-js.night     { background: linear-gradient(180deg, #0c0c1e 0%, #1a1a3e 45%, #2d2d5a 100%); }
 
 .vanta-bg {
   position: absolute;
