@@ -37,23 +37,39 @@
     <!-- Weather Effects Layer -->
     <div class="weather-effects" id="weather-effects"></div>
     
-    <!-- Landscape Silhouette -->
+    <!-- Drifting Birds (day only) -->
+    <div class="birds" id="birds">
+      <div class="bird bird-1"><span></span><span></span></div>
+      <div class="bird bird-2"><span></span><span></span></div>
+      <div class="bird bird-3"><span></span><span></span></div>
+    </div>
+
+    <!-- Cartoon Landscape (layered SVG hills) -->
     <div class="landscape">
-      <div class="mountains">
-        <div class="mountain mountain-1"></div>
-        <div class="mountain mountain-2"></div>
-        <div class="mountain mountain-3"></div>
-      </div>
-      <div class="hills">
-        <div class="hill hill-1"></div>
-        <div class="hill hill-2"></div>
-      </div>
+      <!-- Far mountains -->
+      <svg class="layer layer-mountains" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,224 L160,160 L320,224 L480,128 L640,224 L800,144 L960,224 L1120,160 L1280,224 L1440,176 L1440,320 L0,320 Z"></path>
+      </svg>
+      <!-- Snow caps -->
+      <svg class="layer layer-caps" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M480,128 L455,165 L470,158 L485,168 L500,158 L515,165 Z M800,144 L778,176 L792,170 L805,179 L818,170 L832,176 Z"></path>
+      </svg>
+      <!-- Mid hill -->
+      <svg class="layer layer-hill-back" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,256 C240,192 480,288 720,240 C960,192 1200,272 1440,224 L1440,320 L0,320 Z"></path>
+      </svg>
+      <!-- Front hill -->
+      <svg class="layer layer-hill-front" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,288 C200,240 420,320 660,288 C900,256 1140,320 1440,272 L1440,320 L0,320 Z"></path>
+      </svg>
+      <!-- Trees on front hill -->
       <div class="trees">
         <div class="tree tree-1"></div>
         <div class="tree tree-2"></div>
         <div class="tree tree-3"></div>
         <div class="tree tree-4"></div>
         <div class="tree tree-5"></div>
+        <div class="tree tree-6"></div>
       </div>
     </div>
   </div>
@@ -222,7 +238,35 @@
     0 0 100px 60px rgba(255, 152, 0, 0.2),
     0 0 140px 90px rgba(255, 152, 0, 0.1);
   opacity: 0;
-  transition: all 2s ease-in-out;
+  transition: opacity 2s ease-in-out, top 2s ease-in-out, right 2s ease-in-out, background 2s ease-in-out;
+}
+
+/* Cartoon sun rays */
+.sun::before {
+  content: '';
+  position: absolute;
+  inset: -40px;
+  border-radius: 50%;
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(255, 221, 110, 0.55) 0deg 6deg,
+      rgba(255, 221, 110, 0) 6deg 18deg
+    );
+  -webkit-mask: radial-gradient(circle, transparent 56px, #000 58px);
+          mask: radial-gradient(circle, transparent 56px, #000 58px);
+  animation: sunSpin 40s linear infinite;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.morning .sun::before,
+.afternoon .sun::before { opacity: 1; }
+.evening .sun::before { opacity: 0.6; }
+
+@keyframes sunSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 .morning .sun {
@@ -466,152 +510,193 @@
 }
 
 /* ============================================
-   LANDSCAPE SILHOUETTE
+   CARTOON LANDSCAPE (layered SVG)
    ============================================ */
 .landscape {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 40%;
+  height: 48%;
   pointer-events: none;
 }
 
-/* Mountains */
-.mountains {
-  position: absolute;
-  bottom: 15%;
-  left: 0;
-  width: 100%;
-  height: 60%;
-}
-
-.mountain {
+.landscape .layer {
   position: absolute;
   bottom: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  opacity: 0.3;
-}
-
-.mountain-1 {
-  left: 5%;
-  border-width: 0 120px 200px 120px;
-  border-color: transparent transparent #1a1a2e transparent;
-}
-
-.mountain-2 {
-  left: 25%;
-  border-width: 0 180px 280px 180px;
-  border-color: transparent transparent #16213e transparent;
-}
-
-.mountain-3 {
-  right: 10%;
-  border-width: 0 150px 240px 150px;
-  border-color: transparent transparent #1a1a2e transparent;
-}
-
-/* Different mountain colors for times */
-.morning .mountain { opacity: 0.4; }
-.morning .mountain-1 { border-bottom-color: #4a5568; }
-.morning .mountain-2 { border-bottom-color: #2d3748; }
-.morning .mountain-3 { border-bottom-color: #4a5568; }
-
-.afternoon .mountain { opacity: 0.25; }
-.afternoon .mountain-1 { border-bottom-color: #667eea; }
-.afternoon .mountain-2 { border-bottom-color: #5a67d8; }
-.afternoon .mountain-3 { border-bottom-color: #667eea; }
-
-.evening .mountain { opacity: 0.5; }
-.evening .mountain-1 { border-bottom-color: #2d3436; }
-.evening .mountain-2 { border-bottom-color: #1a1a2e; }
-.evening .mountain-3 { border-bottom-color: #2d3436; }
-
-.night .mountain { opacity: 0.6; }
-
-/* Hills */
-.hills {
-  position: absolute;
-  bottom: 5%;
   left: 0;
   width: 100%;
-  height: 30%;
-}
-
-.hill {
-  position: absolute;
-  bottom: 0;
-  border-radius: 50% 50% 0 0;
-  opacity: 0.4;
-}
-
-.hill-1 {
-  left: -5%;
-  width: 50%;
   height: 100%;
-  background: #1a1a2e;
+  display: block;
 }
 
-.hill-2 {
-  right: -10%;
-  width: 60%;
-  height: 80%;
-  background: #16213e;
+.landscape .layer path { transition: fill 2s ease-in-out; }
+
+/* Vertical placement of each band */
+.layer-mountains  { height: 100%; }
+.layer-caps       { height: 100%; }
+.layer-hill-back  { height: 72%; }
+.layer-hill-front { height: 50%; }
+
+/* Soft floating motion for depth */
+.layer-hill-back  { animation: hillSwayA 16s ease-in-out infinite; }
+.layer-hill-front { animation: hillSwayB 12s ease-in-out infinite; }
+
+@keyframes hillSwayA {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(-1.2%); }
+}
+@keyframes hillSwayB {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(1.2%); }
 }
 
-.morning .hill-1 { background: #553c9a; opacity: 0.3; }
-.morning .hill-2 { background: #44337a; opacity: 0.25; }
+/* Snow caps default hidden, shown on snowy/night */
+.layer-caps path { fill: #ffffff; opacity: 0; transition: opacity 1.2s ease; }
+.weather-snowy .layer-caps path,
+.night .layer-caps path { opacity: 0.85; }
 
-.afternoon .hill-1 { background: #4c51bf; opacity: 0.2; }
-.afternoon .hill-2 { background: #434190; opacity: 0.15; }
+/* ---- Time-of-day palettes ---- */
+.morning .layer-mountains path  { fill: #5b6b8c; }
+.morning .layer-hill-back path  { fill: #6a8caf; }
+.morning .layer-hill-front path { fill: #3f5d78; }
 
-.evening .hill-1 { background: #1a1a2e; opacity: 0.5; }
-.evening .hill-2 { background: #0d0d1a; opacity: 0.45; }
+.afternoon .layer-mountains path  { fill: #6c8fc7; }
+.afternoon .layer-hill-back path  { fill: #4f7bb0; }
+.afternoon .layer-hill-front path { fill: #2f5d8a; }
 
-.night .hill-1 { background: #0a0a14; opacity: 0.7; }
-.night .hill-2 { background: #050508; opacity: 0.65; }
+.evening .layer-mountains path  { fill: #4a3f63; }
+.evening .layer-hill-back path  { fill: #3a3052; }
+.evening .layer-hill-front path { fill: #241d38; }
 
-/* Trees */
+.night .layer-mountains path  { fill: #1a1a30; }
+.night .layer-hill-back path  { fill: #12122a; }
+.night .layer-hill-front path { fill: #08081a; }
+
+/* Fallback fill if no time class yet */
+.layer-mountains path  { fill: #4a5568; }
+.layer-hill-back path  { fill: #3a4a63; }
+.layer-hill-front path { fill: #243049; }
+
+/* ============================================
+   PINE TREES (cartoon)
+   ============================================ */
 .trees {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 15%;
+  height: 22%;
+  z-index: 2;
 }
 
 .tree {
   position: absolute;
-  bottom: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  opacity: 0.6;
+  bottom: 6%;
+  width: 38px;
+  height: 64px;
+  transform-origin: bottom center;
+  animation: treeSway 5s ease-in-out infinite;
 }
 
-.tree::before {
+/* Trunk */
+.tree::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 8px;
-  height: 30px;
-  background: inherit;
-  border: none;
+  width: 7px;
+  height: 14px;
+  background: #3a2a1a;
+  border-radius: 2px;
 }
 
-.tree-1 { left: 5%; border-width: 0 15px 60px 15px; border-color: transparent transparent #0a0a14 transparent; }
-.tree-2 { left: 12%; border-width: 0 12px 50px 12px; border-color: transparent transparent #0d0d1a transparent; }
-.tree-3 { left: 75%; border-width: 0 18px 70px 18px; border-color: transparent transparent #0a0a14 transparent; }
-.tree-4 { left: 85%; border-width: 0 14px 55px 14px; border-color: transparent transparent #0d0d1a transparent; }
-.tree-5 { left: 92%; border-width: 0 10px 45px 10px; border-color: transparent transparent #0a0a14 transparent; }
+/* Foliage (stacked triangles via gradients) */
+.tree::before {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 19px solid transparent;
+  border-right: 19px solid transparent;
+  border-bottom: 52px solid #1f6b3a;
+  filter: drop-shadow(0 -10px 0 #25804a) drop-shadow(0 -20px 0 #2f9a59);
+}
 
-.morning .tree, .afternoon .tree { opacity: 0.4; }
-.evening .tree { opacity: 0.7; }
-.night .tree { opacity: 0.9; }
+.tree-1 { left: 6%;  transform: scale(0.9);  animation-delay: 0s; }
+.tree-2 { left: 14%; transform: scale(0.7);  animation-delay: 0.6s; }
+.tree-3 { left: 22%; transform: scale(1.05); animation-delay: 1.1s; }
+.tree-4 { left: 72%; transform: scale(0.8);  animation-delay: 0.3s; }
+.tree-5 { left: 83%; transform: scale(1.1);  animation-delay: 0.9s; }
+.tree-6 { left: 92%; transform: scale(0.75); animation-delay: 1.4s; }
+
+@keyframes treeSway {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50%      { transform: rotate(1.5deg); }
+}
+
+/* Darken trees toward evening/night */
+.evening .tree::before { filter: drop-shadow(0 -10px 0 #1c5e38) drop-shadow(0 -20px 0 #226f43); border-bottom-color: #154d2a; }
+.night .tree::before   { filter: drop-shadow(0 -10px 0 #0c2e1c) drop-shadow(0 -20px 0 #103c25); border-bottom-color: #0a2417; }
+.night .tree::after, .evening .tree::after { background: #20160d; }
+
+/* ============================================
+   BIRDS (day only)
+   ============================================ */
+.birds {
+  position: absolute;
+  top: 18%;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  z-index: 1;
+}
+
+.morning .birds, .afternoon .birds { opacity: 1; }
+
+.bird {
+  position: absolute;
+  width: 26px;
+  height: 12px;
+}
+
+.bird span {
+  position: absolute;
+  top: 0;
+  width: 14px;
+  height: 12px;
+  border: 2.5px solid rgba(40, 40, 60, 0.55);
+  border-bottom: none;
+  border-right: none;
+  border-radius: 50% 50% 0 0;
+  transform-origin: bottom right;
+  animation: flap 0.5s ease-in-out infinite;
+}
+
+.bird span:nth-child(1) { left: 0; }
+.bird span:nth-child(2) { left: 11px; transform: scaleX(-1); transform-origin: bottom left; }
+
+@keyframes flap {
+  0%, 100% { transform: rotate(0deg) scaleY(1); }
+  50%      { transform: rotate(0deg) scaleY(0.55); }
+}
+
+.bird-1 { top: 12%; left: -40px; transform: scale(1);   animation: birdFly 22s linear infinite; }
+.bird-2 { top: 26%; left: -40px; transform: scale(0.7); animation: birdFly 28s linear infinite; animation-delay: -8s; }
+.bird-3 { top: 8%;  left: -40px; transform: scale(0.85);animation: birdFly 25s linear infinite; animation-delay: -15s; }
+
+@keyframes birdFly {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(50vw, -20px) scale(1); }
+  100% { transform: translate(105vw, 10px) scale(1); }
+}
 
 /* ============================================
    WEATHER EFFECTS
@@ -885,7 +970,6 @@
   .nav-link { font-size: 0.9rem; }
   .social-link { width: 45px; height: 45px; font-size: 1rem; }
   .header-icons { gap: 15px; }
-  .mountain-2 { border-width: 0 120px 180px 120px; }
   .weather-badge { top: 15px; right: 15px; padding: 8px 14px; font-size: 0.75rem; }
 }
 
@@ -893,6 +977,8 @@
   .site-title .greeting { font-size: 1rem; }
   .header-links { flex-direction: column; gap: 15px; }
   .cloud { transform: scale(0.6); }
+  .tree { transform: scale(0.7); }
+  .sun { width: 90px; height: 90px; }
 }
 </style>
 
