@@ -45,4 +45,138 @@ html, body {
   .nav-link.active {
     color: #ffd700 !important;
   }
+
+/* ============================================
+   iOS-STYLE GLOBAL POLISH
+   ============================================ */
+:root {
+  --ios-font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+              'Segoe UI', 'Montserrat', Roboto, Helvetica, Arial, sans-serif;
+  --ios-radius: 20px;
+  --ios-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --ios-shadow-hover: 0 18px 40px rgba(0, 0, 0, 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--ios-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, #eef3fb 0%, rgba(238, 243, 251, 0) 60%),
+    #f6f8fb;
+}
+
+#about {
+  color: #1c1c1e;
+}
+
+/* Section headings — SF-style */
+.user-details h1 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  background: linear-gradient(120deg, #1c1c1e 0%, #3a3a55 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+
+.user-details p {
+  color: #48484a;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Smooth, rounded project cards (iOS card feel) */
+.project-card {
+  border-radius: var(--ios-radius) !important;
+  box-shadow: var(--ios-shadow) !important;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 40%);
+  pointer-events: none;
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.01) !important;
+  box-shadow: var(--ios-shadow-hover) !important;
+}
+
+/* Frosted, pill-shaped action buttons */
+.action-btn {
+  border-radius: 14px !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  letter-spacing: 0.2px;
+}
+
+.tech-badge {
+  border-radius: 999px !important;
+}
+
+/* Resume download button → iOS pill */
+#resume a[download] button,
+.user-details + div a[download] button {
+  background: linear-gradient(135deg, #0a84ff 0%, #0066cc 100%) !important;
+  border-radius: 999px !important;
+  padding: 14px 34px !important;
+  font-family: var(--ios-font);
+  font-weight: 600 !important;
+  letter-spacing: 0.3px;
+  box-shadow: 0 8px 22px rgba(10, 132, 255, 0.35) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+#resume a[download] button:hover {
+  transform: translateY(-2px) scale(1.03) !important;
+  box-shadow: 0 12px 28px rgba(10, 132, 255, 0.45) !important;
+}
+
+/* PDF pages → rounded cards */
+#pdf-container canvas {
+  border-radius: 14px;
+  box-shadow: var(--ios-shadow);
+}
+
+/* Footer polish */
+.footer {
+  font-family: var(--ios-font);
+}
+
+.footer .love {
+  color: #ff375f;
+}
+
+/* Reveal-on-scroll animation */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal-on-scroll { opacity: 1; transform: none; transition: none; }
+}
+
   

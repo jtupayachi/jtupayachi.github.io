@@ -1,0 +1,211 @@
+<!-- ============================================
+     iOS-STYLE TIME-OF-DAY SPLASH SCREEN
+     ============================================ -->
+<div id="splash-screen" class="splash" aria-hidden="true">
+  <div class="splash-glow"></div>
+  <div class="splash-content">
+    <div class="splash-icon" id="splash-icon">
+      <i class="fa fa-sun-o"></i>
+    </div>
+    <div class="splash-time" id="splash-time">--:--</div>
+    <div class="splash-greeting" id="splash-greeting">Hello</div>
+    <div class="splash-name">{{ site.username }}</div>
+    <div class="splash-loader">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</div>
+
+<style>
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Montserrat', sans-serif;
+  color: #fff;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Time-of-day gradients (iOS weather style) */
+.splash.morning   { background: linear-gradient(160deg, #2a5298 0%, #74b9ff 45%, #fdcb6e 80%, #e17055 100%); }
+.splash.afternoon { background: linear-gradient(160deg, #0984e3 0%, #74b9ff 45%, #81ecec 80%, #dfe6e9 100%); }
+.splash.evening   { background: linear-gradient(160deg, #2d3436 0%, #6c5ce7 30%, #fd79a8 65%, #fdcb6e 100%); }
+.splash.night     { background: linear-gradient(160deg, #0c0c1e 0%, #1a1a3e 45%, #2d2d5a 80%, #3d3d6b 100%); }
+
+/* Soft animated glow behind content */
+.splash-glow {
+  position: absolute;
+  width: 70vmax;
+  height: 70vmax;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 60%);
+  filter: blur(20px);
+  animation: splashGlow 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes splashGlow {
+  0%, 100% { transform: scale(1);   opacity: 0.7; }
+  50%      { transform: scale(1.15); opacity: 1; }
+}
+
+.splash-content {
+  position: relative;
+  text-align: center;
+  animation: splashIn 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes splashIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+.splash-icon {
+  font-size: 4.5rem;
+  line-height: 1;
+  margin-bottom: 18px;
+  text-shadow: 0 0 40px rgba(255,255,255,0.6);
+  animation: splashFloat 4s ease-in-out infinite;
+}
+
+@keyframes splashFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-12px) rotate(4deg); }
+}
+
+.splash-time {
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  opacity: 0.85;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 6px;
+}
+
+.splash-greeting {
+  font-size: clamp(2rem, 8vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.25);
+}
+
+.splash-name {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-top: 10px;
+}
+
+.splash-loader {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 34px;
+}
+
+.splash-loader span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  animation: splashDot 1.2s ease-in-out infinite;
+}
+
+.splash-loader span:nth-child(2) { animation-delay: 0.18s; }
+.splash-loader span:nth-child(3) { animation-delay: 0.36s; }
+
+@keyframes splashDot {
+  0%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40%      { transform: scale(1);   opacity: 1; }
+}
+
+/* Fade-out state */
+.splash.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Lock scroll while splash is visible */
+body.splash-active {
+  overflow: hidden;
+  height: 100vh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-glow, .splash-icon, .splash-loader span, .splash-content { animation: none; }
+}
+</style>
+
+<script>
+(function () {
+  var splash = document.getElementById('splash-screen');
+  if (!splash) return;
+
+  document.body.classList.add('splash-active');
+
+  function getPeriod(hour) {
+    if (hour >= 5 && hour < 12)  return { key: 'morning',   greeting: 'Good Morning',   icon: 'fa-sun-o' };
+    if (hour >= 12 && hour < 17) return { key: 'afternoon', greeting: 'Good Afternoon', icon: 'fa-sun-o' };
+    if (hour >= 17 && hour < 21) return { key: 'evening',   greeting: 'Good Evening',   icon: 'fa-cloud' };
+    return { key: 'night', greeting: 'Good Night', icon: 'fa-moon-o' };
+  }
+
+  var now = new Date();
+  var period = getPeriod(now.getHours());
+
+  splash.classList.add(period.key);
+  document.getElementById('splash-greeting').textContent = period.greeting;
+  document.getElementById('splash-icon').innerHTML = '<i class="fa ' + period.icon + '"></i>';
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function renderClock() {
+    var d = new Date();
+    var h = d.getHours();
+    var ampm = h >= 12 ? 'PM' : 'AM';
+    var h12 = h % 12; if (h12 === 0) h12 = 12;
+    document.getElementById('splash-time').textContent =
+      h12 + ':' + pad(d.getMinutes()) + ' ' + ampm;
+  }
+  renderClock();
+  var clockTimer = setInterval(renderClock, 1000);
+
+  function dismiss() {
+    if (splash.classList.contains('hide')) return;
+    clearInterval(clockTimer);
+    splash.classList.add('hide');
+    document.body.classList.remove('splash-active');
+    setTimeout(function () {
+      if (splash && splash.parentNode) splash.parentNode.removeChild(splash);
+    }, 900);
+  }
+
+  // Minimum on-screen time so the animation is appreciable, then fade out.
+  var MIN_DURATION = 1600;
+  var start = Date.now();
+
+  function scheduleDismiss() {
+    var elapsed = Date.now() - start;
+    setTimeout(dismiss, Math.max(0, MIN_DURATION - elapsed));
+  }
+
+  if (document.readyState === 'complete') {
+    scheduleDismiss();
+  } else {
+    window.addEventListener('load', scheduleDismiss);
+  }
+
+  // Safety fallback: never trap the user.
+  setTimeout(dismiss, 5000);
+
+  // Allow tap/click to skip.
+  splash.addEventListener('click', dismiss);
+})();
+</script>
