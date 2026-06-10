@@ -1,7 +1,13 @@
 
 <div id="particles-js">
-  <!-- Vanta.js animated sky background -->
-  <div class="vanta-bg" id="vanta-bg"></div>
+  <!-- Simple CSS drifting clouds (works in all browsers, no WebGL) -->
+  <div class="clouds-layer" id="clouds-layer">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-4"></div>
+    <div class="cloud cloud-5"></div>
+  </div>
 
   <!-- Foreground cartoon scene layered over the clouds -->
   <div class="scene-fg">
@@ -107,7 +113,7 @@
 
 <style>
 /* ============================================
-   VANTA.JS SKY BACKGROUND
+   SKY BACKGROUND (pure CSS, no WebGL)
    ============================================ */
 #particles-js {
   position: relative;
@@ -118,7 +124,7 @@
   min-height: 100dvh;
   overflow: hidden;
   box-sizing: border-box;
-  /* Time-of-day gradient sky fallback (shown if WebGL/Vanta/CDN is unavailable) */
+  /* Time-of-day gradient sky */
   background: linear-gradient(180deg, #4aa6e0 0%, #74b9ff 45%, #add6f5 100%);
   transition: background 2s ease-in-out;
 }
@@ -128,18 +134,64 @@
 #particles-js.evening   { background: linear-gradient(180deg, #2d3436 0%, #6c5ce7 35%, #fd79a8 70%, #fdcb6e 100%); }
 #particles-js.night     { background: linear-gradient(180deg, #0c0c1e 0%, #1a1a3e 45%, #2d2d5a 100%); }
 
-.vanta-bg {
+/* ---- Drifting CSS clouds ---- */
+.clouds-layer {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
   z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-.vanta-bg canvas { display: block; }
+.cloud {
+  position: absolute;
+  background: #fff;
+  border-radius: 100px;
+  opacity: 0.85;
+  filter: blur(1px);
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.cloud-1 { width: 160px; height: 50px; top: 14%; left: -200px; animation: drift 60s linear infinite; }
+.cloud-1::before { width: 100px; height: 80px; top: -40px; left: 20px; }
+.cloud-1::after  { width: 120px; height: 100px; top: -50px; left: 80px; }
+
+.cloud-2 { width: 120px; height: 40px; top: 28%; left: -200px; animation: drift 80s linear infinite; animation-delay: -20s; opacity: 0.7; }
+.cloud-2::before { width: 80px; height: 60px; top: -30px; left: 15px; }
+.cloud-2::after  { width: 90px; height: 70px; top: -35px; left: 60px; }
+
+.cloud-3 { width: 140px; height: 45px; top: 8%; left: -200px; animation: drift 70s linear infinite; animation-delay: -45s; }
+.cloud-3::before { width: 90px; height: 70px; top: -35px; left: 25px; }
+.cloud-3::after  { width: 100px; height: 80px; top: -40px; left: 70px; }
+
+.cloud-4 { width: 100px; height: 35px; top: 38%; left: -200px; animation: drift 90s linear infinite; animation-delay: -10s; opacity: 0.6; }
+.cloud-4::before { width: 70px; height: 55px; top: -28px; left: 20px; }
+.cloud-4::after  { width: 85px; height: 65px; top: -32px; left: 55px; }
+
+.cloud-5 { width: 110px; height: 38px; top: 20%; left: -200px; animation: drift 75s linear infinite; animation-delay: -60s; opacity: 0.75; }
+.cloud-5::before { width: 65px; height: 50px; top: -25px; left: 15px; }
+.cloud-5::after  { width: 75px; height: 60px; top: -30px; left: 50px; }
+
+@keyframes drift {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(100vw + 400px)); }
+}
+
+/* Dim clouds at night, warm them at sunset */
+.night .cloud   { opacity: 0.25; background: #3a3a5e; }
+.night .cloud::before, .night .cloud::after { background: #3a3a5e; }
+.evening .cloud { background: #f3d3e0; }
+.evening .cloud::before, .evening .cloud::after { background: #f3d3e0; }
 
 /* ============================================
    FOREGROUND CARTOON SCENE (over the clouds)
@@ -611,14 +663,9 @@
 }
 </style>
 
-<!-- Vanta.js animated clouds background (https://github.com/tengbao/vanta) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.clouds.min.js"></script>
-
 <script>
-// Vanta.js CLOUDS background with time-of-day palette + live Knoxville weather badge
+// Time-of-day sky + live Knoxville weather badge (pure CSS background, no WebGL)
 (function () {
-  var vantaEl = document.getElementById('vanta-bg');
   var particlesEl = document.getElementById('particles-js');
   var weatherIcon = document.getElementById('weather-icon');
   var weatherText = document.getElementById('weather-text');
@@ -627,7 +674,6 @@
   var LAT = 35.9606;
   var LON = -83.9207;
 
-  var vantaEffect = null;
   var currentWeather = { name: 'clear', icon: 'fa-sun-o', label: 'Clear' };
 
   function getTimePeriod() {
@@ -638,58 +684,13 @@
     return 'night';
   }
 
-  // Base sky/cloud/sun colors for each part of the day
-  var PALETTES = {
-    morning:   { skyColor: 0x4a78c2, cloudColor: 0xcdd9ec, cloudShadowColor: 0x4a5a78, sunColor: 0xffb36b, sunGlareColor: 0xff8b54, sunlightColor: 0xffc183, speed: 0.9 },
-    afternoon: { skyColor: 0x4aa6e0, cloudColor: 0xffffff, cloudShadowColor: 0x97a9c4, sunColor: 0xffd27d, sunGlareColor: 0xfff0c2, sunlightColor: 0xffe9b0, speed: 1.0 },
-    evening:   { skyColor: 0x6c5ce7, cloudColor: 0xf3a6c4, cloudShadowColor: 0x4a3f63, sunColor: 0xff7e5f, sunGlareColor: 0xffb07a, sunlightColor: 0xff9e7a, speed: 0.7 },
-    night:     { skyColor: 0x10122a, cloudColor: 0x3a3a5e, cloudShadowColor: 0x080814, sunColor: 0x2a2a55, sunGlareColor: 0x1a1a33, sunlightColor: 0x4a4a7a, speed: 0.5 }
-  };
-
-  function paletteFor(period, weatherName) {
-    var base = PALETTES[period] || PALETTES.afternoon;
-    var p = {};
-    for (var k in base) { p[k] = base[k]; }
-
-    if (weatherName === 'cloudy' || weatherName === 'rainy' || weatherName === 'snowy') {
-      p.cloudColor = period === 'night' ? 0x2a2a44 : 0xb9c2cf;
-      p.skyColor = period === 'night' ? 0x0c0c1e : 0x6f8aa6;
-    }
-    if (weatherName === 'stormy') {
-      p.cloudColor = 0x4a4f5a;
-      p.cloudShadowColor = 0x16181f;
-      p.skyColor = period === 'night' ? 0x0a0a14 : 0x556070;
-      p.speed = 1.6;
-    }
-    return p;
-  }
-
-  function applyPalette(period, weatherName) {
-    if (vantaEffect && typeof vantaEffect.setOptions === 'function') {
-      vantaEffect.setOptions(paletteFor(period, weatherName));
-    }
-    applyClasses(period, weatherName);
-  }
-
-  // Drive the foreground scene (landscape, birds, weather effects) via classes
+  // Drive the sky + scene (landscape, birds, weather effects) via classes
   function applyClasses(period, weatherName) {
     if (!particlesEl) { return; }
     particlesEl.classList.remove('morning', 'afternoon', 'evening', 'night');
     particlesEl.classList.remove('weather-clear', 'weather-cloudy', 'weather-rainy', 'weather-snowy', 'weather-stormy');
     particlesEl.classList.add(period);
     particlesEl.classList.add('weather-' + weatherName);
-  }
-
-  function initVanta(period, weatherName) {
-    if (!window.VANTA || !window.VANTA.CLOUDS || !vantaEl) { return; }
-    vantaEffect = window.VANTA.CLOUDS(Object.assign({
-      el: vantaEl,
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.0,
-      minWidth: 200.0
-    }, paletteFor(period, weatherName)));
   }
 
   // WMO Weather Codes -> simple weather type (https://open-meteo.com/en/docs)
@@ -744,7 +745,6 @@
 
   async function init() {
     var period = getTimePeriod();
-    initVanta(period, currentWeather.name);
     applyClasses(period, currentWeather.name);
     if (weatherText) { weatherText.textContent = 'Knoxville, TN...'; }
 
@@ -756,7 +756,7 @@
       if (Date.now() - c.timestamp < fifteenMinutes) {
         currentWeather = c.weather;
         updateBadge(c.weather, c.temperature, period);
-        applyPalette(period, c.weather.name);
+        applyClasses(period, c.weather.name);
         return;
       }
     }
@@ -765,12 +765,12 @@
     if (result) {
       currentWeather = result.weather;
       updateBadge(result.weather, result.temperature, period);
-      applyPalette(period, result.weather.name);
+      applyClasses(period, result.weather.name);
     } else if (cached) {
       var cd = JSON.parse(cached);
       currentWeather = cd.weather;
       updateBadge(cd.weather, cd.temperature, period);
-      applyPalette(period, cd.weather.name);
+      applyClasses(period, cd.weather.name);
     } else {
       updateBadge(currentWeather, null, period);
     }
@@ -784,7 +784,7 @@
 
   // Keep the sky in sync with the time of day
   setInterval(function () {
-    applyPalette(getTimePeriod(), currentWeather.name);
+    applyClasses(getTimePeriod(), currentWeather.name);
   }, 60000);
 
   // Refresh weather every 15 minutes
@@ -794,7 +794,7 @@
     if (result) {
       currentWeather = result.weather;
       updateBadge(result.weather, result.temperature, period);
-      applyPalette(period, result.weather.name);
+      applyClasses(period, result.weather.name);
     }
   }, 15 * 60 * 1000);
 })();
