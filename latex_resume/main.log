@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  29 JUN 2026 16:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  2 JUL 2026 10:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -658,15 +658,17 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2025
 /texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2025/texmf-dist/fo
-nts/enc/dvips/lm/lm-mathsy.enc}]
+nts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dv
+ips/lm/lm-mathit.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-
+rm.enc}]
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.361 \noindent
-               \textit{Automated Geospatial Analysis Interface} -- engineere...
+l.352     \item D
+                 esigned explainable machine learning models for extreme wea...
 [2]
 
 
@@ -674,16 +676,16 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.445 
-       [3{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{
-/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
+l.432 \noindent
+                J Tupayachi, MM Ferguson, X Li, \textbf{A Simulation-Based R...
+[3]
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.514 \end{document}
+l.516 \end{document}
                      [4]
 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
@@ -705,19 +707,20 @@ Here is how much of TeX's memory you used:
  38580 multiletter control sequences out of 15000+600000
  599278 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,1056b,575s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,1457b,589s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb><
 /usr/local/texlive/2025/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></us
 r/local/texlive/2025/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb></usr/
 local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr/local/texli
 ve/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2025/texm
-f-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2025/texmf-dist/font
-s/type1/public/lm/lmtk10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/pu
-blic/lm/lmtt9.pfb>
-Output written on main.pdf (4 pages, 143772 bytes).
+f-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts
+/type1/public/lm/lmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/publ
+ic/lm/lmtk10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt
+9.pfb>
+Output written on main.pdf (4 pages, 166722 bytes).
 PDF statistics:
- 109 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
+ 114 PDF objects out of 1000 (max. 8388607)
+ 89 compressed objects within 1 object stream
  10 named destinations out of 1000 (max. 500000)
  65 words of extra memory for PDF output out of 10000 (max. 10000000)
 
