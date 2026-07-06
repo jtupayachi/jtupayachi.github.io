@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  6 JUL 2026 11:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  6 JUL 2026 12:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -667,8 +667,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.352     \item D
-                 esigned explainable machine learning models for extreme wea...
+l.353     \item D
+                 eveloped geospatial AI interfaces enabling natural-language...
 [2]
 
 
@@ -684,8 +684,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.502 \section{SYNERGISTIC ACTIVITIES}
-                                       [4]
+l.520 
+       [4]
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
@@ -724,7 +724,7 @@ f-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts
 /type1/public/lm/lmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/publ
 ic/lm/lmtk10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt
 9.pfb>
-Output written on main.pdf (5 pages, 167324 bytes).
+Output written on main.pdf (5 pages, 166778 bytes).
 PDF statistics:
  117 PDF objects out of 1000 (max. 8388607)
  91 compressed objects within 1 object stream
