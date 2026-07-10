@@ -1,0 +1,130 @@
+====================================================================
+NSRD CONTRIBUTIONS — Jose Tupayachi
+Nuclear Safety Research and Development (NSRD)
+DOE Office of Environmental Management (EM)
+Oak Ridge National Laboratory / ORISE
+====================================================================
+
+PROJECT
+--------------------------------------------------------------------
+Automated Quality Assurance of Meteorological Station Data for
+Atmospheric Dispersion Modeling (CAPARS)
+
+ROLE
+--------------------------------------------------------------------
+Programmer & Researcher (AI / Data Engineer)
+Period: Mar 2025 - Present
+
+FUNDING
+--------------------------------------------------------------------
+DOE Office of Environmental Management (EM),
+Nuclear Safety Research and Development (NSRD).
+
+--------------------------------------------------------------------
+OVERVIEW
+--------------------------------------------------------------------
+Under the Nuclear Safety Research and Development (NSRD) program, funded
+through the DOE Office of Environmental Management, my work centered on
+strengthening the reliability of the meteorological data that feeds
+atmospheric dispersion modeling at the Oak Ridge Reservation. Accurate
+dispersion predictions are only as trustworthy as the sensor data behind
+them, and degraded, drifting, or malfunctioning meteorological stations
+can silently corrupt the models that emergency-response and nuclear-safety
+decisions depend on. My contributions focused on building artificial
+intelligence systems that automatically detect, classify, and flag
+anomalous station readings before they propagate into downstream safety
+analyses, replacing slow and inconsistent manual review with a scalable,
+reproducible, and explainable machine learning pipeline.
+
+--------------------------------------------------------------------
+CONTRIBUTIONS
+--------------------------------------------------------------------
+1. Vision Transformer and Foundation Vision Models for CAPARS.
+   I designed and built Vision Transformer (ViT) and foundation vision
+   models that form the core of a multi-pathway hybrid architecture
+   powering the CAPARS automated quality-assurance system. Rather than
+   relying on a single model, the architecture combines complementary
+   pathways so that the strengths of each compensate for the weaknesses
+   of the others, yielding a more robust and generalizable quality-control
+   engine across a heterogeneous network of stations.
+
+2. Wind Speed and Direction Classification Across Station Networks.
+   I developed models that classify wind speed and direction across a
+   distributed network of meteorological stations. Because wind fields are
+   the primary driver of how airborne material disperses, reliable
+   classification of these variables is essential for trustworthy
+   dispersion modeling. The models learn the expected behavior of each
+   station and surface readings that deviate from physically plausible
+   patterns, directly supporting the integrity of atmospheric dispersion
+   simulations.
+
+3. Explainable Machine Learning for Extreme Weather Prediction.
+   I designed explainable machine learning models for extreme weather
+   event prediction using large-scale atmospheric, environmental, and
+   sensor datasets. Explainability was a deliberate design requirement:
+   in a nuclear-safety context, analysts and reviewers must be able to
+   understand and defend why a model raised a flag, so the models expose
+   the features and signals driving each prediction rather than acting as
+   an opaque black box.
+
+4. Automated Data-Quality and Anomaly-Detection Pipelines.
+   I implemented automated data-quality and anomaly-detection checks over
+   large-scale atmospheric and geospatial datasets. These pipelines
+   continuously validate incoming station data, catch sensor drift and
+   outliers, and reduce the manual burden of quality review, making the
+   overall quality-assurance process faster, more consistent, and more
+   auditable.
+
+5. Vision Transformer-Based Quality Assurance Engine.
+   I contributed to the development of a Vision Transformer-Based Quality
+   Assurance Engine for wind speed and direction classification, which
+   consolidates the above work into a unified engine and is being prepared
+   as a forthcoming publication.
+
+6. Context-Aware Visual Prompting for Geospatial Decision-Support
+   Dashboards.
+   I contributed to a context-aware visual prompting system that uses
+   large language models to automatically generate and configure
+   geospatial web dashboards for decision support. The approach lets
+   non-expert users drive dashboard creation and spatial analysis through
+   natural language, while an agentic self-validation loop checks and
+   corrects the model's own outputs to improve reliability. This work
+   turns complex geospatial and atmospheric datasets into interactive,
+   decision-ready visualizations that support nuclear-safety and
+   environmental-monitoring workflows, and is documented in the
+   "Context-Aware Visual Prompting" paper listed below.
+
+--------------------------------------------------------------------
+IMPACT
+--------------------------------------------------------------------
+Together, these contributions move meteorological quality assurance from
+a labor-intensive, manual process toward an automated, explainable, and
+scalable AI system. By catching degraded or anomalous station data early,
+the work improves the trustworthiness of atmospheric dispersion modeling
+and, in turn, the nuclear-safety and emergency-response decisions that
+rely on it.
+
+--------------------------------------------------------------------
+RELATED PUBLICATIONS
+--------------------------------------------------------------------
+- J. Tupayachi, X.-Y. Yu, X. Li, Z. Liu, K. Birdwell,
+  "Explainable Machine Learning for Extreme Weather Event Prediction
+  at the Oak Ridge Reservation," SSRN 6409258 (2025). [Pre-Print]
+
+- "Vision Transformer-Based Quality Assurance Engine for Wind Speed
+  and Direction Classification." [Upcoming Publication]
+
+- H. Xu, J. Tupayachi, X.-Y. Yu, "Context-Aware Visual Prompting:
+  Automating Geospatial Web Dashboards with Large Language Models and
+  Agent Self-Validation for Decision Support," arXiv preprint
+  arXiv:2511.20656 (2025). [Under Review - 4th round of revision]
+
+--------------------------------------------------------------------
+INTELLECTUAL PROPERTY
+--------------------------------------------------------------------
+- Automated Geospatial Analysis Interface — an end-to-end interface
+  driven by large language models, enabling non-expert users to query,
+  process, and visualize spatial datasets through natural language.
+  IP disclosure filed, ORNL, 2025.
+
+====================================================================
