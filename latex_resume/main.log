@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  10 JUL 2026 15:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  13 JUL 2026 10:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -658,12 +658,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.336     \item D
-                 esigned explainable machine learning models for extreme wea...
-[2]
+l.339 \end{highlights}
+                       [2]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
-62.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
+76.
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 
@@ -672,19 +672,11 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.413 \section{SELECTED PUBLICATIONS}
-                                      [3{/usr/local/texlive/2025/texmf-dist/fon
-ts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvi
-ps/lm/lm-rm.enc}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.en
-c}]
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.505 
-       [4]
+l.425 \noindent
+                H Xu, X Li, J Tupayachi, JJ Lian, OA Omitaomu, \textbf{Autom...
+[3{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/lo
+cal/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/20
+25/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
@@ -692,7 +684,7 @@ een already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.507 \end{document}
-                     [5]
+                     [4]
 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 
@@ -713,7 +705,7 @@ Here is how much of TeX's memory you used:
  38579 multiletter control sequences out of 15000+600000
  602480 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,5n,79p,1275b,589s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,79p,895b,593s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb><
 /usr/local/texlive/2025/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></us
 r/local/texlive/2025/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb></usr/
@@ -722,10 +714,10 @@ ve/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2025/texm
 f-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fon
 ts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/pu
 blic/lm/lmtt9.pfb>
-Output written on main.pdf (5 pages, 123403 bytes).
+Output written on main.pdf (4 pages, 122553 bytes).
 PDF statistics:
- 114 PDF objects out of 1000 (max. 8388607)
- 90 compressed objects within 1 object stream
+ 110 PDF objects out of 1000 (max. 8388607)
+ 87 compressed objects within 1 object stream
  10 named destinations out of 1000 (max. 500000)
  65 words of extra memory for PDF output out of 10000 (max. 10000000)
 
