@@ -1,0 +1,200 @@
+/* ============================================================
+   BRUTALIST THEME
+   Loaded last so it overrides main.css, styles.css and the
+   inline <style> blocks in splash.html / header.html / projects.html.
+   ============================================================ */
+
+:root {
+  --brut-bg: #f2efe6;
+  --brut-surface: #ffffff;
+  --brut-fg: #0a0a0a;
+  --brut-accent: #ffcf33;
+  --brut-accent-2: #ff5c1f;
+  --brut-border: 3px;
+  --brut-shadow: 6px 6px 0 #0a0a0a;
+  --brut-shadow-sm: 3px 3px 0 #0a0a0a;
+  --brut-font-mono: 'JetBrains Mono', 'Space Mono', 'Courier New', Courier, monospace;
+  --brut-font-sans: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ---- Strip every soft/glassy effect in one pass, then re-add
+   hard-edged brutalist versions on specific elements below. ---- */
+* {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+html, body {
+  background: var(--brut-bg) !important;
+  color: var(--brut-fg) !important;
+}
+
+body, p, li, a, span, div {
+  font-family: var(--brut-font-sans) !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.nav-link, .nav-text,
+.site-title, .splash-greeting, .splash-name, .splash-time {
+  font-family: var(--brut-font-mono) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  font-weight: 800 !important;
+}
+
+a { color: var(--brut-fg) !important; text-decoration: underline !important; }
+a:hover { color: var(--brut-accent-2) !important; }
+
+::selection { background: var(--brut-fg); color: var(--brut-accent); }
+
+::-webkit-scrollbar { width: 14px; height: 14px; }
+::-webkit-scrollbar-track { background: var(--brut-bg) !important; }
+::-webkit-scrollbar-thumb { background: var(--brut-fg) !important; border: 3px solid var(--brut-bg); }
+
+/* ---- Hero: kill the cartoon sky scene, flatten to solid blocks ---- */
+.clouds-layer, .scene-fg { display: none !important; }
+
+#particles-js,
+#particles-js.morning, #particles-js.afternoon,
+#particles-js.evening, #particles-js.night {
+  background: var(--brut-bg) !important;
+  border-bottom: var(--brut-border) solid var(--brut-fg) !important;
+}
+#particles-js.afternoon { background: var(--brut-accent) !important; }
+#particles-js.evening   { background: var(--brut-accent-2) !important; }
+#particles-js.night     { background: var(--brut-fg) !important; }
+#particles-js.night .site-title,
+#particles-js.night .nav-link,
+#particles-js.night .site-title .greeting { color: var(--brut-bg) !important; }
+
+.weather-badge {
+  background: var(--brut-surface) !important;
+  color: var(--brut-fg) !important;
+  border: var(--brut-border) solid var(--brut-fg) !important;
+  box-shadow: var(--brut-shadow-sm) !important;
+}
+
+.header-content {
+  background: var(--brut-surface) !important;
+  border: var(--brut-border) solid var(--brut-fg) !important;
+  box-shadow: var(--brut-shadow) !important;
+  color: var(--brut-fg) !important;
+}
+.site-title, .site-title .name, .site-title .greeting { color: var(--brut-fg) !important; }
+
+.nav-link { color: var(--brut-fg) !important; text-decoration: underline !important; }
+.nav-underline { display: none !important; }
+
+.social-link {
+  background: var(--brut-surface) !important;
+  color: var(--brut-fg) !important;
+  border: var(--brut-border) solid var(--brut-fg) !important;
+  box-shadow: var(--brut-shadow-sm) !important;
+}
+.social-link:hover {
+  background: var(--brut-accent) !important;
+  transform: translate(2px, 2px) !important;
+  box-shadow: 1px 1px 0 #0a0a0a !important;
+}
+.social-tooltip {
+  background: var(--brut-fg) !important;
+  color: var(--brut-bg) !important;
+  border: 2px solid var(--brut-fg) !important;
+}
+
+.down { color: var(--brut-fg) !important; }
+
+/* ---- Splash screen ---- */
+.splash-glow { display: none !important; }
+.splash,
+.splash.morning, .splash.afternoon, .splash.evening, .splash.night {
+  background: var(--brut-bg) !important;
+  color: var(--brut-fg) !important;
+}
+.splash.afternoon { background: var(--brut-accent) !important; }
+.splash.evening    { background: var(--brut-accent-2) !important; }
+.splash.night      { background: var(--brut-fg) !important; color: var(--brut-bg) !important; }
+.splash-icon, .splash-time, .splash-greeting, .splash-name { color: inherit !important; }
+.splash-loader span { background: currentColor !important; }
+
+/* ---- About / tech section ---- */
+.user-details h1 {
+  background: none !important;
+  -webkit-text-fill-color: var(--brut-fg) !important;
+  color: var(--brut-fg) !important;
+}
+.user-details p { color: var(--brut-fg) !important; }
+
+/* ---- Project cards (overrides inline style="" attrs on projects.html) ---- */
+.project-card {
+  background: var(--brut-surface) !important;
+  border: var(--brut-border) solid var(--brut-fg) !important;
+  box-shadow: var(--brut-shadow) !important;
+}
+.project-card::after { display: none !important; }
+.project-card:hover {
+  transform: translate(3px, 3px) !important;
+  box-shadow: var(--brut-shadow-sm) !important;
+}
+.project-card h3, .project-card p, .project-card li, .project-card a {
+  color: var(--brut-fg) !important;
+}
+.project-badge {
+  background: var(--brut-accent) !important;
+  color: var(--brut-fg) !important;
+  border: 2px solid var(--brut-fg) !important;
+}
+.project-link {
+  background: var(--brut-fg) !important;
+  color: var(--brut-bg) !important;
+  border: var(--brut-border) solid var(--brut-fg) !important;
+  box-shadow: var(--brut-shadow-sm) !important;
+  font-family: var(--brut-font-mono) !important;
+  text-decoration: none !important;
+}
+.project-link:hover {
+  background: var(--brut-accent) !important;
+  color: var(--brut-fg) !important;
+  transform: translate(2px, 2px) !important;
+  box-shadow: 1px 1px 0 #0a0a0a !important;
+}
+
+/* ---- Resume ---- */
+#resume a[download] button,
+.action-btn {
+  background: var(--brut-accent) !important;
+  color: var(--brut-fg) !important;
+  border: var(--brut-border) solid var(--brut-fg) !important;
+  box-shadow: var(--brut-shadow) !important;
+  font-family: var(--brut-font-mono) !important;
+  text-transform: uppercase !important;
+}
+#resume a[download] button:hover {
+  transform: translate(3px, 3px) !important;
+  box-shadow: var(--brut-shadow-sm) !important;
+}
+.tech-badge {
+  background: var(--brut-surface) !important;
+  color: var(--brut-fg) !important;
+  border: 2px solid var(--brut-fg) !important;
+}
+#pdf-container canvas {
+  border: var(--brut-border) solid var(--brut-fg) !important;
+  box-shadow: var(--brut-shadow) !important;
+}
+
+/* ---- Footer ---- */
+.footer {
+  font-family: var(--brut-font-mono) !important;
+  background: var(--brut-bg) !important;
+  color: var(--brut-fg) !important;
+  border-top: var(--brut-border) solid var(--brut-fg) !important;
+}
+.footer .love { color: var(--brut-accent-2) !important; }
+.footer a { color: var(--brut-fg) !important; }

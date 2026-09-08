@@ -1,0 +1,49 @@
+Project:
+RECOIL - Cognitive Freight Transportation Digital Twin
+@ Lead AI/Data Engineer
+
+Regarding the RECOIL project's optimization goals (cost/CO2), what were the measurable improvements achieved? Can you quantify the reduction in costs or emissions?
+
+
+e.g. achieved a 15% projected reduction in co2 emissions compared to baseline models or optimized routes saving x per shipment
+
+
+
+
+
+Project:
+Oak Ridge National Laboratory - Materials & Scientific AI
+@ Research Fellow
+
+For the Oak Ridge project's AI-agent workflows and multimodal analysis (SEM images), what was the scale of data processed, or how much did your solution improve the speed/accuracy of scientific discovery?
+
+e.g. processed 1Tb of SEM imagery per moth reducing manual time by 30% or achieving x% classification accuracy
+
+
+
+In the Indra role (Data Engineer), you mention migrating a legacy Oracle warehouse. What was the approximate size of this data migration, and what specific performance gains did tuning Spark memory/resources achieve?
+
+
+e.g., Migrated 5TB of historical data; reduced average job execution time from 4 hours to 30 minutes.
+
+
+
+
+
+
+For the RECOIL project, what specific metrics or user feedback validated the success of the 'trade-off analysis' chatbot for non-technical users? (e.g., adoption rate, successful decision count)
+
+e.g., Used by 50+ domain experts in simulation testing; successfully guided decisions that saved an estimated $Y.
+
+
+
+In the TA roles (IE406/408 and IE483), can you describe a complex modeling assignment or concept that you personally developed, taught, or led a workshop on? This helps quantify your instructional depth.
+
+e.g, Developed a case study using AnyLogic to model supply chain bottlenecks for 20 students.
+
+
+
+For the ACTAPP mobile app, what specific data analysis or metrics did the chatbot track? Did this tracking lead to any measurable changes in user behavior or caregiving efficiency?
+
+
+e.g., Tracked 100+ patient interactions; provided insights that allowed caregivers to adjust intervention timing, improving adherence by X%.
