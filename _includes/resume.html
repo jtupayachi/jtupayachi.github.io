@@ -32,6 +32,15 @@
   box-sizing: border-box;">
 </div>
 
+<!-- Fallback viewer for browsers where pdf.js canvas rendering fails (e.g. Safari) -->
+<div id="pdf-fallback" style="display: none; width: 100%; max-width: 900px; margin: 0 auto 20px; box-sizing: border-box;">
+  <iframe src="latex_resume/main.pdf" title="Resume PDF" style="width: 100%; height: 1100px; border: none;"></iframe>
+  <p style="text-align: center; margin-top: 10px;">
+    If the resume does not appear,
+    <a href="latex_resume/main.pdf" target="_blank" rel="noopener">open it in a new tab</a>.
+  </p>
+</div>
+
 <style>
   button {
     padding: 15px 30px;
@@ -73,38 +82,59 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
 
 <script>
-  pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js";
+  (function () {
+    var pdfUrl = "latex_resume/main.pdf";
 
-  const pdfUrl = "latex_resume/main.pdf";
-
-  // Function to resize canvas dynamically
-  function resizeCanvas(canvas, page) {
-    const scale = window.innerWidth < 768 ? 0.75 : 1.5; // Adjust scale based on screen width
-    const viewport = page.getViewport({ scale });
-
-    canvas.height = viewport.height;
-    canvas.width = viewport.width;
-
-    return {
-      canvasContext: canvas.getContext("2d"),
-      viewport: viewport
-    };
-  }
-
-  // Load the PDF document
-  const loadingTask = pdfjsLib.getDocument(pdfUrl);
-  loadingTask.promise.then(pdf => {
-    const pdfContainer = document.getElementById("pdf-container");
-
-    for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
-      pdf.getPage(pageNumber).then(page => {
-        const canvas = document.createElement("canvas");
-        canvas.style.marginBottom = "20px";
-        pdfContainer.appendChild(canvas);
-
-        const renderContext = resizeCanvas(canvas, page);
-        page.render(renderContext);
-      });
+    function showFallback() {
+      var container = document.getElementById("pdf-container");
+      var fallback = document.getElementById("pdf-fallback");
+      if (container) container.style.display = "none";
+      if (fallback) fallback.style.display = "block";
     }
-  });
+
+    // If pdf.js failed to load (e.g. blocked CDN), show the native fallback.
+    if (typeof pdfjsLib === "undefined") {
+      showFallback();
+      return;
+    }
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js";
+
+    // Resize canvas dynamically based on screen width.
+    function resizeCanvas(canvas, page) {
+      var scale = window.innerWidth < 768 ? 0.75 : 1.5;
+      var viewport = page.getViewport({ scale: scale });
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+      return { canvasContext: canvas.getContext("2d"), viewport: viewport };
+    }
+
+    try {
+      var loadingTask = pdfjsLib.getDocument(pdfUrl);
+      loadingTask.promise.then(function (pdf) {
+        var pdfContainer = document.getElementById("pdf-container");
+        for (var pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+          pdf.getPage(pageNumber).then(function (page) {
+            var canvas = document.createElement("canvas");
+            canvas.style.marginBottom = "20px";
+            canvas.style.maxWidth = "100%";
+            canvas.style.height = "auto";
+            pdfContainer.appendChild(canvas);
+            page.render(resizeCanvas(canvas, page));
+          });
+        }
+      }).catch(showFallback);
+    } catch (e) {
+      showFallback();
+    }
+
+    // Safety net: if nothing rendered (silent Safari canvas failure), show fallback.
+    setTimeout(function () {
+      var container = document.getElementById("pdf-container");
+      if (!container || container.querySelectorAll("canvas").length === 0) {
+        showFallback();
+      }
+    }, 3500);
+  })();
 </script>
