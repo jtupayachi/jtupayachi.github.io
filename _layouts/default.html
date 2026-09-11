@@ -1,37 +1,102 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="{{ '/assets/css/devicon.min.css' | prepend: site.baseurl }}">
 <html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <title>{% if page.title %}{{ page.title }} · {{ site.username }}{% else %}{{ site.username }}{% endif %}</title>
+  <meta name="description" content="{{ site.username }} — developer working on AI agents, large language models and edge computing at Oak Ridge National Laboratory and the University of Tennessee, Knoxville.">
 
-    
-  {% include head.html %}
+  <link rel="shortcut icon" type="image/png" href="{{ '/assets/favicon.png' | prepend: site.baseurl }}">
 
+  <!-- Fonts & icon sets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
+  <!-- Site styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | prepend: site.baseurl }}">
+</head>
 
+<body>
+  <!-- ---------------- Navbar ---------------- -->
+  <header class="navbar">
+    <div class="container">
+      <a class="brand" href="#top">{{ site.username }}</a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        {% if site.google_scholar %}<a href="https://scholar.google.com/citations?user={{ site.google_scholar }}" target="_blank" rel="noopener">Scholar</a>{% endif %}
+      </nav>
+    </div>
+  </header>
 
-  <body>
-      {% include splash.html %}
-      {% include header.html %}
-      <section id="about">
+  <!-- ---------------- Hero ---------------- -->
+  <section class="hero" id="top">
+    <div class="container">
+      <p class="eyebrow">Oak Ridge National Laboratory · University of Tennessee, Knoxville</p>
+      <h1>{{ site.username }}</h1>
+      <p class="role">Developer building intelligent, distributed systems with AI agents, large language models &amp; edge computing.</p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#resume"><i class="fa-solid fa-file-lines"></i> View Resume</a>
+        <a class="btn btn-outline" href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects &amp; Demos</a>
+      </div>
+
+      <div class="socials">
+        {% if site.google_scholar %}
+        <a aria-label="Google Scholar" href="https://scholar.google.com/citations?user={{ site.google_scholar }}" target="_blank" rel="noopener"><i class="fa-solid fa-graduation-cap"></i></a>
+        {% endif %}
+        {% if site.email %}
+        <a aria-label="Email" href="mailto:{{ site.email }}"><i class="fa-solid fa-envelope"></i></a>
+        {% endif %}
+        {% if site.linkedin_username %}
+        <a aria-label="LinkedIn" href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
+        {% endif %}
+        {% if site.github_username %}
+        <a aria-label="GitHub" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------- Content ---------------- -->
+  <main>
+    <section class="block" id="about">
+      <div class="section-inner">
         {% include about.html %}
- 
-        <section id="projects">
-          <!-- {% include projects.html %} -->
+      </div>
+    </section>
 
-          <section id="trajectory">
-            <!-- {% include trajectory.html %} -->
+    <section class="block" id="projects">
+      <div class="section-inner">
+        {% include projects_section.html %}
+      </div>
+    </section>
 
-            <section id="resume">
-              {% include resume.html %}
+    <section class="block" id="resume">
+      <div class="section-inner">
+        {% include resume.html %}
+      </div>
+    </section>
 
+    {{ content }}
+  </main>
 
-      </section>
-        {{ content }}
-      {% include footer.html %}
-
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-
-
-  </body>
+  <!-- ---------------- Footer ---------------- -->
+  <footer class="footer">
+    <p>
+      <a href="#projects">Projects &amp; Demos</a>
+      &nbsp;·&nbsp;
+      <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>
+    </p>
+    <p>Built with <span class="love">&hearts;</span> by
+      <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">{{ site.username }}</a>
+    </p>
+  </footer>
+</body>
 </html>

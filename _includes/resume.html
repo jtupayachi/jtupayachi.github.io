@@ -3,138 +3,42 @@
   <p>{{ site.user_description }}</p>
 </div>
 
-<!-- Download Button -->
-<div style="text-align: center; margin-top: 20px;">
-  <a href="latex_resume/main.pdf" download="Resume.pdf">
-    <button style="
-      padding: 15px 30px; 
-      font-size: 18px; 
-      background-color: #007BFF; 
-      color: white; 
-      border: none; 
-      border-radius: 5px; 
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s ease, transform 0.2s ease;">
-      Download PDF
-    </button>
+<div style="text-align: center; margin: 8px 0 24px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+  <a class="btn btn-primary" href="{{ '/latex_resume/main.pdf' | prepend: site.baseurl }}" download="Jose-Tupayachi-Resume.pdf">
+    <i class="fa-solid fa-download"></i> Download PDF
+  </a>
+  <a class="btn btn-outline" href="{{ '/latex_resume/main.pdf' | prepend: site.baseurl }}" target="_blank" rel="noopener">
+    <i class="fa-solid fa-up-right-from-square"></i> Open in new tab
   </a>
 </div>
 
-<!-- Container for PDF pages -->
-<div id="pdf-container" style="
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-  margin-bottom: 20px; 
-  padding: 10px; 
-  max-width: 100%;
-  box-sizing: border-box;">
-</div>
-
-<!-- Fallback viewer for browsers where pdf.js canvas rendering fails (e.g. Safari) -->
-<div id="pdf-fallback" style="display: none; width: 100%; max-width: 900px; margin: 0 auto 20px; box-sizing: border-box;">
-  <iframe src="latex_resume/main.pdf" title="Resume PDF" style="width: 100%; height: 1100px; border: none;"></iframe>
-  <p style="text-align: center; margin-top: 10px;">
-    If the resume does not appear,
-    <a href="latex_resume/main.pdf" target="_blank" rel="noopener">open it in a new tab</a>.
-  </p>
+<!-- Static inline PDF preview (no JavaScript) -->
+<div class="resume-embed">
+  <object data="{{ '/latex_resume/main.pdf' | prepend: site.baseurl }}#view=FitH" type="application/pdf">
+    <iframe src="{{ '/latex_resume/main.pdf' | prepend: site.baseurl }}#view=FitH" title="Resume PDF"></iframe>
+    <p style="text-align:center; padding: 16px;">
+      Your browser can't display the embedded PDF.
+      <a href="{{ '/latex_resume/main.pdf' | prepend: site.baseurl }}" target="_blank" rel="noopener">Open the resume in a new tab</a>.
+    </p>
+  </object>
 </div>
 
 <style>
-  button {
-    padding: 15px 30px;
-    font-size: 18px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  .resume-embed {
+    max-width: 900px;
+    margin: 0 auto;
   }
-
-  button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
+  .resume-embed object,
+  .resume-embed iframe {
+    width: 100%;
+    height: 1100px;
+    border: 1px solid #e6e9f0;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(20, 30, 60, 0.08);
+    background: #fff;
   }
-
   @media (max-width: 768px) {
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-    }
-
-    #pdf-container canvas {
-      width: 100% !important;
-      height: auto !important;
-    }
-  }
-
-  @media (max-width: 480px) {
-    button {
-      padding: 8px 15px;
-      font-size: 14px;
-    }
+    .resume-embed object,
+    .resume-embed iframe { height: 70vh; }
   }
 </style>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
-
-<script>
-  (function () {
-    var pdfUrl = "latex_resume/main.pdf";
-
-    function showFallback() {
-      var container = document.getElementById("pdf-container");
-      var fallback = document.getElementById("pdf-fallback");
-      if (container) container.style.display = "none";
-      if (fallback) fallback.style.display = "block";
-    }
-
-    // If pdf.js failed to load (e.g. blocked CDN), show the native fallback.
-    if (typeof pdfjsLib === "undefined") {
-      showFallback();
-      return;
-    }
-
-    pdfjsLib.GlobalWorkerOptions.workerSrc =
-      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js";
-
-    // Resize canvas dynamically based on screen width.
-    function resizeCanvas(canvas, page) {
-      var scale = window.innerWidth < 768 ? 0.75 : 1.5;
-      var viewport = page.getViewport({ scale: scale });
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
-      return { canvasContext: canvas.getContext("2d"), viewport: viewport };
-    }
-
-    try {
-      var loadingTask = pdfjsLib.getDocument(pdfUrl);
-      loadingTask.promise.then(function (pdf) {
-        var pdfContainer = document.getElementById("pdf-container");
-        for (var pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
-          pdf.getPage(pageNumber).then(function (page) {
-            var canvas = document.createElement("canvas");
-            canvas.style.marginBottom = "20px";
-            canvas.style.maxWidth = "100%";
-            canvas.style.height = "auto";
-            pdfContainer.appendChild(canvas);
-            page.render(resizeCanvas(canvas, page));
-          });
-        }
-      }).catch(showFallback);
-    } catch (e) {
-      showFallback();
-    }
-
-    // Safety net: if nothing rendered (silent Safari canvas failure), show fallback.
-    setTimeout(function () {
-      var container = document.getElementById("pdf-container");
-      if (!container || container.querySelectorAll("canvas").length === 0) {
-        showFallback();
-      }
-    }, 3500);
-  })();
-</script>
