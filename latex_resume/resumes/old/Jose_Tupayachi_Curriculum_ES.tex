@@ -1,0 +1,171 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}[SmallCapsFont={Latin Modern Roman Caps}]
+\usepackage[margin=0.7in,top=0.55in,bottom=0.55in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\raggedbottom
+\urlstyle{same}
+
+\titleformat{\section}{\large\bfseries}{}{0pt}{}[\vspace{-6pt}\rule{\textwidth}{0.5pt}]
+\titlespacing*{\section}{0pt}{7pt}{5pt}
+
+\setlist[itemize]{leftmargin=1.3em,itemsep=0.5pt,topsep=1.5pt,parsep=0pt,partopsep=0pt,label=\textbullet}
+
+\newcommand{\entry}[4]{%
+  \vspace{3pt}\noindent\textbf{#1}\hfill\textbf{#2}\\[-1pt]
+  \noindent\textit{#3}\hfill\textit{#4}\par\vspace{1pt}}
+\newcommand{\entrynoloc}[3]{%
+  \vspace{3pt}\noindent\textbf{#1}\hfill\textbf{#2}\\[-1pt]
+  \noindent\textit{#3}\par\vspace{1pt}}
+\newcommand{\cat}[1]{\vspace{2pt}\noindent\textbf{#1}\par\vspace{-1pt}}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries\textsc{Jose Alberto Tupayachi Silva}}\\[4pt]
+{\small 661-365-5289 $\cdot$ \href{mailto:jtupayac@vols.utk.edu}{jtupayac@vols.utk.edu}; \href{mailto:tupayachisja@ornl.gov}{tupayachisja@ornl.gov}\\
+\href{https://www.linkedin.com/in/jose-tupayachi-582339147}{linkedin.com/in/jose-tupayachi-582339147} $\cdot$ \href{https://github.com/jtupayachi}{github.com/jtupayachi} $\cdot$ \href{https://jtupayachi.github.io/}{jtupayachi.github.io}}
+\end{center}
+
+\section{Resumen}
+Ingeniero Industrial y de Sistemas especializado en ciencia de datos y automatización de procesos, con sólidas habilidades de resolución de problemas y trabajo en equipo. Con experiencia en el desarrollo de soluciones de IA de extremo a extremo, trabajando en sprints ágiles.
+
+\section{Educación}
+\vspace{2pt}
+\textbf{University of Tennessee, Knoxville}\\
+M.S., Ingeniería Industrial \hfill Ago 2022 -- May 2024\\[3pt]
+\textbf{Pontifical Catholic University of Peru}\\
+B.S., Ingeniería Industrial \hfill Mar 2014 -- May 2019
+
+\section{Experiencia}
+\entry{Oak Ridge National Laboratory}{Mar 2025 -- Actualidad}{Desarrollador}{Oak Ridge, TN}
+\begin{itemize}
+\item Desplegar un pipeline para el análisis espectral (PCA -- cuML) y espacial (alpha-shape) de ToF-SIMS -- 6PPD, basado en archivos .itax/itmx de IONTOF.
+\item Ajustar finamente un modelo de visión (Swin Transformer) para el control de calidad de la velocidad y dirección del viento de estaciones meteorológicas utilizadas en el modelado de plumas atmosféricas.
+\item Desarrollar un modelo de ML explicable para conjuntos de datos atmosféricos y geoespaciales (DL y 1DCNN).
+\item Automatizar un generador de dashboards geoespaciales con razonamiento en lenguaje natural sobre grafos de conocimiento (llama.cpp, langchain, vLLM).
+\item Desplegar generación aumentada por recuperación (RAG) para más de 1000 artículos sobre mantos reproductores de litio, con identificación de líneas de investigación (ontología).
+\end{itemize}
+
+\entry{University of Tennessee, Knoxville}{Ago 2022 -- Actualidad}{Asistente de Investigación de Posgrado}{Knoxville, TN}
+\begin{itemize}
+\item Desplegué un gemelo digital impulsado por IA para el transporte de carga con optimización lineal, ruteo en tiempo real y procesamiento paralelo con SLURM.
+\item Programé aplicaciones móviles de salud con distribuciones para Android, iOS, watchOS y Wear OS (Flutter).
+\item Integré un optimizador de ruteo intermodal con integración de API REST guiada por ontologías.
+\item Desarrollé una Traffic-Weather Graph Convolutional Network para el pronóstico de demanda de carga de vehículos eléctricos, que alimenta Traffic Message Channels a una arquitectura de ensamble.
+\end{itemize}
+
+\entrynoloc{Indra}{Mar 2022 -- Ago 2022}{Ingeniero de Datos}
+\begin{itemize}
+\item Construí y mantuve pipelines ETL/ELT escalables usando Python, Scala y scripting Shell en UNIX/Linux, procesando conjuntos de datos de alto volumen a lo largo de ciclos de entrega ágiles para apoyar la analítica y los reportes posteriores.
+\item Diseñé sistemas de procesamiento de datos distribuidos usando Scala/PySpark en Apache Spark, Hadoop y Hive/HQL, y lideré la migración de un data warehouse legado en Oracle a un lakehouse particionado en la nube basado en AWS (S3, EMR), optimizando la memoria y la asignación de recursos de Spark para mejorar la eficiencia de ejecución de los trabajos.
+\item Diseñé modelos de datos para respaldar el data warehousing e implementé lógica de resolución de entidades y deduplicación para unificar y estandarizar registros de fuentes diversas.
+\item Automaticé pipelines de despliegue CI/CD con Jenkins, agilizando compilaciones, pruebas unitarias y despliegue de aplicaciones, incluyendo despliegues en vivo, procedimientos de rollback y estrategias de respaldo, para reducir el esfuerzo manual y el riesgo de despliegue.
+\end{itemize}
+
+\entrynoloc{Globokas}{Ene 2022 -- Mar 2022}{Analista de Inteligencia de Negocios}
+\begin{itemize}
+\item Desarrollé dashboards y sistemas de reportes de KPI que respaldaron la toma de decisiones estratégicas y operativas para múltiples clientes empresariales.
+\item Integré fuentes de datos heterogéneas (APIs REST, sistemas internos, plataformas externas) en pipelines de analítica unificados.
+\end{itemize}
+
+\entrynoloc{Enel}{Nov 2020 -- Dic 2021}{Analista de Datos}
+\begin{itemize}
+\item Construí dashboards interactivos en Power BI y Tableau para el monitoreo operativo y el reporte de KPI.
+\item Administré bases de datos SQL/T-SQL e integraciones con Salesforce mediante consultas por API.
+\item Desarrollé una aplicación de escritorio en PyQt para automatizar la verificación de facturas y el procesamiento de casos especiales.
+\item Diseñé modelos de segmentación de clientes con aprendizaje automático no supervisado (K-Means y clustering jerárquico) sobre historial de pagos y datos demográficos, permitiendo a los equipos de cobranza priorizar el contacto y mejorar la recuperación de pagos.
+\end{itemize}
+
+\entrynoloc{GPS Management}{Ago 2020 -- Nov 2020}{Desarrollador -- Valorización de Portafolios}
+\begin{itemize}
+\item Implementé modelos de aprendizaje automático para la recuperación de préstamos en mora (NPL) y la valorización de portafolios.
+\item Automaticé flujos de trabajo de scoring, reduciendo el tiempo de procesamiento manual.
+\end{itemize}
+
+\entrynoloc{Quiron Salud}{Ene 2019 -- Ago 2019}{Practicante de TI}
+\begin{itemize}
+\item Desarrollé y mantuve sistemas de información de planes de salud.
+\item Apoyé la integración de historias clínicas electrónicas y la administración de bases de datos para operaciones clínicas.
+\end{itemize}
+
+\section{Publicaciones Seleccionadas}
+\begin{itemize}\small
+\item Tupayachi, J., Khan, A. N., \& Li, X. (2026). Scalable decentralized prognostics for industrial systems under data heterogeneity. \textit{Computers \& Electrical Engineering}, 133, Article 111023. \url{https://doi.org/10.1016/j.compeleceng.2026.111023}
+\item Khan, A. N., Tupayachi, J., Dabbs, W., Chamberlin, S., Yao, B., \& Li, X. (2026). CliniSense AI for automated clinical skills assessment with real-time feedback. \textit{npj Digital Medicine}. \url{https://doi.org/10.1038/s41746-026-03100-8}
+\item Wyatt, T. H., Lowe, S., Tupayachi, J., \& Li, X. (2026). Design and usability testing of SmartSHOTS: A mobile app to reduce vaccine barriers for children 0--24 months. \textit{Health Informatics Journal}, 32(1). \url{https://doi.org/10.1177/14604582261419334}
+\item Xu, H., Sun, Y., Tupayachi, J., Omitaomu, O., Zlatanova, S., \& Li, X. (2026). Towards autonomous freight intermodal optimization via generative AI and agentic digital twins. \textit{Computers \& Industrial Engineering}, Article 112464. \url{https://doi.org/10.1016/j.cie.2026.112464}
+\item Xu, H., Li, X., Tupayachi, J., Lian, J. J., \& Omitaomu, O. A. (2024). Automating bibliometric analysis with sentence transformers and RAG. \textit{Proceedings of the 2nd ACM SIGSPATIAL International Workshop on Advances in UrbanAI}, 1--10. \url{https://doi.org/10.1145/3681780.3697252}
+\item Tupayachi, J., Ferguson, M. M., \& Li, X. (2024). A simulation-based real-time deep reinforcement learning approach for fighting wildfires. \textit{Proceedings of the 2024 Annual Modeling and Simulation Conference (ANNSIM)}, 1--12. \url{https://doi.org/10.23919/annsim61499.2024.10732085}
+\item Tupayachi, J., Xu, H., Omitaomu, O. A., Camur, M. C., Sharmin, A., \& Li, X. (2024). Towards next-generation urban decision support systems through AI-powered construction of scientific ontology using large language models. \textit{Smart Cities}, 7(5), 2392--2421. \url{https://doi.org/10.3390/smartcities7050094}
+\item + Publicaciones: \href{https://scholar.google.com/citations?user=Kyn6Et8AAAAJ&hl=en&oi=ao}{scholar.google.com/citations?user=Kyn6Et8AAAAJ}
+\end{itemize}
+
+\section{Habilidades}
+\cat{IA y Aprendizaje Automático}
+\begin{itemize}\item Ingeniería de Aprendizaje Automático, LLMs, RAG, Flujos de Trabajo Agénticos de IA, CNNs, Vision Transformers, TensorFlow, PyTorch, Modelado Estadístico, Modelado Predictivo, Clustering, Regresión, Modelos Basados en Árboles y de Boosting (Random Forest, LightGBM, XGBoost), Ajuste y Calibración de Modelos, IA Explicable\end{itemize}
+\cat{LLMs y Frameworks Agénticos}
+\begin{itemize}\item LangChain, LangGraph, LiteLLM, vLLM, Ollama, QLoRA Finetuning\end{itemize}
+\cat{Nube e Infraestructura}
+\begin{itemize}\item AWS (S3, EMR, Redshift, SageMaker, ECS), Microsoft Azure, Google Cloud, Docker, Kubernetes, UNIX/Linux, KVM, Slurm, CI/CD, Jenkins, Git, GitLab\end{itemize}
+\cat{Ingeniería de Datos}
+\begin{itemize}\item Python, SQL, Scala, Apache Spark, Hadoop/MapReduce, Hive, Kafka, ETL/ELT, Procesamiento por Lotes y en Streaming en Tiempo Real, Delta Lake, Databricks Workflows, Unity Catalog, dbt, Airflow, Prefect, Modelado de Datos, Resolución de Entidades, Calidad de Datos, Detección de Anomalías, Snowflake, Amazon Redshift, Modelado Dimensional, Arquitectura de Data Warehouse, Optimización de Consultas y Rendimiento\end{itemize}
+\cat{Bases de Datos}
+\begin{itemize}\item PostgreSQL, MySQL, SQL Server, MongoDB, Cassandra\end{itemize}
+\cat{Lenguajes de Programación}
+\begin{itemize}\item Java, R, SAS, STATA, Bash, Dart, PHP, C++, CUDA, SPSS\end{itemize}
+\cat{Web, Frameworks y APIs}
+\begin{itemize}\item Django, Flask, Streamlit, Dash, React, Flutter, Laravel, APIs REST y GraphQL\end{itemize}
+\cat{Optimización y Simulación}
+\begin{itemize}\item Gurobi, CPLEX, AnyLogic, NetworkX\end{itemize}
+\cat{Geoespacial}
+\begin{itemize}\item WMS, GeoServer, OverPass API, Turf.js\end{itemize}
+
+\section{Certificaciones}
+\begin{itemize}\item MS Transact-SQL (T-SQL), Microsoft Fabric DP-600 y DP-700, AWS, GCP\end{itemize}
+
+\section{Premios y Reconocimientos}
+\begin{itemize}
+\item IISE Future Faculty Fellows (2025--2026), EE.\,UU. -- Otorgado
+\item Best Paper Award, CIE51 (51st Conference on Computers and Industrial Engineering), Sídney, Australia (2024)
+\item IISE DAIS Student Mobile App Competition -- Ganador, Proyecto SmartShots, Montreal (2024)
+\item HIDA Helmholtz Visiting Researcher, Karlsruhe Institute of Technology (KIT), Alemania -- Otorgado (2024)
+\item Holiday Fellowship, University of Tennessee, Knoxville (2022, 2023, 2024)
+\end{itemize}
+
+\section{Clientes y Patrocinadores}
+\entrynoloc{ORNL}{Mar 2025 -- Actualidad}{Desarrollador}
+{\small \url{github.com/jtupayachi/smartgiscavp} \quad \url{demo2.recoil.ise.utk.edu}}
+\begin{itemize}\item Financiamiento: Nuclear Safety Research and Development (NSRD).\end{itemize}
+
+\entrynoloc{RECOIL}{Jul 2024 -- Mar 2026}{Ingeniero Líder de IA/Datos}
+{\small \url{m1.recoil.ise.utk.edu}}
+\begin{itemize}\item Financiamiento: U.S. Department of Energy ARPA-E, Proyecto \#DE-AR0001780.\end{itemize}
+
+\entrynoloc{SmartShots}{Dic 2023 -- Dic 2024}{Desarrollador Full-Stack}
+{\small \url{iise.org/Details.aspx?id=33697} \quad \url{play.google.com/store/apps/details?id=com.ilab.smartshots}}
+\begin{itemize}\item Ganador, IISE DAIS Student Mobile App Competition 2024. Financiamiento: Tennessee Department of Health.\end{itemize}
+
+\entrynoloc{Active Caregiver's Toolkit}{Jul 2024 -- Actualidad}{Desarrollador Móvil}
+{\small \url{play.google.com/store/apps/details?id=com.ilabutk.fe_rich}}
+\begin{itemize}\item Financiamiento: Hillman Emergent Innovation (HEI).\end{itemize}
+
+\entrynoloc{ORNL}{Mar 2025 -- Actualidad}{Desarrollador}
+{\small \url{github.com/jtupayachi/tof-sims-driver}}
+\begin{itemize}\item Financiamiento: Fusion Energy Sciences (FES).\end{itemize}
+
+\section{Referencias}
+\noindent\begin{tabular}{@{}p{0.48\textwidth}p{0.48\textwidth}@{}}
+\textbf{Xueping Li} \newline Profesor de UTK \newline xli27@utk.edu &
+\textbf{Xiao-Ying Yu} \newline Líder de Grupo en ORNL \newline yuxiaoying@ornl.gov \\[5pt]
+\textbf{Bill Hicks} \newline Instructor de UTK \newline william.hicks@tennessee.edu &
+\textbf{Carla Arbogast} \newline Directora de MSIE en UTK \newline carboga1@utk.edu
+\end{tabular}
+
+\end{document}
