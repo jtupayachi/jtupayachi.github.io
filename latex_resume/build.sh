@@ -10,7 +10,7 @@ NAME="Jose Alberto Tupayachi Silva - Resume-$TAG"
 build() { # $1 = suffix, $2 = preamble
   for _ in 1 2; do
     pdflatex -interaction=nonstopmode -halt-on-error -jobname="build_$1" "$2\\input{$SRC.tex}" >/dev/null \
-      || { tail -n 30 "build_$1.log"; exit 1; }
+      || { echo "LaTeX error while building '$1' resume:"; grep -A3 '^!' "build_$1.log" | head -n 8; rm -f build_$1.*; exit 1; }
   done
   mv "build_$1.pdf" "$NAME""_$1.pdf"
   rm -f build_$1.aux build_$1.log build_$1.out
