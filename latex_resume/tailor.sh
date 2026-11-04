@@ -8,6 +8,7 @@
 # Output: resumes/Jose Alberto Tupayachi Silva - Resume-<TAG>_<ind|Teaching>_tay.pdf
 #         resumes/tailored/  (.tex, report, model response, job description)
 # The master resume, build.sh outputs and main.pdf are never modified.
+# The headline under your name is never changed and the job's title is not used.
 #
 # Settings (environment variables):
 #   LITELLM_BASE_URL  proxy URL            (default http://localhost:4000)
@@ -16,7 +17,7 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 
-usage() { sed -n '2,10p' "$0" | sed 's/^# \{0,1\}//'; exit 1; }
+usage() { sed -n '2,6p' "$0" | sed 's/^# \{0,1\}//'; exit 1; }
 
 if [ $# -eq 0 ]; then
   echo "Which resume do you want to tailor?"

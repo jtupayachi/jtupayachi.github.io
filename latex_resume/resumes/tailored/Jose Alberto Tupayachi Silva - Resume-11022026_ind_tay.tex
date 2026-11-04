@@ -1,0 +1,218 @@
+% Single source for BOTH resumes. Run ../build.sh to produce:
+%   resumes/Jose Alberto Tupayachi Silva - Resume-<TAG>_ind.pdf       (industry; also copied to ../main.pdf)
+%   resumes/Jose Alberto Tupayachi Silva - Resume-<TAG>_Teaching.pdf  (teaching)
+% Text outside any \ifteaching block appears in both versions.
+%   Teaching only:  \ifteaching ...text... \fi
+%   Industry only:  \ifteaching\else ...text... \fi
+%   Different text: \ifteaching ...teaching... \else ...industry... \fi
+% Compiling this file directly (e.g. in VS Code) gives the industry version.
+\documentclass[10pt,a4paper]{extarticle}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[default]{inter}
+\usepackage[margin=0.58in,top=0.45in,bottom=0.45in]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tabularx}
+\usepackage{needspace}
+
+\newif\ifteaching
+\ifdefined\TEACHING\teachingtrue\fi
+
+\definecolor{navy}{HTML}{000000}
+\definecolor{muted}{HTML}{000000}
+\definecolor{bul}{HTML}{000000}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{1.04}
+\raggedbottom\raggedright
+\urlstyle{same}
+
+\setlist[itemize]{leftmargin=1.05em,itemsep=1.4pt,topsep=2pt,parsep=0pt,partopsep=0pt,
+  label={\textcolor{bul}{\scriptsize$\bullet$}}}
+
+\newcommand{\sep}{\hspace{0.45em}\textcolor{bul}{\textbar}\hspace{0.45em}}
+\newcommand{\link}[2]{\href{#1}{#2}}
+
+\newcommand{\sect}[2][]{\needspace{45pt}\vspace{9pt}%
+  {\color{navy}\bfseries\large\textls[60]{\MakeUppercase{#2}}}{\color{muted}\small\ #1}\\[-6.5pt]
+  {\color{navy}\rule{\linewidth}{0.5pt}}\par\vspace{-1pt}}
+
+\newcommand{\job}[4]{\vspace{3.5pt}\noindent{\bfseries #1}\ {\color{muted}$\cdot$}\ #2\hfill{\color{muted}#3}\par
+  \if\relax\detokenize{#4}\relax\else\vspace{-1pt}{\color{muted}\small\itshape #4}\par\fi\vspace{-1pt}}
+
+\newcommand{\skill}[2]{\noindent\textbf{#1:} #2\par\vspace{2pt}}
+\newcommand{\m}[1]{\textbf{#1}}
+\newcommand{\client}[5]{\vspace{3.5pt}\noindent{\bfseries #1}\ {\color{muted}$\cdot$}\ #2\if\relax\detokenize{#3}\relax\else\ {\color{muted}$\cdot$}\ {\itshape #3}\fi\hfill{\color{muted}#4}\par\vspace{-1pt}
+  \begin{itemize}\item #5\end{itemize}}
+\newcommand{\auto}[3]{\ifteaching#3\else\textbf{#1} #2\fi}
+
+\begin{document}
+\small
+
+\begin{center}
+  {\color{navy}\fontsize{22}{26}\selectfont\bfseries Jose Alberto Tupayachi Silva}\\[3pt]
+  {\normalsize\bfseries AI \& Process Automation Engineer \ $\cdot$\ Data, ML \& Agentic Workflows}\\[3pt]
+  {\color{muted}\footnotesize
+  661-365-5289\sep\link{mailto:jtupayac@vols.utk.edu}{jtupayac@vols.utk.edu}\sep\link{mailto:tupayachisja@ornl.gov}{tupayachisja@ornl.gov}\\[1pt]
+  \link{https://www.linkedin.com/in/jose-tupayachi-582339147}{linkedin.com/in/jose-tupayachi-582339147}\sep\link{https://github.com/jtupayachi}{github.com/jtupayachi}\sep\link{https://jtupayachi.github.io/}{jtupayachi.github.io}}
+\end{center}
+
+%-------------------------------------------------------------------------
+\sect{Summary}
+
+Industrial \& Systems Engineer and AI/Data Engineer with 6+ years of experience automating business and engineering processes across energy, finance, consulting and national-lab teams. Builds data pipelines, standardized and ad hoc reporting, dashboards, forecasting and machine learning models, and agentic LLM workflows that turn operational data into timely decisions. Combines operations research, simulation and reliability engineering with AI to improve processes, and partners with Operations and Finance teams on analysis and planning. Has led the AI and data workstream of a DOE-funded project, mentors junior team members, and works in Agile teams with business and technical stakeholders.
+
+
+
+%-------------------------------------------------------------------------
+\sect{Technical Skills}
+\skill{Operations \& Business Analytics}{Excel (pivot tables, Power Query, lookups, financial models), SQL, Power BI, Tableau, Looker Studio, standardized and ad hoc reporting, KPI and operational dashboards, forecasting (demand, capacity, equipment), financial and productivity modeling, data-gathering and reporting procedures, Cycle Time to Action (CTA) reduction}
+\skill{Industrial Engineering \& Operations Research}{Linear, integer, network-flow and stochastic programming (Gurobi, CPLEX), discrete-event simulation (AnyLogic), reliability engineering (Weibull, FMEA, remaining-useful-life prognostics), condition monitoring and fault detection, supply chain and intermodal logistics, network analysis (NetworkX), engineering economic analysis, KPI design, usability testing, Agile/Scrum, requirements gathering with business stakeholders}
+\skill{Process Automation \& Orchestration}{End-to-end workflow automation, agentic LLM workflows (LangGraph, tool calling), Airflow, Prefect, Databricks Workflows, Jenkins CI/CD, Python and Bash/Shell scripting, REST/GraphQL and Salesforce API integrations, automated data-quality checks, monitoring and alerting, document and report generation, desktop automation (PyQt), batch parallelization (Slurm, GNU Parallel)}
+\skill{Data Engineering}{Apache Spark (Scala/PySpark), Hadoop/MapReduce, Hive, Kafka, ETL/ELT, batch and real-time streaming, Delta Lake, Databricks Workflows, Unity Catalog, dbt, Airflow, Prefect, data modeling, entity resolution, data quality, anomaly detection, Snowflake, Amazon Redshift, dimensional modeling, performance optimization}
+\skill{Cloud \& Infrastructure}{AWS (S3, EMR, Redshift, SageMaker, ECS), Microsoft Azure, Google Cloud (BigQuery), Docker, Kubernetes, UNIX/Linux, KVM, Slurm and GNU Parallel (HPC), CI/CD, Jenkins, Git, GitLab}
+\skill{Databases}{PostgreSQL, MySQL, SQL Server, MongoDB, Cassandra, Neo4j}
+\skill{Languages}{Python, SQL, Scala, Java, R, SAS, STATA, SPSS, Bash, Dart, PHP, C++, CUDA}
+\skill{Web, Mobile \& APIs}{Django, Flask, Streamlit, Dash, React, Flutter, Laravel, GetX, REST and GraphQL APIs, Power BI, Tableau, Looker Studio}
+\skill{AI \& Machine Learning}{Machine learning engineering, deep learning, LLMs, RAG, agentic AI workflows, CNNs, 1D-CNN, Vision Transformers (ViT, Swin), Graph Neural Networks, TensorFlow, PyTorch, statistical and predictive modeling, clustering, regression, tree-based and boosting models (Random Forest, LightGBM, XGBoost), model tuning and calibration, explainable AI}
+\skill{LLM \& Agentic Frameworks}{LangChain, LangGraph, LiteLLM, vLLM, Ollama, llama.cpp, QLoRA fine-tuning, BERT and sentence transformers, vector databases, knowledge graphs (Neo4j), ontology-guided reasoning}
+\skill{Certifications}{Microsoft Fabric DP-600 and DP-700, MS Transact-SQL (T-SQL), AWS, Google Cloud}
+
+%-------------------------------------------------------------------------
+\sect{Experience}
+\job{Developer}{Oak Ridge National Laboratory}{Mar 2025 -- Present}{Oak Ridge, TN }
+\begin{itemize}
+\item \textbf{Automated manual image inspection:} built a multi-pathway \m{Vision Transformer} agentic pipeline that classifies microstructure, defects and phases across \m{1,000+ SEM images}, replacing days-per-batch expert annotation with reproducible classification and auto-generated structured reports.
+\item \textbf{Automated document review:} deployed a \m{LangChain/LangGraph RAG} workflow (Qwen and Llama on Ollama, vector DB) that ingests and cross-references \m{200+ technical papers}, cutting expert review \m{to under 1 hour} per batch with full source traceability.
+\item \textbf{Automated data QA:} fine-tuned a \m{Swin Transformer} that quality-screens wind speed and direction from distributed weather stations before they feed atmospheric plume models, and built explainable ML (DL, 1D-CNN) for extreme-weather prediction.
+\item \textbf{Automated dashboard creation:} built a natural-language geospatial dashboard generator with knowledge-graph reasoning and agent self-validation (llama.cpp, LangChain, vLLM), so non-experts build analyses without engineering help; \m{filed as an ORNL IP disclosure (2026)} and shipped as a public Docker image.
+\item Deployed a GPU-accelerated (cuML) spectral and spatial analysis pipeline that processes raw IONTOF ToF-SIMS instrument files (.itax/.itmx) end to end.
+\end{itemize}
+
+\job{Graduate Research Assistant}{University of Tennessee, Knoxville}{Aug 2022 -- Present}{Knoxville, TN}
+\begin{itemize}
+\item Served as \m{Lead AI/Data Engineer} on the \m{\$3M DOE ARPA-E RECOIL} freight digital twin: owned the AI/data workstream across \m{100+ intermodal nodes}, automating route optimization, demand forecasting and what-if analysis behind a production LLM chatbot that cut stakeholders' Cycle Time to Action from \m{hours to minutes}.
+\item Parallelized and scheduled experiment runs on HPC (\m{Slurm, GNU Parallel}) and \m{mentored junior students} in model development and Git workflows to cut run times; led a Git workshop for a research-methods class.
+\item Shipped Flutter mobile health apps for \m{Android, iOS, watchOS and Wear OS} (SmartShots, Active Caregiver's Toolkit) published on the App Store and Google Play; SmartShots won the IISE DAIS Student Mobile App Competition.
+\item Developed \m{decentralized (federated) prognostics} for industrial equipment, detecting faults and estimating remaining useful life across distributed assets to maximize equipment uptime and asset reliability.
+\item Tracked, analyzed and forecast freight flows, network capacity and EV charging equipment demand across \m{100+ intermodal nodes} and \m{86 charging stations} to plan capacity and support project timelines.
+\item Built an ontology-guided intermodal routing optimizer (linear optimization) and a Traffic-Weather GCN for EV charging-demand forecasting (\m{MAE 0.064}, more than \m{10x} lower than classical baselines).
+\end{itemize}
+
+\job{Data Engineer}{Indra}{Mar 2022 -- Aug 2022}{}
+\begin{itemize}
+\item Led the migration of \m{3 core tables of about 5,000 variables each (about 18M customers)} from a legacy Oracle warehouse to a partitioned AWS lakehouse (S3, EMR, Hive) with \m{zero data loss}, redesigning schemas into dimensional star models and re-implementing Oracle stored-procedure logic in PySpark/Scala.
+\item Tuned Spark executor memory and cores per job, broadcast-join thresholds, partition pruning and file coalescing, removing OOM shuffle spills and small-file problems that slowed downstream queries.
+\item Automated entity resolution and deduplication across the 18M-record client base, and built scheduled ETL/ELT pipelines in Python, Scala and Shell on UNIX/Linux in Agile cycles.
+\item Automated CI/CD with Jenkins (builds, unit tests, live deployment, rollback, backups) to cut manual effort and deployment risk.
+\item Used knowledge of the business and data structures to anticipate data problems, building an automated data-quality engine (profiling, validation rules, drift detection, monitoring and alerting) that catches issues before downstream reporting.
+\end{itemize}
+
+\job{Business Intelligence Analyst}{Globokas}{Jan 2022 -- Mar 2022}{}
+\begin{itemize}
+\item Automated KPI reporting by integrating \m{10+ heterogeneous sources} into unified pipelines that feed self-refreshing executive KPI dashboards, supporting the use and monitoring of KPIs for performance.
+\item Developed \m{standardized and ad hoc client reporting}, and designed the data-gathering and reporting procedures used by operations teams.
+\end{itemize}
+
+\job{Data Analyst}{Enel Distribuci\'on}{Nov 2020 -- Dec 2021}{}
+\begin{itemize}
+\item Provided \m{ongoing analysis of operational activities} with Excel, SQL/T-SQL, Power BI and Tableau, using visual dashboards to surface timely insights for operations teams and communicate status updates.
+\item Coordinated with the Operations Systems and IT teams to identify, escalate and resolve data and system issues, partnering with internal teams and third-party service providers.
+\item Segmented \m{1.6M utility customers} with K-Means and hierarchical clustering on payment history and demographics, lifting collection-campaign hit rate by \m{about 15\%} and lowering cost per recovered account.
+\item \m{Automated invoice verification} and special-case processing with a PyQt desktop app, removing manual verification steps from the billing workflow.
+\item \m{Partnered with Finance} to build Excel-based cost and productivity models for collection operations, supporting budget and staffing decisions.
+\end{itemize}
+
+\job{Developer, Portfolio Valuation}{GPS Management}{Aug 2020 -- Nov 2020}{}
+\begin{itemize}
+\item \m{Automated the loan-scoring workflow} with machine learning and financial models for non-performing loan (NPL) recovery and portfolio valuation, reducing manual processing time (presented at POMS Lima, 2022).
+\end{itemize}
+
+\job{IT Intern}{Quiron Salud}{Jan 2019 -- Aug 2019}{}
+\begin{itemize}
+\item Coordinated with clinical operations and the IT systems group so technical issues were identified, addressed and resolved in a timely manner, ensuring compliance with safety and operational standards.
+\item Maintained healthcare plan information systems and supported electronic health record integration and database administration for clinical operations.
+\end{itemize}
+
+%-------------------------------------------------------------------------
+
+
+\sect{Projects}
+\job{RECOIL}{Cognitive Freight Transportation Digital Twin}{Jul 2024 -- Mar 2026}{}
+\begin{itemize}
+\item Modeled a national U.S. freight network of \m{100+ intermodal nodes} (road, rail, waterway, EV charging); the ontology-guided GIS optimizer projects a \m{15--20\% cut in per-route CO$_2$} versus truck-only baselines (arXiv:2410.18089).
+\item Built and published the Traffic-Weather GCN on proprietary ChargePoint data (\m{86 stations, 13 months}): \m{MAE 0.064, RMSE 0.573}, more than \m{10x} lower error than XGBoost, Random Forest, LightGBM and SVM baselines{} (arXiv:2510.09048).
+\item Deployed a trade-off analysis chatbot (Neo4j knowledge graph, vector embeddings, BERT/sentence-transformer literature index) used by \m{20+ domain experts and DOE stakeholders}, shortening decision turnaround from \m{hours to minutes} for non-technical users.
+\item Automated a real-time streaming feedback loop that continuously re-optimizes routing under weather, traffic and demand changes, reducing unnecessary truck miles versus static batch baselines.
+\end{itemize}
+
+\job{Automated Geospatial Analysis Interface}{ORNL, NSRD}{Mar 2025 -- Present}{}
+\begin{itemize}
+\item End-to-end LLM interface that lets non-expert users query, process and visualize spatial datasets in natural language, with agent self-validation; a \m{dual-LLM pipeline} (a planner model hands off to a coder model) plans, generates, builds and serves multi-page React apps live from a plain-language request.
+% \item Published an \m{LLM OCR pipeline} on Docker Hub (\m{1,550+ pulls}), \m{7 fine-tuned models, 5 datasets and 1 Space} on Hugging Face, and \m{41 public GitHub repositories}.
+\end{itemize}
+
+
+
+
+
+%-------------------------------------------------------------------------
+
+\sect{Clients \& Sponsors}
+\client{ORNL}{Developer}{\link{https://github.com/jtupayachi/smartgiscavp}{\nolinkurl{github.com/jtupayachi/smartgiscavp}} \ $\cdot$\ \link{https://demo2.recoil.ise.utk.edu}{\nolinkurl{demo2.recoil.ise.utk.edu}}}{Mar 2025 -- Present}{Funding: Nuclear Safety Research and Development (NSRD).}
+\client{ORNL}{Developer}{\link{https://github.com/jtupayachi/tof-sims-driver}{\nolinkurl{github.com/jtupayachi/tof-sims-driver}}}{Mar 2025 -- Present}{Funding: Fusion Energy Sciences (FES).}
+\client{RECOIL}{Lead AI/Data Engineer}{\link{https://m1.recoil.ise.utk.edu}{\nolinkurl{m1.recoil.ise.utk.edu}}}{Jul 2024 -- Mar 2026}{Funding: U.S. Department of Energy ARPA-E, Project \#DE-AR0001780.}
+\client{SmartShots}{Full-Stack Developer}{\link{https://www.iise.org/Details.aspx?id=33697}{\nolinkurl{iise.org/Details.aspx?id=33697}}}{Dec 2023 -- Dec 2024}{{\itshape\link{https://play.google.com/store/apps/details?id=com.ilab.smartshots}{\nolinkurl{play.google.com/store/apps/details?id=com.ilab.smartshots}}}. Winner, IISE DAIS Student Mobile App Competition 2024. Funding: Tennessee Department of Health.}
+\client{Active Caregiver's Toolkit}{Mobile Developer}{}{Jul 2024 -- Present}{{\itshape\link{https://play.google.com/store/apps/details?id=com.ilabutk.fe_rich}{\nolinkurl{play.google.com/store/apps/details?id=com.ilabutk.fe_rich}}}. Funding: Hillman Emergent Innovation (HEI).}
+
+%-------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------
+\sect{Education}
+
+\job{M.S., Industrial Engineering}{University of Tennessee, Knoxville}{Aug 2022 -- May 2024}{GPA 3.93}
+\job{B.S., Industrial Engineering}{Pontifical Catholic University of Peru}{Mar 2014 -- May 2019}{}
+\vspace{3pt}
+
+%-------------------------------------------------------------------------
+\sect{Awards \& Honors}
+\begin{itemize}
+\item \m{IISE Future Faculty Fellow} (2025--2026), USA
+\item \m{Best Paper Award}, CIE51, 51st Conference on Computers and Industrial Engineering, Sydney, Australia (2024)
+\item \m{Winner, IISE DAIS Student Mobile App Competition}, SmartShots project, Montreal (2024)
+\item \m{HIDA Helmholtz Visiting Researcher} award, Karlsruhe Institute of Technology, Germany (2024)
+\item \m{Holiday Fellowship}, University of Tennessee, Knoxville (2022, 2023, 2024)
+\end{itemize}
+
+%-------------------------------------------------------------------------
+\sect[373 citations $\cdot$ h-index 7 $\cdot$ i10-index 5 (Google Scholar)]{Selected Publications}
+\begin{itemize}[itemsep=1.2pt]
+\item \m{Tupayachi, J.}, Khan, A. N., \& Li, X. (2026). \link{https://doi.org/10.1016/j.compeleceng.2026.111023}{Scalable decentralized prognostics for industrial systems under data heterogeneity}. \textit{Computers \& Electrical Engineering, 133}, 111023.
+
+
+\item Xu, H., Sun, Y., \m{Tupayachi, J.}, Omitaomu, O., Zlatanova, S., \& Li, X. (2026). \link{https://doi.org/10.1016/j.cie.2026.112464}{Towards autonomous freight intermodal optimization via generative AI and agentic digital twins}. \textit{Computers \& Industrial Engineering}, 112464.
+
+
+
+
+\item \textit{Also:} 4 more journal papers (npj Digital Medicine, Smart Cities, Health Informatics Journal, Drones), 3 conference papers, 4 pre-prints, and talks at IISE, INFORMS, ACM SIGSPATIAL and the ANS Annual Meeting. 
+\item More: \url{https://scholar.google.com/citations?user=Kyn6Et8AAAAJ}
+
+\end{itemize}
+
+%-------------------------------------------------------------------------
+\sect{References}
+\noindent\begin{tabularx}{\linewidth}{@{}X X@{}}
+\textbf{Xueping Li}, Professor, UTK \ $\cdot$\ xli27@utk.edu &
+\textbf{Xiao-Ying Yu}, Group Leader, ORNL \ $\cdot$\ yuxiaoying@ornl.gov \\
+\textbf{Bill Hicks}, Instructor, UTK \ $\cdot$\ william.hicks@tennessee.edu &
+\textbf{Carla Arbogast}, Director MSIE, UTK \ $\cdot$\ carboga1@utk.edu
+\end{tabularx}
+
+\end{document}

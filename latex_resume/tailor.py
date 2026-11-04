@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Tailor the master resume to a job description through the LiteLLM proxy.
 
-The model only proposes edits (title, summary, skill order, bullet rewrites and
-order). Every edit is validated against the original text before it is applied,
+The model only proposes edits (summary, skill order, bullet rewrites and
+order). The headline under your name is never changed, and the job's title or
+close variants of it are kept out of the resume. Every edit is validated against the original text before it is applied,
 so the model cannot add numbers, LaTeX commands or facts that are not already
 in the resume. Usage is wrapped by tailor.sh.
 """
@@ -31,10 +32,11 @@ Hard rules:
 - Keep each rewritten bullet within about 20% of its original length.
 - Keep the LaTeX markup style: \m{...} is bold. Write & % $ # as \& \% \$ \#.
 - Use the job description's vocabulary where it truthfully matches the resume.
+- Never use the job's title, the employer's name, or wording close to the job title
+  anywhere in the output (summary, bullets or skills). Keep the candidate's own roles.
 
 Return ONLY one JSON object, no prose, with these keys:
 {
-  "title": "headline under the name, at most 8 words, plain text",
   "summary": "4 plain-text sentences, about as long as the current summary, no metrics, aimed at this job",
   "skills_order": ["exact skill row names, most relevant first"],
   "bullets": {"B7": "rewritten bullet text (LaTeX)", "...": "..."},
@@ -193,7 +195,11 @@ def call_llm(prompt: str, base: str, model: str) -> str:
         "messages": [{"role": "system", "content": SYSTEM_PROMPT},
                      {"role": "user", "content": prompt}],
         "response_format": {"type": "json_object"},
+        "max_tokens": int(os.environ.get("TAILOR_MAX_TOKENS", "8000")),
     }
+    # Qwen3 reasons for thousands of tokens by default; the JSON task does not need it.
+    if os.environ.get("TAILOR_THINKING", "0") != "1":
+        payload["chat_template_kwargs"] = {"enable_thinking": False}
     headers = {"Content-Type": "application/json"}
     key = litellm_key()
     if key:
@@ -264,13 +270,7 @@ def check_bullet(new: str, old: str):
 
 
 def apply_edits(body: str, units: dict, edits: dict, report: list):
-    if isinstance(edits.get("title"), str) and units["title"]:
-        new = escape_plain(edits["title"])
-        if numbers(new) <= numbers(body) and 0 < len(new) <= 90:
-            body = body.replace(units["title"], new, 1)
-            report.append(f"Title: {plain(new)}")
-        else:
-            report.append("Title: rejected (new numbers or too long), kept original")
+    # The headline under the name is intentionally never edited.
     if isinstance(edits.get("summary"), str) and units["summary"]:
         new = escape_plain(edits["summary"])
         ratio = len(new) / max(len(units["summary"]), 1)
@@ -419,7 +419,7 @@ def main():
     a = ap.parse_args()
 
     base = os.environ.get("LITELLM_BASE_URL", "http://localhost:4000")
-    model = os.environ.get("LITELLM_MODEL", "qwen3")
+    model = os.environ.get("LITELLM_MODEL", "ornl-qwen3-8-27b")
     check_proxy(base)
 
     jd = read_pasted() if a.jd == "-" else Path(a.jd).read_text()
